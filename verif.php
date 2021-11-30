@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once 'email.func.php';
+
 $action = $_POST['action'];
 $options = [
     'cost' => 11,
@@ -22,14 +24,20 @@ if($action == 'LOGIN') {
 
 
         if ($username !== "" && $password !== "") {
-            $stmt = $db->prepare("SELECT password FROM account WHERE username = ?");
+            $stmt = $db->prepare("SELECT password, verified FROM account WHERE username = ?");
             $stmt->bind_param("s", $_POST['username']);
             $stmt->execute();
-            $stmt->bind_result($hash);
+            $stmt->bind_result($hash, $verified);
             if ($stmt->fetch() && password_verify($_POST['password'], $hash)) {
-                $_SESSION['username'] = $username;
-                header('location: index.php');
-                exit;
+                if($verified != 0) {
+                    $_SESSION['username'] = $username;
+                    sendVerifEmail("salut");
+                    header('location: index.php');
+                    exit;
+                }else{
+                    header('Location: login.php?erreur=3');
+                }
+
             } else {
                 header('Location: login.php?erreur=1');
             }
