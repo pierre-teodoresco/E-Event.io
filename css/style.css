@@ -5,9 +5,11 @@ form *{
     outline: none;
     border: none;
 }
-body{
+
+body .login{
     background: hsl(250, 50%, 91%);
 }
+
 form{
     height: 520px;
     width: 400px;
@@ -36,6 +38,7 @@ label{
     font-size: 16px;
     font-weight: 500;
 }
+
 input{
     display: block;
     height: 50px;
@@ -47,9 +50,11 @@ input{
     font-size: 14px;
     font-weight: 300;
 }
+
 body{
     background-color: #080710;
 }
+
 .background{
     width: 430px;
     height: 520px;
