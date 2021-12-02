@@ -1,6 +1,7 @@
 # Php Projet 
 ### V8.1.0
 
+Le projet consiste à la création d'un site internent comprenant l'utilisation de la programmation web serveur. Nous devons créer un site internet qui permet de gérer l'évenementiels avec un support de connexion, l'utilisateur voter pour une idée d'évenement, les personnes autorisées peuvent créer des campagnes. 
 
 ## Etudiants : 
 
