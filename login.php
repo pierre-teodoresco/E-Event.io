@@ -53,6 +53,6 @@
     <input type="submit" id='submit' name="action" value='LOGIN' >
     <a href="register.php" class="button">Créer un compte</a>
 </form>
->>>>>>> df75d85 (Login & Register page)
+
 </body>
 </html>

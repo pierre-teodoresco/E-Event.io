@@ -38,14 +38,7 @@ label{
     font-size: 16px;
     font-weight: 500;
 }
-<<<<<<< HEAD
 
-input{
-=======
-.inputicon{
->>>>>>> df75d85 (Login & Register page)
-    display: block;
-}
 input{
     height: 50px;
     width: 90%;
@@ -56,11 +49,9 @@ input{
     font-size: 14px;
     font-weight: 300;
 }
-
 body{
     background-color: #080710;
 }
-
 .background{
     width: 430px;
     height: 520px;
