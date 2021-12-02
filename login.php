@@ -23,9 +23,32 @@
         <label for="password">Votre mot de passe :</label>
         <input type="password" placeholder="password" id="password">
 
+<<<<<<< HEAD
         <button>Connexion</button>
         <button>Créer un compte</button>
     </form>
 </div>
+=======
+<form action="verif.php" method="POST">
+    <h1>E-EVENT.IO!
+        <i class="bi bi-person-circle"></i>
+    </h1>
+
+    <?php
+    if(isset($_GET['erreur'])){
+        $err = $_GET['erreur'];
+        if($err==1 || $err==2)
+            echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+    }
+    ?>
+    <label for="username">Votre nom d'utilisateur</label>
+        <input type="text" name="username" placeholder="Pseudo" id="username">
+
+    <label for="password">Votre mot de passe :</label>
+    <input type="password" name="password" placeholder="password" id="password">
+    <input type="submit" id='submit' name="action" value='LOGIN' >
+    <a href="register.php" class="button">Créer un compte</a>
+</form>
+>>>>>>> df75d85 (Login & Register page)
 </body>
 </html>
