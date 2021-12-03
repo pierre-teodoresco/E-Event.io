@@ -31,7 +31,6 @@ if($action == 'LOGIN') {
             if ($stmt->fetch() && password_verify($_POST['password'], $hash)) {
                 if($verified != 0) {
                     $_SESSION['username'] = $username;
-                    sendVerifEmail("salut");
                     header('location: index.php');
                     exit;
                 }else{
