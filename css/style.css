@@ -38,16 +38,34 @@
     font-size: 16px;
     font-weight: 500;
 }
+
+#labelPass {
+    margin-top: 10px;
+}
+
+.divIdPass {
+    margin-top: 5px;
+    border-radius: 3px;
+    background-color: rgba(255,255,255,0.07);
+}
+
+.idPass {
+    margin: 10px auto 10px 15px;
+    padding: 0px 70px 0px 0px;
+    background-color: #37363e;
+}
+
 #submit {
     height: 50px;
     width: 90%;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     padding: 0 10px;
-    margin-top: 8px;
+    margin-top: 20px;
     font-size: 14px;
     font-weight: 300;
 }
+
 .bodyLogin {
     background-color: #080710;
 }
@@ -61,7 +79,13 @@
     top: 50%;
 }
 
-.buttonLogin {
+.loginButton {
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: 20px;
+}
+
+.registerButton {
     display: block;
     text-align: center;
     text-decoration: none;
