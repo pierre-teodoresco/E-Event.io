@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5dcdd169-5ef9-45a8-9a7a-50fc09b8936c" name="tdeshors.net">
+        <fileTransfer rootFolder="/var/www/html/iut" accessType="SFTP" host="82.66.73.45" port="22" sshConfigId="0071b129-4a80-482c-b0ee-0230efad0818" sshConfig="root@82.66.73.45:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

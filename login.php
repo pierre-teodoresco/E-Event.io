@@ -21,13 +21,10 @@
     ?>
     <label for="username" class="labelLogin">Votre nom d'utilisateur</label>
     <input type="text" name="username" placeholder="Pseudo" id="username">
-
     <label for="password" class="labelLogin">Votre mot de passe :</label>
     <input type="password" name="password" placeholder="password" id="password">
-
     <input type="submit" id='submit' name="action" value='LOGIN' >
     <a href="register.php" class="buttonLogin">Créer un compte</a>
 </form>
-
 </body>
 </html>
