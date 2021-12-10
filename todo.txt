@@ -9,3 +9,5 @@
 
 - Désactiver reverse sheel -> via upload file
 
+- auto login après register
+
