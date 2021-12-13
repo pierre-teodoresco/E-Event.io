@@ -5,7 +5,7 @@
       <paths name="tdeshors.net">
         <serverdata>
           <mappings>
-            <mapping deploy="phpproject" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="projet" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
