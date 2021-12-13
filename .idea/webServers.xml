@@ -2,10 +2,10 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="4b235b05-6802-438f-9a8f-efa09115ec73" name="tdeshors.net">
-        <fileTransfer rootFolder="/var/www/html/iut" accessType="SFTP" host="tdeshors.net" port="22" sshConfigId="0e913ba1-1e18-4133-a671-4f6236346930" sshConfig="root@tdeshors.net:22 password">
+      <webServer id="5dcdd169-5ef9-45a8-9a7a-50fc09b8936c" name="tdeshors.net">
+        <fileTransfer rootFolder="/var/www/html/iut" accessType="SFTP" host="82.66.73.45" port="22" sshConfigId="0071b129-4a80-482c-b0ee-0230efad0818" sshConfig="root@82.66.73.45:22 password">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

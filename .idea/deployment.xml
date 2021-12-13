@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="tdeshors.net" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="tdeshors.net">
     <serverData>
       <paths name="tdeshors.net">
         <serverdata>
           <mappings>
             <mapping deploy="phpproject" local="$PROJECT_DIR$" web="/" />
-            <mapping local="" />
           </mappings>
         </serverdata>
       </paths>
