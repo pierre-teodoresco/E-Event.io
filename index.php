@@ -7,5 +7,4 @@ if($user != ""){
 }else{
     echo "Voulez vous vous connecté ?";
 }
-
 ?>

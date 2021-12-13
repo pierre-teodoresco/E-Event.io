@@ -7,10 +7,8 @@ Le projet consiste à la création d'un site internent comprenant l'utilisation 
 
 * DELTERNE Félix,
 * DESHORS Théo,
-* GAROUI Mathys,
 * MARCHAND Kyrian,
 * TEODORESCO Pierre,
-
 
 ### Groupe : 
 DUT2 Groupe 1 - B 
