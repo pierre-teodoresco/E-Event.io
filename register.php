@@ -24,7 +24,7 @@
     }
     ?>
 
-    <label for="username" class="labelConnexion">Votre nom d'utilisateur</label>
+<!--    <label for="username" class="labelConnexion">Votre nom d'utilisateur</label>
 
     <div class="divIdPass">
         <input type="text" name="username" placeholder="Pseudo" id="username" class="idPass">
@@ -40,13 +40,25 @@
 
     <div class="divIdPass">
         <input type="password" name="passwordconfirm" placeholder="password" id="passwordconfirm" class="idPass">
-    </div>
+    </div>-->
 
     <label for="email" class="labelConnexion">E-mail</label>
 
     <div class="divIdPass">
         <input type="email" name="email" placeholder="mon.email@mail.fr" id="email" class="idPass">
     </div>
+
+    <div class="buttonRole">
+        <label id="donateurRole">
+            <input type="radio" name="role" value="1" class="role">
+            Donateur
+        </label>
+        <label id="organisateurRole">
+            <input type="radio" name="role" value="2" class="role">
+            Organisateur
+        </label>
+    </div>
+    <br>
 
     <input type="submit"  id='submit' name="action" value='REGISTER' class="buttonConnexion">
     <a href="login.php" class="buttonLogin">Déjà un compte</a>

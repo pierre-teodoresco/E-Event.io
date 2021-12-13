@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="maj todo">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="index.php &amp; css clean">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acceuil.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/acceuil.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verif.php" beforeDir="false" afterPath="$PROJECT_DIR$/verif.php" afterDir="false" />
+    </list>
+    <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="">
+      <change beforePath="$PROJECT_DIR$/verif.php" beforeDir="false" afterPath="$PROJECT_DIR$/verif.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +25,22 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="pierre" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/verif.php">
+      <ranges>
+        <range start1="52" end1="53" start2="52" end2="53" changelist="b2245a28-20c8-4842-9b2b-d312caaa3fc8" />
+        <range start1="59" end1="60" start2="59" end2="60" changelist="1c1e9943-935e-4bec-80a0-1a1341574ff2" />
+        <range start1="61" end1="64" start2="61" end2="61" changelist="1c1e9943-935e-4bec-80a0-1a1341574ff2" />
+        <range start1="65" end1="65" start2="62" end2="63" changelist="b2245a28-20c8-4842-9b2b-d312caaa3fc8" />
+        <range start1="66" end1="66" start2="64" end2="65" changelist="b2245a28-20c8-4842-9b2b-d312caaa3fc8" />
+        <range start1="67" end1="95" start2="66" end2="81" changelist="b2245a28-20c8-4842-9b2b-d312caaa3fc8" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="21wppO4xhFxHOduaaPdnFSTvTyW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -49,6 +60,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -64,7 +76,7 @@
       <updated>1638862189785</updated>
       <workItem from="1638862192686" duration="5776000" />
       <workItem from="1639378875772" duration="2657000" />
-      <workItem from="1639381673207" duration="4130000" />
+      <workItem from="1639381673207" duration="9276000" />
     </task>
     <task id="LOCAL-00001" summary="acceuil.php">
       <created>1638880538590</created>
@@ -108,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639385469481</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="index.php &amp; css clean">
+      <created>1639389064473</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1639389064473</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +152,7 @@
     <MESSAGE value="todo" />
     <MESSAGE value="css register" />
     <MESSAGE value="maj todo" />
-    <option name="LAST_COMMIT_MESSAGE" value="maj todo" />
+    <MESSAGE value="index.php &amp; css clean" />
+    <option name="LAST_COMMIT_MESSAGE" value="index.php &amp; css clean" />
   </component>
 </project>
