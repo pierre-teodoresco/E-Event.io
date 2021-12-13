@@ -1,0 +1,298 @@
+Index: login.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html>\r\n<html lang=\"fr\">\r\n<head>\r\n    <title>Page de connexion</title>\r\n    <link rel=\"stylesheet\" href=\"css/style.css\">\r\n</head>\r\n<body>\r\n<form action=\"verif.php\" method=\"POST\">\r\n    <h1>E-EVENT.IO!\r\n        <i class=\"bi bi-person-circle\"></i>\r\n    </h1>\r\n\r\n    <?php\r\n    if(isset($_GET['erreur'])){\r\n        $err = $_GET['erreur'];\r\n        if($err==1 || $err==2)\r\n            echo \"<p style='color:red'>Utilisateur ou mot de passe incorrect</p>\";\r\n        if($err==3)\r\n            echo \"<p style='color:red'>Ce compte n est pas verifié</p>\";\r\n    }\r\n    ?>\r\n    <label for=\"username\">Votre nom d'utilisateur</label>\r\n    <input type=\"text\" name=\"username\" placeholder=\"Pseudo\" id=\"username\">\r\n\r\n    <label for=\"password\">Votre mot de passe :</label>\r\n    <input type=\"password\" name=\"password\" placeholder=\"password\" id=\"password\">\r\n\r\n    <input type=\"submit\" id='submit' name=\"action\" value='LOGIN' >\r\n    <a href=\"register.php\" class=\"button\">Créer un compte</a>\r\n</form>\r\n\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/login.php b/login.php
+--- a/login.php	(revision b012560b7cf99559bbcb62861f23f77ea4924df5)
++++ b/login.php	(date 1638884679927)
+@@ -1,33 +1,33 @@
+ <!doctype html>
+ <html lang="fr">
+ <head>
+-    <title>Page de connexion</title>
++    <title>Login</title>
+     <link rel="stylesheet" href="css/style.css">
+ </head>
+ <body>
+-<form action="verif.php" method="POST">
+-    <h1>E-EVENT.IO!
+-        <i class="bi bi-person-circle"></i>
+-    </h1>
++    <form action="verif.php" method="POST" class="form_login">
++        <h1>E-EVENT.IO!
++            <i class="bi bi-person-circle"></i>
++        </h1>
+ 
+-    <?php
+-    if(isset($_GET['erreur'])){
+-        $err = $_GET['erreur'];
+-        if($err==1 || $err==2)
+-            echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+-        if($err==3)
+-            echo "<p style='color:red'>Ce compte n est pas verifié</p>";
+-    }
+-    ?>
+-    <label for="username">Votre nom d'utilisateur</label>
+-    <input type="text" name="username" placeholder="Pseudo" id="username">
++        <?php
++        if(isset($_GET['erreur'])){
++            $err = $_GET['erreur'];
++            if($err==1 || $err==2)
++                echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
++            if($err==3)
++                echo "<p style='color:red'>Ce compte n est pas verifié</p>";
++        }
++        ?>
++
++        <label for="username">Votre nom d'utilisateur</label>
++        <input type="text" name="username" placeholder="Pseudo" id="username" class="username">
+ 
+-    <label for="password">Votre mot de passe :</label>
+-    <input type="password" name="password" placeholder="password" id="password">
++        <label for="password">Votre mot de passe :</label>
++        <input type="password" name="password" placeholder="Password" id="password" class="password">
+ 
+-    <input type="submit" id='submit' name="action" value='LOGIN' >
+-    <a href="register.php" class="button">Créer un compte</a>
+-</form>
+-
++        <input type="submit" id="submit" class="submit" name="action" value='LOGIN' >
++        <a href="register.php" class="button">Créer un compte</a>
++    </form>
+ </body>
+ </html>
+\ No newline at end of file
+Index: acceuil.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/acceuil.php b/acceuil.php
+--- a/acceuil.php	(revision b012560b7cf99559bbcb62861f23f77ea4924df5)
++++ b/acceuil.php	(date 1638882259801)
+@@ -1,1 +1,33 @@
+-<?php
++<!doctype html>
++<html lang="fr">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport"
++          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
++    <meta http-equiv="X-UA-Compatible" content="ie=edge">
++    <link rel="stylesheet" href="css/style.css">
++    <title>E-Event.io!</title>
++</head>
++<body>
++    <header class="title">
++        <img src="#" alt="titre_e-event.io!">
++    </header>
++    <nav class="navbar">
++        <ul>Statut</ul>
++        <ul>Devenir donateur</ul>
++        <ul>Devenir organisateur</ul>
++        <ul>TOP 3</ul>
++        <ol>Lorem</ol>
++        <ol>Lorem</ol>
++        <ol>Lorem</ol>
++        <br>
++        <br>
++        <div class="login">
++            <img src="#" alt="pp">
++        </div>
++    </nav>
++    <article class="feed">
++        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
++    </article>
++</body>
++</html>
+Index: css/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>form *{\r\n    font-family: 'Poppins',sans-serif;\r\n    color: #ffffff;\r\n    letter-spacing: 0.5px;\r\n    outline: none;\r\n    border: none;\r\n}\r\n\r\nbody .login{\r\n    background: hsl(250, 50%, 91%);\r\n}\r\n\r\nform{\r\n    height: 520px;\r\n    width: 400px;\r\n    background-color: rgba(255,255,255,0.13);\r\n    position: absolute;\r\n    transform: translate(-50%,-50%);\r\n    top: 50%;\r\n    left: 50%;\r\n    border-radius: 10px;\r\n    backdrop-filter: blur(10px);\r\n    border: 2px solid rgba(255,255,255,0.1);\r\n    box-shadow: 0 0 40px rgba(8,7,16,0.6);\r\n    padding: 50px 35px;\r\n}\r\n\r\nform h1{\r\n    font-size: 40px;\r\n    font-weight: 500;\r\n    line-height: 45px;\r\n    text-align: center;\r\n}\r\n\r\nlabel{\r\n    display: block;\r\n    margin-top: 30px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n}\r\ninput{\r\n    height: 50px;\r\n    width: 90%;\r\n    background-color: rgba(255,255,255,0.07);\r\n    border-radius: 3px;\r\n    padding: 0 10px;\r\n    margin-top: 8px;\r\n    font-size: 14px;\r\n    font-weight: 300;\r\n}\r\nbody{\r\n    background-color: #080710;\r\n}\r\n\r\n.background{\r\n    width: 430px;\r\n    height: 520px;\r\n    position: absolute;\r\n    transform: translate(-50%,-50%);\r\n    left: 50%;\r\n    top: 50%;\r\n}\r\n\r\na{\r\n    display: block;\r\n    text-align: center;\r\n    text-decoration: none;\r\n    margin-top: 50px;\r\n    width: 100%;\r\n    background-color: #ffffff;\r\n    color: #080710;\r\n    padding: 15px 0;\r\n    font-size: 18px;\r\n    font-weight: 600;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/css/style.css b/css/style.css
+--- a/css/style.css	(revision b012560b7cf99559bbcb62861f23f77ea4924df5)
++++ b/css/style.css	(date 1638884741113)
+@@ -1,4 +1,4 @@
+-form *{
++form * {
+     font-family: 'Poppins',sans-serif;
+     color: #ffffff;
+     letter-spacing: 0.5px;
+@@ -6,14 +6,14 @@
+     border: none;
+ }
+ 
+-body .login{
++body {
+     background: hsl(250, 50%, 91%);
+ }
+ 
+-form{
++.form_login {
+     height: 520px;
+     width: 400px;
+-    background-color: rgba(255,255,255,0.13);
++    background-color: #80c8c8;
+     position: absolute;
+     transform: translate(-50%,-50%);
+     top: 50%;
+@@ -25,20 +25,21 @@
+     padding: 50px 35px;
+ }
+ 
+-form h1{
++form h1 {
+     font-size: 40px;
+     font-weight: 500;
+     line-height: 45px;
+     text-align: center;
+ }
+ 
+-label{
++label {
+     display: block;
+     margin-top: 30px;
+     font-size: 16px;
+     font-weight: 500;
+ }
+-input{
++
++input {
+     height: 50px;
+     width: 90%;
+     background-color: rgba(255,255,255,0.07);
+@@ -48,11 +49,13 @@
+     font-size: 14px;
+     font-weight: 300;
+ }
+-body{
+-    background-color: #080710;
++
++.submit {
++    margin-right: auto;
++    margin-left: 3%;
+ }
+ 
+-.background{
++.background {
+     width: 430px;
+     height: 520px;
+     position: absolute;
+@@ -61,7 +64,7 @@
+     top: 50%;
+ }
+ 
+-a{
++a {
+     display: block;
+     text-align: center;
+     text-decoration: none;
+@@ -74,4 +77,26 @@
+     font-weight: 600;
+     border-radius: 5px;
+     cursor: pointer;
++}
++
++/* ACCEUIL.PHP */
++
++* {
++    margin: 0;
++    padding: 0;
++    border: 0;
++    font-size: 100%;
++    font: inherit;
++    vertical-align: baseline;
++}
++
++body {
++    line-height: 1;
++}
++
++ol, ul {
++    list-style: none;
++}
++
++header {
+ }
+\ No newline at end of file
+Index: .idea/project.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/project.iml b/.idea/project.iml
+new file mode 100644
+--- /dev/null	(date 1638862246372)
++++ b/.idea/project.iml	(date 1638862246372)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="WEB_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1638862246386)
++++ b/.idea/modules.xml	(date 1638862246386)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/project.iml" filepath="$PROJECT_DIR$/.idea/project.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1638862246399)
++++ b/.idea/vcs.xml	(date 1638862246399)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1638862246757)
++++ b/.idea/.gitignore	(date 1638862246757)
+@@ -0,0 +1,8 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Editor-based HTTP Client requests
++/httpRequests/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
