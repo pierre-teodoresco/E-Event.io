@@ -79,7 +79,7 @@ a {
 
 .idPass {
   margin: 10px auto 10px 15px;
-  padding: 0px 53% 0px 0px;
+  width: 90%;
   background-color: #37363e;
 }
 
@@ -95,7 +95,7 @@ a {
 }
 
 .bodyConnexion {
-  background-color: #080710;
+  background-color: #37373D;
 }
 
 .background {
@@ -134,12 +134,54 @@ a {
   color: white;
 }
 
-.buttonLogin:hover {
-  background-color: #37373d;
-  color: white;
+.buttonRole {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-/* acceuil.html */
+#donateurRole {
+  padding-right: 20px;
+}
+
+#organisateurRole {
+}
+
+.role {
+  -webkit-appearance: none;
+  position: relative;
+  top: 13px;
+  height: 40px;
+  width: 40px;
+  background: #37373d;
+  margin-right: 0.5rem;
+}
+
+.role:hover {
+  background: #37373d;
+}
+
+.role:checked {
+  background: #37373D;
+}
+
+.role:checked::before {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  content: '✔';
+  font-size: 26px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.role:checked::after {
+  background: black;
+  content: '';
+  display: block;
+}
+
+/* index.php */
 
 header {
   text-align: center;
