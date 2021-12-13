@@ -4,6 +4,7 @@
 *                               *
 ********************************/
 
+- confirmation de l'email
 
 - Bloquer nombre de compte par adresse IP
 
