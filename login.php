@@ -4,8 +4,8 @@
     <title>Page de connexion</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bodyLogin">
-<form action="verif.php" method="POST" class="formLogin">
+<body class="bodyConnexion">
+<form action="verif.php" method="POST" class="formConnexion">
     <h1>E-EVENT.IO!
         <i class="bi bi-person-circle"></i>
     </h1>
@@ -20,20 +20,20 @@
     }
     ?>
 
-    <label for="username" class="labelLogin">Votre nom d'utilisateur</label>
+    <label for="username" class="labelConnexion">Votre nom d'utilisateur</label>
 
     <div class="divIdPass">
         <input type="text" name="username" id="username" placeholder="Pseudo" class="idPass">
     </div>
 
-    <label for="password" class="labelLogin" id="labelPass">Votre mot de passe :</label>
+    <label for="password" class="labelConnexion" id="labelPass">Votre mot de passe :</label>
 
     <div class="divIdPass">
         <input type="password" name="password" id="password" placeholder="Mot de passe" class="idPass">
     </div>
 
-    <input type="submit" id='submit' name="action" value='LOGIN' class="loginButton">
-    <a href="register.php" class="registerButton">Créer un compte</a>
+    <input type="submit" id='submit' name="action" value='LOGIN' class="buttonConnexion">
+    <a href="register.php" class="buttonLogin">Créer un compte</a>
 </form>
 </body>
 </html>
