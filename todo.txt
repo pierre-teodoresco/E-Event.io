@@ -9,4 +9,6 @@
 
 - Désactiver reverse sheel -> via upload file
 
-- 
+- auto load
+
+- pattern MVC
