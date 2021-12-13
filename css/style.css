@@ -10,8 +10,8 @@
     background: hsl(250, 50%, 91%);
 }
 
-.formLogin{
-    height: 520px;
+.formLogin {
+    height: 560px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -51,7 +51,7 @@
 
 .idPass {
     margin: 10px auto 10px 15px;
-    padding: 0px 70px 0px 0px;
+    padding: 0px 53% 0px 0px;
     background-color: #37363e;
 }
 
@@ -90,6 +90,7 @@
     text-align: center;
     text-decoration: none;
     margin-top: 50px;
+    margin-bottom: 10px;
     width: 100%;
     background-color: #ffffff;
     color: #080710;

@@ -4,11 +4,8 @@
     <title>Page de connexion</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-
-
-
-<form action="verif.php" method="POST">
+<body class="bodyLogin">
+<form action="verif.php" method="POST" class="formLogin">
     <h1>E-EVENT.IO!
         <i class="bi bi-person-circle"></i>
     </h1>
@@ -27,22 +24,32 @@
     }
     ?>
 
-    <label for="username">Votre nom d'utilisateur</label>
-        <input type="text" name="username" placeholder="Pseudo" id="username">
+    <label for="username" class="labelLogin">Votre nom d'utilisateur</label>
 
-    <label for="password">Votre mot de passe :</label>
-    <input type="password" name="password" placeholder="password" id="password">
+    <div class="divIdPass">
+        <input type="text" name="username" placeholder="Pseudo" id="username" class="idPass">
+    </div>
 
+    <label for="password" class="labelLogin">Votre mot de passe</label>
 
-    <label for="passwordconfirm">Confirmation:</label>
-    <input type="password" name="passwordconfirm" placeholder="password" id="passwordconfirm">
+    <div class="divIdPass">
+        <input type="password" name="password" placeholder="password" id="password" class="idPass">
+    </div>
 
-    <label for="email">E-mail :</label>
-    <input type="email" name="email" placeholder="mon.email@mail.fr" id="email">
+    <label for="passwordconfirm" class="labelLogin">Confirmation</label>
 
+    <div class="divIdPass">
+        <input type="password" name="passwordconfirm" placeholder="password" id="passwordconfirm" class="idPass">
+    </div>
 
-    <input type="submit"  id='submit' name="action" value='REGISTER' >
-    <a href="login.php" class="button">Déjà un compte</a>
+    <label for="email" class="labelLogin">E-mail</label>
+
+    <div class="divIdPass">
+        <input type="email" name="email" placeholder="mon.email@mail.fr" id="email" class="idPass">
+    </div>
+
+    <input type="submit"  id='submit' name="action" value='REGISTER' class="loginButton">
+    <a href="login.php" class="registerButton">Déjà un compte</a>
 </form>
 </body>
 </html>
