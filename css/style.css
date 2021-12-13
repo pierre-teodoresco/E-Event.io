@@ -134,6 +134,11 @@ a {
   color: white;
 }
 
+.buttonLogin:hover {
+  background-color: #37373d;
+  color: white;
+}
+
 /* acceuil.html */
 
 header {
@@ -163,7 +168,6 @@ header {
 }
 
 .sidebar-container {
-  position: fixe;
   width: 220px;
   height: 100%;
   left: 0;
@@ -175,12 +179,10 @@ header {
   padding: 0;
   margin: 0;
   list-style-type: none;
-  position: fixe;
   border-right: 2px solid black;
 }
 
 .sidebar-navigation li {
-  position: fixe;
   display: inline-block;
   width: 100%;
   line-height: 10px;
