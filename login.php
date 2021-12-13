@@ -4,8 +4,8 @@
     <title>Page de connexion</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<form action="verif.php" method="POST">
+<body class="bodyLogin">
+<form action="verif.php" method="POST" class="formLogin">
     <h1>E-EVENT.IO!
         <i class="bi bi-person-circle"></i>
     </h1>
@@ -19,14 +19,14 @@
             echo "<p style='color:red'>Ce compte n est pas verifié</p>";
     }
     ?>
-    <label for="username">Votre nom d'utilisateur</label>
+    <label for="username" class="labelLogin">Votre nom d'utilisateur</label>
     <input type="text" name="username" placeholder="Pseudo" id="username">
 
-    <label for="password">Votre mot de passe :</label>
+    <label for="password" class="labelLogin">Votre mot de passe :</label>
     <input type="password" name="password" placeholder="password" id="password">
 
     <input type="submit" id='submit' name="action" value='LOGIN' >
-    <a href="register.php" class="button">Créer un compte</a>
+    <a href="register.php" class="buttonLogin">Créer un compte</a>
 </form>
 
 </body>
