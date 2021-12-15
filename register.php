@@ -61,7 +61,7 @@
     <br>
 
     <input type="submit"  id='submit' name="action" value='REGISTER' class="buttonConnexion">
-    <a href="login.php" class="buttonLogin">Déjà un compte</a>
+    <a href="login.php" class="buttonLogin">Déjà un compte ?</a>
 </form>
 </body>
 </html>
