@@ -130,7 +130,7 @@ a {
 }
 
 .buttonLogin:hover {
-  background-color: #37373d;
+  background-color: #3b3b3d;
   color: white;
 }
 
@@ -162,7 +162,7 @@ a {
 }
 
 .role:checked {
-  background: black;
+  background: #37373d;
 }
 
 .role:checked::before {
