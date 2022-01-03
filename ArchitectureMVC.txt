@@ -1,0 +1,47 @@
+Modèles :
+    - Utilisateurs (rôles, login / mot de passe [défini arbitrairement par un administrateur dans un premier temps] puis doit le changer à la première connexion; peut soumettre une demande de réinitialisation de mot de passe et un administrateur lui envoye par mail un mdp aléatoire, puis l'utilisateur doit le reéfinir)
+
+    - rôles (que un seul rôle par user)
+        > Administrateur (gére la liste d'utilisateurs => attribue les rôles, génère mot de passe / login qui seras envoyé par mail, défini les campagnes, attribuie les points à dépenser aux donateurs)
+        > Jury (choisie n évènements à garder / délibère en fin de campagne)
+        > Organisateur (peut poster 1 seule idée d'évènement, fixe le nombre de points pour que le contenu supplémentaire sois débloqué)
+        > Donateur (nombre points à dépenser en début de campagne puis retiré en fin de campagne, combien déjà dépensé, attribution définitif, peut[facultatif] ajouter un commentaire au moment de verser les points, les commentaires seront alors montré)
+        > Public (par défaut, peut consulter les idées d'évènements, utilisateur non authentifié)
+
+    - Evènements (String contenu/description modifiable jusqu'à ce que cette idée reçois des points; illustration, contenus déblocables)
+        > idées d'évènements (points attribués, contenu déblocable supplémentaire à partir de n points (à spécifier par l'organisateur non supprimable))
+
+    - Campagne (dates de début et fin, nom, points attribués aux donateurs, etc)
+
+    - Points convertis en "moyens" de soutiens des idées d'évènements 
+
+Vues : 
+    - page acceuil :
+        > liste d'évènements par ordre du plus de points au moins de points
+        > liste pour le jury par ordre décroissant de points avec tous les idées montré ayant au moins k points
+        > liste évènements gardé
+    
+    - page descriptive des idées (consultable que pendant une campagne d'idéation d'évènements)
+        > contenu idée, points dépensées dans cette idées, contenu déblocables supplementaires
+
+    - Back office :
+        > administrateurs
+            gestion utilisateurs & campagnes d'idéations
+        > organisateurs
+            que accessible après commencement campagne
+        > jury
+            Accessible que une fois la campagne fini
+            Choix des idées d'événements à organiser / mettre en œuvre.
+    
+
+Controles :
+
+Base de données principale dans le Noyau qui est appellé par les différents Modèles
+
+Pour les modèles : à voir si on fait un modèle de rôles ou pas, vu qu'ils amènent à faire des choses en plus on pourras y appeller des méthodes ou alors on met ces méthodes directement dans la base de données (ce serait moins visible mais marcherais aussi)
+
+L'entité partenaire est garante des points, et donc met à disposition l'enveloppe total de 
+points à travers un Web Service qui est interrogé par l'application lors de la définition d'une 
+campagne (le comportement fonctionnel sera simulé à l'aide d'un web service fourni, à installer sur le même serveur qui héberge l'application Web).
+installer sur le même serveur qui héberge l'application Web).
+???
