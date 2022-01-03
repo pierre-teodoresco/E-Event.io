@@ -1,9 +1,72 @@
 Modèles :
-    - Utilisateurs (rôles, login / mot de passe [défini arbitrairement par un administrateur dans un premier temps] puis doit le changer à la première connexion; peut soumettre une demande de réinitialisation de mot de passe et un administrateur lui envoye par mail un mdp aléatoire, puis l'utilisateur doit le reéfinir)
+    - classe Utilisateurs :
+        Paramètres :
+            > String role //le rôle de l'utilisateur
+            > private String login //le login de l'utilisateur
+            > private String password //le mot de passe de l'utilisateur
+            > bool ResetPassword = 1 //un booléan tenant compte si  l'utilisateur doit redefinir son mot de passe
 
-    - rôles (que un seul rôle par user)
-        > Administrateur (gére la liste d'utilisateurs => attribue les rôles, génère mot de passe / login qui seras envoyé par mail, défini les campagnes, attribuie les points à dépenser aux donateurs)
-        > Jury (choisie n évènements à garder / délibère en fin de campagne)
+        //getters et setters de password / login
+        
+        [défini arbitrairement par un administrateur dans un premier temps] 
+        puis doit le changer à la première connexion; 
+        peut soumettre une demande de réinitialisation de mot de passe et 
+        un administrateur lui envoye par mail un mdp aléatoire, puis l utilisateur doit le reéfinir)
+
+        Méthodes :
+            //Cette méthode va être appelé que quand l'utilisateur clique sur le bouton reset password
+            > void PasswordResetRequest() //méthode demandant une réinitialisation de mot de passe
+                //administrateur envoye un mail avec un mot de passe aléatoire
+                ResetPassword = 1; //Quand l'utilisateur se reconnecteras, il devras redefinir son mot de passe
+            
+            //Cette méthode va être appelé chaque fois avant le lancement d'une connexion
+            > void PasswordReset() //méthode demandant à l'utilisateur de redefinir son mot de passe
+                if (ResetPassword == 1)
+                    input (newPassword1); //pas la rédaction exacte mais l'idée c'est que l'utilisateur entre 2 fois son nouveau mot de passe pour éviter les erreurs de tape
+                    input (newPassword2);
+                    if (newPassword1 == newPassword2)
+                        SetPassword(newPassword1);
+
+            = sous classe Administrateur :
+                Méthodes :
+                    //Cette méthode va etre appellé suite à un voeux de l'administrateur ou une recevation d'une password request
+                    > InitialisationUtilisateur //Cette fonction va initialiser et créer un utilisateur ou alors reinitialiser le mot de passe
+                        //Est-ce qu'on envoye le mail via l'application ou en dehors ? 
+                        //Je pense en dehors donc cette fonction va juste rappeller ca à l'administrateur
+                        //Un mail avec les identifiant ou alors le nouveau mot de passe va etre envoyé à l'utilisateur
+
+                    //Cette méthode va être appelé quand un administrateur souhaite enlever, changer ou mettre un rôle à un autre utilisateur
+                    > RoleAttribution (String roles, User user) //méthode changeant le rôle d'une personne
+                        if (user.role != Administrateur) //On vérifie que l'utilisateur n'est pas un Administrateur pour éviter des trolls etc
+                            user.role = roles; //on attribue le nouveau role à l'utilisateur
+
+                    //Cette méthode va être appelé quand l'administrateur veux créer une campagne
+                    > SetCampagne(Date dateDeb, Date dateFin, unsigned points)
+                        Campaign = new Campagne(dateDeb, dateFin, points);
+
+            = sous classe Jury :
+                Méthodes :
+                    //Cette méthode va être appellé en fin de campagne
+                    > DelibererEvenements () //Cette méthode va permettre au jury de voter sur l'évènement à garder et déliberer dessus
+                        //notification des jury pour qu'ils sachent qu'ils peuvent déliberer ?
+                        //Delibération par vote ou par discussion ? 
+                        //choisie n évènements à garder (dans le texte) => ca veut dire qu'ils peuvent choisirs combiend d'évènements à garder ou on leur donne ? Je pense premier cas
+                    
+            = sous classe Organisateur :
+                Attributs :
+                    > Evenement evenement = null; //L'évenement que l'organisateur peut choisir de mettre et qui seras reinitialisé à null (?) après chaque campagne
+
+                Méthodes : 
+                    > void CréerEvenement(..., unsigned points) //méthode permettant de créer leur propre évènement
+                        if (evenement == null)
+                            evenement = new Evenement(..., unsigned points);
+                        else
+                            print ("Vous avez déjà crée un évènement pour cette campagne");
+                    
+                    > void resetEvenement ()
+                        evenement = null;
+
+
         > Organisateur (peut poster 1 seule idée d'évènement, fixe le nombre de points pour que le contenu supplémentaire sois débloqué)
         > Donateur (nombre points à dépenser en début de campagne puis retiré en fin de campagne, combien déjà dépensé, attribution définitif, peut[facultatif] ajouter un commentaire au moment de verser les points, les commentaires seront alors montré)
         > Public (par défaut, peut consulter les idées d'évènements, utilisateur non authentifié)
@@ -20,7 +83,7 @@ Vues :
         > liste d'évènements par ordre du plus de points au moins de points
         > liste pour le jury par ordre décroissant de points avec tous les idées montré ayant au moins k points
         > liste évènements gardé
-    
+
     - page descriptive des idées (consultable que pendant une campagne d'idéation d'évènements)
         > contenu idée, points dépensées dans cette idées, contenu déblocables supplementaires
 
@@ -32,16 +95,24 @@ Vues :
         > jury
             Accessible que une fois la campagne fini
             Choix des idées d'événements à organiser / mettre en œuvre.
-    
 
-Controles :
+
+Controleurs :
+    - ControleurUser
+    - ControleurEvenement
+    - ControleurPage
+
 
 Base de données principale dans le Noyau qui est appellé par les différents Modèles
 
 Pour les modèles : à voir si on fait un modèle de rôles ou pas, vu qu'ils amènent à faire des choses en plus on pourras y appeller des méthodes ou alors on met ces méthodes directement dans la base de données (ce serait moins visible mais marcherais aussi)
 
+???
 L'entité partenaire est garante des points, et donc met à disposition l'enveloppe total de 
 points à travers un Web Service qui est interrogé par l'application lors de la définition d'une 
-campagne (le comportement fonctionnel sera simulé à l'aide d'un web service fourni, à installer sur le même serveur qui héberge l'application Web).
+campagne (le comportement fonctionnel sera simulé à l'aide d'un web service fourni, à 
 installer sur le même serveur qui héberge l'application Web).
 ???
+
+
+
