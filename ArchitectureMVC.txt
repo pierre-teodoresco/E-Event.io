@@ -1,7 +1,7 @@
 Modèles :
     - classe Utilisateurs :
         Paramètres :
-            > String role //le rôle de l'utilisateur
+            > String role = Public //le rôle de l'utilisateur
             > private String login //le login de l'utilisateur
             > private String password //le mot de passe de l'utilisateur
             > bool ResetPassword = 1 //un booléan tenant compte si  l'utilisateur doit redefinir son mot de passe
@@ -57,24 +57,73 @@ Modèles :
                     > Evenement evenement = null; //L'évenement que l'organisateur peut choisir de mettre et qui seras reinitialisé à null (?) après chaque campagne
 
                 Méthodes : 
+                    //Cette méthode va être appellé quand l'organosateur souhaite créer son évènement
                     > void CréerEvenement(..., unsigned points) //méthode permettant de créer leur propre évènement
-                        if (evenement == null)
-                            evenement = new Evenement(..., unsigned points);
+                        if (evenement == null) //On vérifie que l'organisateur n'as pas encore crée un évènement
+                            evenement = new Evenement(..., unsigned points); //Si c'est le premier évènement de l'organisateur, on crée un nouvel évènement
                         else
-                            print ("Vous avez déjà crée un évènement pour cette campagne");
+                            print ("Vous avez déjà crée un évènement pour cette campagne. Vous pouvez le modifier"); //Sinon on lui répond un message d'erreur
                     
-                    > void resetEvenement ()
-                        evenement = null;
+                    //Cette méthode va être appellé en début de campagne ? Ou après les jurys aient pris leur décision ?
+                    > void resetEvenement () //Elle va supprimer l'évènement de la dernière campagne
+                        evenement = null; //Pas la bonne formulation mais faut reset l'évènement
+
+                    //Cette méthode va être appellé quand l'organisateur souhaite modifier son évènement
+                    > void modifierEvenement () //Elle permet de redéfinir l'évènement
+
+            = sous classe Donateur :
+                Attributs :
+                    > int Points;
+
+                Méthodes :
+                    //Cette méthode va être appellé en début de campagne
+                    > void AttribuerPoints (points) //Elle attribue les points à dépenser pour chaque Donateur
+                        Points = points;
+                    
+                    //Cette méthode va être appellé une fois la campagne fini
+                    > void ResetPoints () //Elle remet les points à 0
+                        Points = 0;
+
+                    //Cette méthode va être appellé chaque fois que le donateur effectue un don
+                    > void Commenter () //Elle permet de laisser un commentaire sous chaque évènement après un don
+                        ...
+            = sous classe Public :
+                Méthode :
+
+     - classe Evenement  
+        Attributs :
+            > list <Evenement> Everetenu // la liste des evenements retenu par le jury              
+        
+        - classe  Idee:
+            Attributs :
+                > String description //Dont l'idée parle
+                > List<Commentaires>
+                > List <String> contenusupp //contenu déblocable avec des points
+                > List <int> points //Les points qu'il faut pour débloquer le contenu supp
+                > int pointsrecu //Les points que l'idée aie reçu
+                > photo illustration //L'illustration de l'idée
+        
+            Méthodes :
+                //Cette méthode va être appellé quand on veut modifier la description
+                > void ModifDescr () //modifie la description tant que l'idée n'aie pas reçu de points
+                    if (pointsrecu == 0)
+                        ...
+                    else 
+                        cout << "L'idée ne peut plus être modifié"
+    
+    - classe Commentaire :
+        > User utilisateur;
+        > String description;
+
+    - classe Campagne
+        Attributs :
+            > date dateDeb;
+            > date dateFin;
+            > string name;
+            > int points;
+            > list <Evenement> evenements;
 
 
-        > Organisateur (peut poster 1 seule idée d'évènement, fixe le nombre de points pour que le contenu supplémentaire sois débloqué)
-        > Donateur (nombre points à dépenser en début de campagne puis retiré en fin de campagne, combien déjà dépensé, attribution définitif, peut[facultatif] ajouter un commentaire au moment de verser les points, les commentaires seront alors montré)
-        > Public (par défaut, peut consulter les idées d'évènements, utilisateur non authentifié)
-
-    - Evènements (String contenu/description modifiable jusqu'à ce que cette idée reçois des points; illustration, contenus déblocables)
-        > idées d'évènements (points attribués, contenu déblocable supplémentaire à partir de n points (à spécifier par l'organisateur non supprimable))
-
-    - Campagne (dates de début et fin, nom, points attribués aux donateurs, etc)
 
     - Points convertis en "moyens" de soutiens des idées d'évènements 
 
@@ -98,9 +147,10 @@ Vues :
 
 
 Controleurs :
-    - ControleurUser
-    - ControleurEvenement
-    - ControleurPage
+    - ControleurPrincip
+        - ControleurUser
+        - ControleurEvenement
+        - ControleurPage
 
 
 Base de données principale dans le Noyau qui est appellé par les différents Modèles
