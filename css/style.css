@@ -182,46 +182,56 @@ a {
 }
 
 /* index.php */
-
-header {
-  text-align: center;
-  background-color: #80c8c8;
-  padding: 60px;
-  width: 100%;
-  border-bottom: 2px solid black;
-}
-
-.navbar {
-  grid-area: sidebar;
+.bodyIndex {
   height: 100%;
+  width: 100%;
+  border-top: 1px solid lightgray;
 }
 
-.feed {
-  grid-area: content;
-  position: relative;
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 0 0;
+  height: 100%;
   width: 100%;
 }
 
 .wrapper {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 200px 1340px;
-  grid-template-areas: "sidebar content content";
+  order: 1;
+  width: 25%;
+  height: 100%;
+  position: fixed;
+  border-right: 1px solid lightgray;
+}
+
+.feed {
+  order: 2;
+  width: 50%;
+  height: 100%;
+  margin-left: 25%;
+}
+
+.user {
+  order: 3;
+  width: 25%;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  border-left: 1px solid lightgray;
 }
 
 .sidebar-container {
   width: 220px;
   height: 100%;
   left: 0;
-  background: lightgray;
   color: #fff;
+  margin-left: 70px;
 }
 
 .sidebar-navigation {
   padding: 0;
-  margin: 0;
+  margin-top: 100px;
   list-style-type: none;
-  border-right: 2px solid black;
 }
 
 .sidebar-navigation li {
@@ -231,22 +241,29 @@ header {
 }
 
 .sidebar-navigation li a {
-  padding: 40px 30px 40px 30px;
+  padding: 20px 30px 20px 30px;
   display: block;
   color: #282923;
+  margin-bottom: 10px;
+  border-radius: 25px;
+}
+
+.sidebar-navigation li a:hover {
+  background-color: #37363e;
+  color: white;
+}
+
+.loginProfil {
+  background-color: #28272F;
+  border-radius: 25px;
+  color: white;
 }
 
 .article {
-  height: 520px;
-  width: 400px;
-  background-color: rgba(255, 255, 255, 0.13);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.1);
+  height: 300px;
+  width: 602px;
+  margin-left: 0px;
+  border-bottom: 1px solid lightgray;
   padding: 50px 35px;
+  color: black;
 }
