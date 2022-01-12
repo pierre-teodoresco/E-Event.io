@@ -2,14 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="index.php &amp; css clean">
+      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/404.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/AutoLoad.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Constants.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Model.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/View.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/DefaultController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/UsersController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/UserModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/main/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_12_2021_08_01__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_12_2021_08_01__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/users/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/users/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verif.php" beforeDir="false" afterPath="$PROJECT_DIR$/verif.php" afterDir="false" />
     </list>
-    <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="">
-      <change beforePath="$PROJECT_DIR$/verif.php" beforeDir="false" afterPath="$PROJECT_DIR$/verif.php" afterDir="false" />
-    </list>
+    <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,17 +44,8 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/verif.php">
-      <ranges>
-        <range start1="52" end1="53" start2="52" end2="53" changelist="b2245a28-20c8-4842-9b2b-d312caaa3fc8" />
-        <range start1="59" end1="60" start2="59" end2="60" changelist="1c1e9943-935e-4bec-80a0-1a1341574ff2" />
-        <range start1="61" end1="64" start2="61" end2="61" changelist="1c1e9943-935e-4bec-80a0-1a1341574ff2" />
-        <range start1="65" end1="65" start2="62" end2="63" changelist="b2245a28-20c8-4842-9b2b-d312caaa3fc8" />
-        <range start1="66" end1="66" start2="64" end2="65" changelist="b2245a28-20c8-4842-9b2b-d312caaa3fc8" />
-        <range start1="67" end1="95" start2="66" end2="81" changelist="b2245a28-20c8-4842-9b2b-d312caaa3fc8" />
-      </ranges>
-    </file>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="21wppO4xhFxHOduaaPdnFSTvTyW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -54,6 +59,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -61,10 +67,19 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/main" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\XAMP\htdocs\views\main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\XAMP\htdocs" />
+      <recent name="D:\XAMP\htdocs\views\users" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -77,6 +92,9 @@
       <workItem from="1638862192686" duration="5776000" />
       <workItem from="1639378875772" duration="2657000" />
       <workItem from="1639381673207" duration="9276000" />
+      <workItem from="1641807293061" duration="6535000" />
+      <workItem from="1641890537463" duration="8774000" />
+      <workItem from="1641989671912" duration="15022000" />
     </task>
     <task id="LOCAL-00001" summary="acceuil.php">
       <created>1638880538590</created>
@@ -138,12 +156,23 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="mathys" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

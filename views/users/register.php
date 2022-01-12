@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
     <title>Page de connexion</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body class="bodyConnexion">
-<form action="verif.php" method="POST" class="formConnexion">
+<form action="../../verif.php" method="POST" class="formConnexion">
     <h1>E-EVENT.IO!
         <i class="bi bi-person-circle"></i>
     </h1>
