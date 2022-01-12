@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="index.php &amp; css clean">
-      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="link login.php">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="" />
@@ -74,7 +72,9 @@
       <workItem from="1638862192686" duration="5776000" />
       <workItem from="1639378875772" duration="2657000" />
       <workItem from="1639381673207" duration="9276000" />
-      <workItem from="1641891443328" duration="7867000" />
+      <workItem from="1641891443328" duration="7912000" />
+      <workItem from="1641988892467" duration="632000" />
+      <workItem from="1642002981812" duration="209000" />
     </task>
     <task id="LOCAL-00001" summary="acceuil.php">
       <created>1638880538590</created>
@@ -125,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639389064473</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="css index inspired by twitter">
+      <created>1641899705048</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1641899705048</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +157,8 @@
     <MESSAGE value="css register" />
     <MESSAGE value="maj todo" />
     <MESSAGE value="index.php &amp; css clean" />
-    <option name="LAST_COMMIT_MESSAGE" value="index.php &amp; css clean" />
+    <MESSAGE value="css index inspired by twitter" />
+    <MESSAGE value="link login.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="link login.php" />
   </component>
 </project>
