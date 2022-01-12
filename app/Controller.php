@@ -43,7 +43,6 @@ class Controller{
 
     }
 
-    // On exécute notre triplet
 
     public function executer()
     {

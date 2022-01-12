@@ -14,14 +14,14 @@
 
     <div class="divIdPass">
         <?php echo $data['usernameError']; ?>
-        <input type="text" name="username" id="username" placeholder="Pseudo" class="idPass">
+        <input type="text" name="username" id="username" placeholder="Pseudo" class="idPass" value="<?php echo $data['username']; ?>">
     </div>
 
     <label for="password" class="labelConnexion" id="labelPass">Votre mot de passe :</label>
 
     <div class="divIdPass">
         <?php echo $data['passwordError']; ?>
-        <input type="password" name="password" id="password" placeholder="Mot de passe" class="idPass">
+        <input type="password" name="password" id="password" placeholder="Mot de passe" class="idPass" value="<?php echo $data['password']; ?>">
     </div>
 
     <input type="submit" id='submit' value='LOGIN' class="buttonConnexion">

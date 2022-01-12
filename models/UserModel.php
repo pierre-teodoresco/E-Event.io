@@ -10,8 +10,11 @@ class UserModel extends Model{
         $this->getConnection();
     }
 
-
     public function checkLogin($username, $password){
+        return true;
+    }
+
+    public function userExists($username){
         return true;
     }
 
