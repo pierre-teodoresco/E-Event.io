@@ -8,6 +8,7 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: auto;
 }
 
 h1,
@@ -22,6 +23,20 @@ body {
 
 a {
   text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 /* Login.php & Register.php */
@@ -169,7 +184,7 @@ a {
   height: 40px;
   width: 40px;
   position: absolute;
-  content: '✔';
+  content: "✔";
   font-size: 26px;
   text-align: center;
   line-height: 40px;
@@ -177,12 +192,19 @@ a {
 
 .role:checked::after {
   background: black;
-  content: '';
+  content: "";
   display: block;
 }
 
 /* index.php */
+
+@font-face {
+  font-family: "modern";
+  src: url("../node_modules/font/fonts/modern_sans_serif_7.ttf") format("ttf");
+}
+
 .bodyIndex {
+  font-family: "modern", sans-serif;
   height: 100%;
   width: 100%;
   border-top: 1px solid lightgray;
@@ -211,7 +233,20 @@ a {
   margin-left: 25%;
 }
 
+.head {
+  position: fixed;
+  width: 48%;
+  left: 26%;
+  height: 5%;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  padding-top: 20px;
+  top: 0%;
+}
+
 .user {
+  display: flex;
+  flex-direction: column;
   order: 3;
   width: 25%;
   height: 100%;
@@ -221,6 +256,8 @@ a {
 }
 
 .sidebar-container {
+  font-size: 17px;
+  font-weight: 540;
   width: 220px;
   height: 100%;
   left: 0;
@@ -248,13 +285,24 @@ a {
   border-radius: 25px;
 }
 
-.sidebar-navigation li a:hover {
-  background-color: #37363e;
+.sidebar-navigation li a.login {
+  padding: 20px 30px 20px 30px;
+  display: block;
   color: white;
+  margin-bottom: 10px;
+  border-radius: 25px;
+}
+
+.sidebar-navigation li a.login:hover {
+  background-color: #37363e;
+}
+
+.sidebar-navigation li a:hover {
+  background-color: #dbd8d8;
 }
 
 .loginProfil {
-  background-color: #28272F;
+  background-color: #28272f;
   border-radius: 25px;
   color: white;
 }
@@ -262,8 +310,86 @@ a {
 .article {
   height: 300px;
   width: 602px;
-  margin-left: 0px;
   border-bottom: 1px solid lightgray;
-  padding: 50px 35px;
+  padding: 50px 59px;
   color: black;
+}
+
+.article:hover {
+  background-color: rgb(248, 248, 248);
+}
+
+.icon {
+  padding-right: 10px;
+}
+
+.asideDiv {
+  height: 360px;
+  width: 150px;
+  background-color: #f3f0f0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 333px;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 5px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+}
+
+.titreTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: 1px solid lightgray;
+  padding: 0px 20px 30px 20px;
+}
+
+.titreTop p {
+  margin: 0;
+  padding-top: 3px;
+}
+
+.sidebarTop {
+  list-style: none;
+  padding-inline-start: 10px;
+  padding-top: 20px;
+}
+
+.sidebarTop li {
+  padding: 0px 0px 5px 2px;
+}
+
+.sidebarTop li a {
+  padding: 10px 30px 10px 30px;
+  display: block;
+  color: #282923;
+  margin-bottom: 5px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.sidebarTop li a:hover {
+  background-color: #dbd8d8;
+}
+
+.co {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 11px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 690px;
+  left: 50%;
+  color: #566470;
+}
+
+.co a {
+  color: #566470;
+}
+
+.co a:hover {
+  text-decoration: underline;
 }
