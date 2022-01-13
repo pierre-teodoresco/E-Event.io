@@ -1,8 +1,9 @@
 <?php
 class CommentModel extends Model{
-    private $_auteur;
+    private $_id;
+    private $_author;
     private $_description;
-    private $_evenement;
+    private $_event;
 
     public function __construct (array $data){
         $this->hydrate($data);
@@ -15,10 +16,18 @@ class CommentModel extends Model{
                 $this->$method($value);
         }
     }
-    public function setAuteur($auteur)
+
+
+    public function setId($id)
     {
-        if (is_string($auteur))
-            $this->_auteur = $auteur;
+        if (is_int($id))
+            $this->_id = $id;
+    }
+
+    public function setAuthor($author)
+    {
+        if (is_string($author))
+            $this->_author = $author;
     }
 
     public function setDescription($description)
@@ -27,14 +36,19 @@ class CommentModel extends Model{
             $this->_description = $description;
     }
 
-    public function setEvenement($evenement)
+    public function setEvent($event)
     {
-        $this->_evenement = $evenement;
+        $this->_event = $event;
     }
 
-    public function getAuteur()
+    public function getId()
     {
-        return $this->_auteur;
+        return $this->_id;
+    }
+
+    public function getAuthor()
+    {
+        return $this->_author;
     }
 
     public function getDescription()
@@ -42,8 +56,8 @@ class CommentModel extends Model{
         return $this->_description;
     }
 
-    public function getEvenement()
+    public function getEvent()
     {
-        return $this->_evenement;
+        return $this->_event;
     }
 }
