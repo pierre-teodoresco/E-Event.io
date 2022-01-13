@@ -17,13 +17,17 @@
             echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
         if($err==3)
             echo "<p style='color:red'>Ce compte n est pas verifié</p>";
+        if($err==4){
+
+            echo "<p style='color:green'>Verifier votre email, réinstialisation effectué</p>";
+        }
     }
     ?>
 
-    <label for="username" class="labelConnexion">Votre nom d'utilisateur</label>
+    <label for="email" class="labelConnexion">Votre email</label>
 
     <div class="divIdPass">
-        <input type="text" name="username" id="username" placeholder="Pseudo" class="idPass">
+        <input type="email" name="email" id="email" placeholder="Email@eevent.io" class="idPass">
     </div>
 
     <label for="password" class="labelConnexion" id="labelPass">Votre mot de passe :</label>
@@ -32,6 +36,7 @@
         <input type="password" name="password" id="password" placeholder="Mot de passe" class="idPass">
     </div>
 
+    <a href="resetpwd.php" >Mot de passes oublier</a>
     <input type="submit" id='submit' name="action" value='LOGIN' class="buttonConnexion">
     <a href="register.php" class="buttonLogin">Créer un compte</a>
 </form>

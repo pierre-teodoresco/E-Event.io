@@ -1,15 +1,16 @@
 {
-  "name": "$vendor_name$/$package_name$",
-  "description": "$description$",
-  "minimum-stability": "$stability$",
-  "license": "$license$",
+  "name": "vendor_name/projectphp",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
   "authors": [
     {
-      "name": "$author$",
-      "email": "$email$"
+      "name": "theo",
+      "email": "email@example.com"
     }
   ],
   "require": {
-    $END$
+    "phpmailer/phpmailer": "^6.5"
   }
+
 }

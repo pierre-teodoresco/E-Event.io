@@ -24,23 +24,6 @@
     }
     ?>
 
-<!--    <label for="username" class="labelConnexion">Votre nom d'utilisateur</label>
-
-    <div class="divIdPass">
-        <input type="text" name="username" placeholder="Pseudo" id="username" class="idPass">
-    </div>
-
-    <label for="password" class="labelConnexion">Votre mot de passe</label>
-
-    <div class="divIdPass">
-        <input type="password" name="password" placeholder="password" id="password" class="idPass">
-    </div>
-
-    <label for="passwordconfirm" class="labelConnexion">Confirmation</label>
-
-    <div class="divIdPass">
-        <input type="password" name="passwordconfirm" placeholder="password" id="passwordconfirm" class="idPass">
-    </div>-->
 
     <label for="email" class="labelConnexion">E-mail</label>
 
@@ -50,11 +33,11 @@
 
     <div class="buttonRole">
         <label id="donateurRole">
-            <input type="radio" name="role" value="1" class="role">
+            <input type="radio" name="role" value="0" class="role">
             Donateur
         </label>
         <label id="organisateurRole">
-            <input type="radio" name="role" value="2" class="role">
+            <input type="radio" name="role" value="1" class="role">
             Organisateur
         </label>
     </div>

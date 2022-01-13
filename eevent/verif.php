@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'email.func.php';
+include_once 'sendmail.func.php';
 
 $action = $_POST['action'];
 $options = [
@@ -8,7 +8,7 @@ $options = [
 ];// Get the password from post
 
 if($action == 'LOGIN') {
-    if (isset($_POST['username']) && isset($_POST['password'])) {
+    if (isset($_POST['email']) && isset($_POST['password'])) {
         // connexion à la base de données
         $db_username = 'phpproject';
         $db_password = 'qyfzuf-0vepna-zynkUj';
@@ -19,23 +19,21 @@ if($action == 'LOGIN') {
 
         // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
         // pour éliminer toute attaque de type injection SQL et XSS
-        $username = mysqli_real_escape_string($db, htmlspecialchars($_POST['username']));
+        $email = mysqli_real_escape_string($db, htmlspecialchars($_POST['email']));
         $password = mysqli_real_escape_string($db, htmlspecialchars($_POST['password']));
 
 
-        if ($username !== "" && $password !== "") {
-            $stmt = $db->prepare("SELECT password, verified FROM account WHERE username = ?");
-            $stmt->bind_param("s", $_POST['username']);
+        if ($email !== "" && $password !== "") {
+            $stmt = $db->prepare("SELECT password,id,role FROM account WHERE email = ?");
+            $stmt->bind_param("s", $_POST['email']);
             $stmt->execute();
-            $stmt->bind_result($hash, $verified);
+            $stmt->bind_result($hash,$id, $role);
             if ($stmt->fetch() && password_verify($_POST['password'], $hash)) {
-                if($verified != 0) {
-                    $_SESSION['username'] = $username;
+                    $_SESSION['username'] = $email;
+                    $_SESSION['id'] = $id;
+                    $_SESSION['role'] = $role;
                     header('location: index.php');
                     exit;
-                }else{
-                    header('Location: login.php?erreur=3');
-                }
 
             } else {
                 header('Location: login.php?erreur=1');
@@ -59,9 +57,6 @@ if($action == 'REGISTER') {
         $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
         or die('could not connect to database');
 
-        $username = mysqli_real_escape_string($db, htmlspecialchars($_POST['username']));
-        $password = mysqli_real_escape_string($db, htmlspecialchars($_POST['password']));
-        $passwordconfirm = mysqli_real_escape_string($db, htmlspecialchars($_POST['passwordconfirm']));
         $email = mysqli_real_escape_string($db, htmlspecialchars($_POST['email']));
         $role = mysqli_real_escape_string($db, htmlspecialchars($_POST['role']));
 
@@ -73,11 +68,15 @@ if($action == 'REGISTER') {
             $reponse = mysqli_fetch_array($exec_requete);
             $count = $reponse['count(*)'];
             if ($count == 0) {
-                $password = uniqid();
+                $password = randomPassword();
+                $hash = password_hash($password, PASSWORD_BCRYPT, $options);
                 $requete2 = "INSERT INTO `account`(`email`, `role`, `password`) 
-                    VALUES ('".$email."', '".$role."', '".$password."') ";
+                    VALUES ('".$email."', '".$role."', '".$hash."') ";
                 $exec_requete2 = mysqli_query($db, $requete2);
-
+                echo "INSERT INTO `account`(`email`, `role`, `password`) 
+                    VALUES ('".$email."', '".$role."', '".$hash."') ";
+                sendEmailPassword($email, $password);
+                //header('Location: login.php');
                 /* /!IMPORTANT!\ MAILTO */
 
             }else{
@@ -88,6 +87,68 @@ if($action == 'REGISTER') {
         }
     } else {
         header('Location: register.php');
+    }
+    mysqli_close($db); // fermer la connexion
+}
+if($action == 'newArticle'){
+    $title = $_POST['article-title'];
+    $description = $_POST['article-desc'];
+    $content = $_POST['article-content'];
+
+    echo $title;
+    echo $_SESSION['id'];
+    echo $description;
+    echo $content;
+
+    $db_username = 'phpproject';
+    $db_password = 'qyfzuf-0vepna-zynkUj';
+    $db_name = 'phpproject';
+    $db_host = 'localhost';
+    $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
+    or die('could not connect to database');
+
+    $requete2 = "INSERT INTO `evenement`(`title`, `owner`, `description`, `content`) 
+                    VALUES ('".$title."', '".$_SESSION['id']."', '".$description."', '".$content."') ";
+    $exec_requete2 = mysqli_query($db, $requete2);
+
+    header('Location: index.php');
+}
+if($action == 'RESET') {
+    if (isset($_POST['email'])) {
+        // connexion à la base de données
+        $db_username = 'phpproject';
+        $db_password = 'qyfzuf-0vepna-zynkUj';
+        $db_name = 'phpproject';
+        $db_host = 'localhost';
+        $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
+        or die('could not connect to database');
+
+        // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
+        // pour éliminer toute attaque de type injection SQL et XSS
+        $email = mysqli_real_escape_string($db, htmlspecialchars($_POST['email']));
+
+        if ($email !== "") {
+            $stmt = "SELECT count(*) FROM account WHERE email = '".$email."'";
+            $exec_requete = mysqli_query($db, $stmt);
+            $reponse = mysqli_fetch_array($exec_requete);
+            $count = $reponse['count(*)'];
+            if ($count == 1) {
+                $password = randomPassword();
+                $hash = password_hash($password, PASSWORD_BCRYPT, $options);
+                $requete = "UPDATE account SET password = '".$hash."' WHERE email = '".$email."'";
+                echo $requete;
+                $exec_query = mysqli_query($db,$requete);
+                resetPwd($email, $password);
+                header('Location: login.php?erreur=4');
+
+            }else{
+                header('Location: resetpwd.php?erreur=2');
+            }
+        } else {
+            header('Location: resetpwd.php?erreur=1'); // utilisateur ou mot de passe vide
+        }
+    } else {
+        header('Location: resetpwd.php');
     }
     mysqli_close($db); // fermer la connexion
 }

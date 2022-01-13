@@ -1,4 +1,7 @@
 <?php
+session_start();
+$username = $_SESSION['username'];
+$role = $_SESSION['role'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -33,8 +36,8 @@
                         <i class="fa fa-cog" aria-hidden="true"></i> Dernier event
                     </a>
                 </li>
-                <li id="sixième">
-                    <a href="#">
+                <?php if($username != "" ){?><li id="sixième">
+                    <a id="createBtn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -50,66 +53,79 @@
                         <i class="fa fa-tachometer" aria-hidden="true"></i> Dâte de fin
                     </a>
                 </li>
+                <?php }?>
                 <li id="LoginPage">
                     <div class="loginProfil">
-                        <a href="login.php" class="login">
+                        <a href="<?php echo $username ? 'edit.php': 'login.php'?>" class="login">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                             </svg>
-                            <i class="fa fa-info-circle" aria-hidden="true"></i> Login / Profil
+
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>  <?php echo $username ? 'Modifier mon profil': 'Se connecter'?>
                         </a>
                     </div>
                 </li>
+                <?php if($username != "") {?>
+                <li id="LoginPage">
+                    <div class="loginProfil">
+                        <a href="" class="login">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+
+                            <i class="fa fa-info-circle" aria-hidden="true"></i> Se deconnecter
+                        </a>
+                    </div>
+                </li>
+                    <?php if($role == 4){?>
+                    <li id="deuxieme">
+                        <a href="admin.php">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                            </svg>
+                            <i class="fa fa-tachometer" aria-hidden="true"></i> Pannel Administrateur
+                        </a>
+                    </li>
+                        <?php }?>
+                <?php }?>
             </ul>
+
+            <!-- The Modal -->
         </div>
     </div>
     <div class="feed">
         <div class="head">
             <button onclick='window.scrollTo({top: 0, behavior: "smooth"});'>E-Event.io!</button>
         </div>
-        <div class="article">
-            <p>Qu'est-ce que le Lorem Ipsum?
-                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
+            <?php
+            $db_username = 'phpproject';
+            $db_password = 'qyfzuf-0vepna-zynkUj';
+            $db_name = 'phpproject';
+            $db_host = 'localhost';
+            $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
+            or die('could not connect to database');
 
-            </p>
-        </div>
-        <div class="article">
-            <p>Qu'est-ce que le Lorem Ipsum?
-                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
+            $stmt = $db->prepare("SELECT evenement.id,title,description,votes,username,image_profile FROM evenement INNER JOIN account ON owner = account.id ORDER BY evenement.id DESC");
+            $stmt->execute();
 
-            </p>
-        </div>
-        <div class="article">
-            <p>Qu'est-ce que le Lorem Ipsum?
-                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
+            foreach ($stmt->get_result() as $row)
+            {
+                echo "<div class=\"article\">";
+                echo "<h2> $row[title]</h2>";
+                echo "<h3> <img src='img/$row[image_profile]' width='100px' alt=''> Autheur : <span> $row[username]</span></h3>";
+                echo "<p> $row[description]</p>";
+                echo "<a href=\"article.php?id=$row[id]\">Voir l'evenement</a>";
+                echo "<div class=\"article-footer\">";
+                $myArray = explode(',', $row[votes]);
+                $vote = count($myArray)-1;
+                echo  ($vote) <= 1 ? "$vote Vote" : "$vote Votes";
+                echo "</div>";
+                echo"</div>";
+            }
+            ?>
 
-            </p>
-        </div>
-        <div class="article">
-            <p>Qu'est-ce que le Lorem Ipsum?
-                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-
-            </p>
-        </div>
-        <div class="article">
-            <p>Qu'est-ce que le Lorem Ipsum?
-                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-
-            </p>
-        </div>
-        <div class="article">
-            <p>Qu'est-ce que le Lorem Ipsum?
-                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-
-            </p>
-        </div>
-        <div class="article">
-            <p>Qu'est-ce que le Lorem Ipsum?
-                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-
-            </p>
-        </div>
     </div>
+
     <div class="user">
         <div class="asideDiv">
             <div class="texte">
@@ -124,7 +140,7 @@
                         <a href="#">
                             Premier
                         </a>
-                        
+
                     </li>
                     <li>
                         <a href="#">
@@ -158,6 +174,33 @@
         </div>
     </div>
 </div>
+<div id="myModal" class="modal">
+
+    <form action="verif.php" method="post">
+    <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Création d'article</div>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <label for="article-title">Nom de l'article</label>
+                <input name="article-title" type="text" id="article-title">
+
+                <label for="article-desc">Descrition (200 caractères)</label>
+                <textarea name="article-desc" id="article-desc" rows="10"></textarea>
+
+                <label for="article-content">Contenu </label>
+                <textarea name="article-content" id="article-content" rows="25"></textarea>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" name="action" value="newArticle">
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="js/eevent.js" type="text/javascript"></script>
 </body>
 
 </html>
