@@ -16,13 +16,13 @@ class User{
 
     public function __construct($data)
     {
-        foreach($data as $var){
-            $varName = array_search($var, $data);
+        foreach($data as $key=>$var){
+            $varName = $key;
             $this->$varName = $var;
         }
     }
 
-    public function updateAll(){
+    public function updateOrCreate(){
         $data = [
             'id' => $this->id,
             'role' => $this->role,
@@ -37,8 +37,8 @@ class User{
             'sexe' => $this->sexe,
             'naissance' => $this->naissance
         ];
-        $model = new EventModel();
-        $model->updateAll($data);
+        $model = new UserModel();
+        $model->updateOrCreate($data);
     }
 
 
@@ -55,7 +55,7 @@ class User{
     public function setRole($role)
     {
         $this->role = $role;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getUsername()
@@ -66,7 +66,7 @@ class User{
     public function setUsername($username)
     {
         $this->username = $username;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getPassword()
@@ -77,7 +77,7 @@ class User{
     public function setPassword($password)
     {
         $this->password = $password;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getEmail()
@@ -88,7 +88,7 @@ class User{
     public function setEmail($email)
     {
         $this->email = $email;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getImageProfile()
@@ -99,7 +99,7 @@ class User{
     public function setImageProfile($image_profile)
     {
         $this->image_profile = $image_profile;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getPoint()
@@ -110,7 +110,7 @@ class User{
     public function setPoint($point)
     {
         $this->point = $point;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getEvent()
@@ -121,7 +121,7 @@ class User{
     public function setEvent($event)
     {
         $this->event = $event;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getNom()
@@ -132,7 +132,7 @@ class User{
     public function setNom($nom)
     {
         $this->nom = $nom;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getPrenom()
@@ -143,7 +143,7 @@ class User{
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getSexe()
@@ -154,7 +154,7 @@ class User{
     public function setSexe($sexe)
     {
         $this->sexe = $sexe;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getNaissance()
@@ -165,6 +165,6 @@ class User{
     public function setNaissance($naissance)
     {
         $this->naissance = $naissance;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 }

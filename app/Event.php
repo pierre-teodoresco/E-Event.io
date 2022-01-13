@@ -12,13 +12,14 @@ class Event{
 
     public function __construct($data)
     {
-        foreach($data as $var){
-            $varName = array_search($var, $data);
+        foreach($data as $key=>$var){
+            $varName = $key;
             $this->$varName = $var;
         }
     }
 
-    public function updateAll(){
+
+    public function updateOrCreate(){
         $data = [
             'id' => $this->id,
             'title' => $this->title,
@@ -30,7 +31,7 @@ class Event{
             'addcontent' => $this->addcontent
         ];
         $model = new EventModel();
-        $model->updateAll($data);
+        $model->updateOrCreate($data);
     }
 
     public function getId()
@@ -46,7 +47,7 @@ class Event{
     public function setTitle($title)
     {
         $this->title = $title;
-        $this->updateAll();
+        $this->updateOrCreate();
 
     }
 
@@ -58,7 +59,7 @@ class Event{
     public function setOwner($owner)
     {
         $this->owner = $owner;
-        $this->updateAll();
+        $this->updateOrCreate();
 
     }
 
@@ -70,7 +71,7 @@ class Event{
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->updateAll();
+        $this->updateOrCreate();
 
     }
 
@@ -82,7 +83,7 @@ class Event{
     public function setContent($content)
     {
         $this->content = $content;
-        $this->updateAll();
+        $this->updateOrCreate();
 
     }
 
@@ -94,7 +95,7 @@ class Event{
     public function setVotes($votes)
     {
         $this->votes = $votes;
-        $this->updateAll();
+        $this->updateOrCreate();
 
     }
 
@@ -106,7 +107,7 @@ class Event{
     public function setIllustration($illustration)
     {
         $this->illustration = $illustration;
-        $this->updateAll();
+        $this->updateOrCreate();
 
     }
 
@@ -118,7 +119,7 @@ class Event{
     public function setAddcontent($addcontent)
     {
         $this->addcontent = $addcontent;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
 }

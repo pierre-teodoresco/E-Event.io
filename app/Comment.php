@@ -7,21 +7,22 @@ class Comment{
 
     public function __construct($data)
     {
-        foreach($data as $var){
-            $varName = array_search($var, $data);
+        foreach($data as $key=>$var){
+            $varName = $key;
             $this->$varName = $var;
         }
     }
 
-    public function updateAll(){
+    public function updateOrCreate(){
+
         $data = [
             'id' => $this->id,
             'author' => $this->author,
             'description' => $this->description,
             'event' => $this->event
         ];
-        $model = new EventModel();
-        $model->updateAll($data);
+        $model = new CommentModel();
+        $model->updateOrCreate($data);
     }
 
     public function getId()
@@ -37,7 +38,7 @@ class Comment{
     public function setAuthor($author)
     {
         $this->author = $author;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getDescription()
@@ -48,7 +49,7 @@ class Comment{
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getEvent()
@@ -59,7 +60,7 @@ class Comment{
     public function setEvent($event)
     {
         $this->event = $event;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
 }

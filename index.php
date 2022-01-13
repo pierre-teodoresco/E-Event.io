@@ -21,3 +21,15 @@ catch (ControleurException $O_exception)
 {
     echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
 }
+
+
+$data = [
+    'id'=>26,
+    'author'=>'Jako',
+    'description'=>'desc',
+    'event'=>'Zevent'
+    ];
+
+$com = new Comment($data);
+$com->updateOrCreate();
+

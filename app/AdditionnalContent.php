@@ -9,21 +9,21 @@ class AdditionnalContent{
 
     public function __construct($data)
     {
-        foreach($data as $var){
-            $varName = array_search($var, $data);
+        foreach($data as $key=>$var){
+            $varName = $key;
             $this->$varName = $var;
         }
     }
 
-    public function updateAll(){
+    public function updateOrCreate(){
         $data = [
             'id' => $this->id,
             'point' => $this->point,
             'description' => $this->description,
             'event' => $this->event,
         ];
-        $model = new EventModel();
-        $model->updateAll($data);
+        $model = new AdditionnalContentModel();
+        $model->updateOrCreate($data);
     }
 
     public function getId()
@@ -39,7 +39,7 @@ class AdditionnalContent{
     public function setPoint($point)
     {
         $this->point = $point;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getDescription()
@@ -50,7 +50,7 @@ class AdditionnalContent{
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
     public function getEvent()
@@ -61,7 +61,7 @@ class AdditionnalContent{
     public function setEvent($event)
     {
         $this->event = $event;
-        $this->updateAll();
+        $this->updateOrCreate();
     }
 
 }

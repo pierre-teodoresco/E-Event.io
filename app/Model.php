@@ -46,6 +46,16 @@ abstract class Model{
         return $objects;
     }
 
+    public function updateOrCreate($data){
+        $sql = 'SELECT COUNT(*) FROM '.$this->table.' WHERE id = \''.$data['id'].'\'';
+        $query = $this->_connexion->prepare($sql);
+        $query->execute();
+        $count = $query->fetchColumn();
+        if($count == 0 )
+            $this->createOne($data);
+        else $this->updateAll($data);
+    }
+
     public function updateOne($attributeName, $value, $id){
         $sql = 'UPDATE ' .$this->table . ' SET '.$attributeName.'='.'\''.$value.'\' WHERE id='.$id;
         $query= $this->_connexion->prepare($sql);
@@ -54,14 +64,30 @@ abstract class Model{
 
     public function updateAll($data){
         $sql = 'UPDATE '.$this->table.' SET ';
-        foreach($data as $val) {
-            $sql .= array_search($val, $data) . '= :' . array_search($val, $data) . ',';
+        foreach($data as $key=>$val) {
+            $sql .= $key . '= \'' . $val. '\',';
         }
         $sql = substr($sql, 0, -1); //On retire la derniere virgule
-        $sql .= ' WHERE id=:id';
+        $sql .= ' WHERE id=\''.$data['id'].'\'';
         $query= $this->_connexion->prepare($sql);
-        $query->execute($data);
+        $query->execute();
     }
 
+    public function createOne($data){
+        $sql = 'INSERT INTO '.$this->table.' (';
+        foreach($data as $key=>$val) {
+            $sql .= '`'.$key.'`,';
+        }
+        $sql = substr($sql, 0, -1); //On retire la derniere virgule
+        $sql .= ') VALUES (';
+        foreach($data as $val) {
+            $sql .= '\''.$val.'\',';
+        }
+        $sql = substr($sql, 0, -1); //On retire la derniere virgule
+        $sql .= ')';
+        echo $sql;
+        $query= $this->_connexion->prepare($sql);
+        $query->execute();
+    }
 
 }

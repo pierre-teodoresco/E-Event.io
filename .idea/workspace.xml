@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="MVC mis à jour, Update">
-      <change afterPath="$PROJECT_DIR$/app/AdditionnalContent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="Ajout de controlleurs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/AdditionnalContent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AdditionnalContent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Comment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Event.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="" />
@@ -89,7 +89,7 @@
       <workItem from="1642092272435" duration="4197000" />
       <workItem from="1642097108331" duration="1436000" />
       <workItem from="1642099482193" duration="160000" />
-      <workItem from="1642099823348" duration="1640000" />
+      <workItem from="1642099823348" duration="4334000" />
     </task>
     <task id="LOCAL-00001" summary="acceuil.php">
       <created>1638880538590</created>
@@ -161,7 +161,21 @@
       <option name="project" value="LOCAL" />
       <updated>1642098306402</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Objets ajoutés. &#10;Updates améliorés&#10;getOne amélioré">
+      <created>1642101591753</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1642101591753</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Ajout de controlleurs">
+      <created>1642101754262</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1642101754262</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +215,8 @@
     <MESSAGE value="MVC encore en construction" />
     <MESSAGE value="MVC mis à jour" />
     <MESSAGE value="MVC mis à jour, Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="MVC mis à jour, Update" />
+    <MESSAGE value="Objets ajoutés. &#10;Updates améliorés&#10;getOne amélioré" />
+    <MESSAGE value="Ajout de controlleurs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout de controlleurs" />
   </component>
 </project>
