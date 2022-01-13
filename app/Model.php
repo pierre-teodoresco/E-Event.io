@@ -56,10 +56,23 @@ abstract class Model{
         else $this->updateAll($data);
     }
 
+    public function tupleExists($id){
+        $sql = 'SELECT COUNT(*) FROM '.$this->table.' WHERE id = \''.$id.'\'';
+        $query = $this->_connexion->prepare($sql);
+        $query->execute();
+        $count = $query->fetchColumn();
+        if($count == 0 )
+            return false;
+        else return true;
+    }
+
     public function updateOne($attributeName, $value, $id){
-        $sql = 'UPDATE ' .$this->table . ' SET '.$attributeName.'='.'\''.$value.'\' WHERE id='.$id;
-        $query= $this->_connexion->prepare($sql);
-        $query->execute([$attributeName, $id]);
+        if($this->tupleExists($id)){
+            $sql = 'UPDATE ' .$this->table . ' SET '.$attributeName.'='.'\''.$value.'\' WHERE id='.$id;
+            $query= $this->_connexion->prepare($sql);
+            $query->execute();
+        }
+
     }
 
     public function updateAll($data){

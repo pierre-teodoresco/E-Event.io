@@ -7,18 +7,16 @@ class AdditionnalContent extends ObjectBase{
     private $description;
     private $event;
 
-    public function __construct($data)
-    {
-        foreach($data as $key=>$value){
-            $varName = $key;
-            $this->$varName = $value;
-        }
-        $this->updateOrCreate();
-    }
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        $this->updateAttribute('id', $id);
     }
 
     public function getPoint()
@@ -29,7 +27,7 @@ class AdditionnalContent extends ObjectBase{
     public function setPoint($point)
     {
         $this->point = $point;
-        $this->updateOrCreate();
+        $this->updateAttribute('point', $point);
     }
 
     public function getDescription()
@@ -40,7 +38,7 @@ class AdditionnalContent extends ObjectBase{
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->updateOrCreate();
+        $this->updateAttribute('description', $description);
     }
 
     public function getEvent()
@@ -51,7 +49,7 @@ class AdditionnalContent extends ObjectBase{
     public function setEvent($event)
     {
         $this->event = $event;
-        $this->updateOrCreate();
+        $this->updateAttribute('event', $event);
     }
 
 }

@@ -14,18 +14,15 @@ class User extends ObjectBase{
     private $sexe;
     private $naissance;
 
-    public function __construct($data)
-    {
-        foreach($data as $key=>$value){
-            $varName = $key;
-            $this->$varName = $value;
-        }
-        $this->updateOrCreate();
-    }
-
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        $this->updateAttribute('id', $id);
     }
 
     public function getRole()
@@ -36,7 +33,8 @@ class User extends ObjectBase{
     public function setRole($role)
     {
         $this->role = $role;
-        $this->updateOrCreate();
+        $this->updateAttribute('role', $role);
+
     }
 
     public function getUsername()
@@ -47,7 +45,8 @@ class User extends ObjectBase{
     public function setUsername($username)
     {
         $this->username = $username;
-        $this->updateOrCreate();
+        $this->updateAttribute('username', $username);
+
     }
 
     public function getPassword()
@@ -58,7 +57,7 @@ class User extends ObjectBase{
     public function setPassword($password)
     {
         $this->password = $password;
-        $this->updateOrCreate();
+        $this->updateAttribute('password', $password);
     }
 
     public function getEmail()
@@ -69,7 +68,7 @@ class User extends ObjectBase{
     public function setEmail($email)
     {
         $this->email = $email;
-        $this->updateOrCreate();
+        $this->updateAttribute('email', $email);
     }
 
     public function getImageProfile()
@@ -80,7 +79,7 @@ class User extends ObjectBase{
     public function setImageProfile($image_profile)
     {
         $this->image_profile = $image_profile;
-        $this->updateOrCreate();
+        $this->updateAttribute('image_profile', $image_profile);
     }
 
     public function getPoint()
@@ -91,7 +90,7 @@ class User extends ObjectBase{
     public function setPoint($point)
     {
         $this->point = $point;
-        $this->updateOrCreate();
+        $this->updateAttribute('point', $point);
     }
 
     public function getEvent()
@@ -102,7 +101,7 @@ class User extends ObjectBase{
     public function setEvent($event)
     {
         $this->event = $event;
-        $this->updateOrCreate();
+        $this->updateAttribute('event', $event);
     }
 
     public function getNom()
@@ -113,7 +112,7 @@ class User extends ObjectBase{
     public function setNom($nom)
     {
         $this->nom = $nom;
-        $this->updateOrCreate();
+        $this->updateAttribute('nom', $nom);
     }
 
     public function getPrenom()
@@ -124,7 +123,7 @@ class User extends ObjectBase{
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-        $this->updateOrCreate();
+        $this->updateAttribute('prenom', $prenom);
     }
 
     public function getSexe()
@@ -135,7 +134,7 @@ class User extends ObjectBase{
     public function setSexe($sexe)
     {
         $this->sexe = $sexe;
-        $this->updateOrCreate();
+        $this->updateAttribute('sexe', $sexe);
     }
 
     public function getNaissance()
@@ -146,6 +145,6 @@ class User extends ObjectBase{
     public function setNaissance($naissance)
     {
         $this->naissance = $naissance;
-        $this->updateOrCreate();
+        $this->updateAttribute('naissance', $naissance);
     }
 }

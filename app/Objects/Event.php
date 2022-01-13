@@ -10,19 +10,17 @@ class Event extends ObjectBase{
     private $illustration;
     private $addcontent;
 
-    public function __construct($data)
-    {
-        foreach($data as $key=>$value){
-            $varName = $key;
-            $this->$varName = $value;
-        }
-        $this->updateOrCreate();
-    }
 
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        $this->updateAttribute('id', $id);
     }
 
     public function getTitle()
@@ -33,7 +31,7 @@ class Event extends ObjectBase{
     public function setTitle($title)
     {
         $this->title = $title;
-        $this->updateOrCreate();
+        $this->updateAttribute('title', $title);
 
     }
 
@@ -45,7 +43,7 @@ class Event extends ObjectBase{
     public function setOwner($owner)
     {
         $this->owner = $owner;
-        $this->updateOrCreate();
+        $this->updateAttribute('owner', $owner);
 
     }
 
@@ -57,7 +55,8 @@ class Event extends ObjectBase{
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->updateOrCreate();
+        $this->updateAttribute('description', $description);
+
 
     }
 
@@ -69,7 +68,7 @@ class Event extends ObjectBase{
     public function setContent($content)
     {
         $this->content = $content;
-        $this->updateOrCreate();
+        $this->updateAttribute('content', $content);
 
     }
 
@@ -81,7 +80,7 @@ class Event extends ObjectBase{
     public function setVotes($votes)
     {
         $this->votes = $votes;
-        $this->updateOrCreate();
+        $this->updateAttribute('votes', $votes);
 
     }
 
@@ -93,7 +92,7 @@ class Event extends ObjectBase{
     public function setIllustration($illustration)
     {
         $this->illustration = $illustration;
-        $this->updateOrCreate();
+        $this->updateAttribute('illustration', $illustration);
 
     }
 
@@ -105,7 +104,7 @@ class Event extends ObjectBase{
     public function setAddcontent($addcontent)
     {
         $this->addcontent = $addcontent;
-        $this->updateOrCreate();
+        $this->updateAttribute('addcontent', $addcontent);
     }
 
 }
