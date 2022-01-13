@@ -22,6 +22,7 @@ if($action == 'LOGIN') {
         $username = mysqli_real_escape_string($db, htmlspecialchars($_POST['username']));
         $password = mysqli_real_escape_string($db, htmlspecialchars($_POST['password']));
 
+
         if ($username !== "" && $password !== "") {
             $stmt = $db->prepare("SELECT password, verified FROM account WHERE username = ?");
             $stmt->bind_param("s", $_POST['username']);
