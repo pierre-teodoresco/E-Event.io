@@ -1,6 +1,6 @@
 <?php
 
-class Event{
+class Event extends ObjectBase{
     private $id;
     private $title;
     private $owner;
@@ -12,27 +12,13 @@ class Event{
 
     public function __construct($data)
     {
-        foreach($data as $key=>$var){
+        foreach($data as $key=>$value){
             $varName = $key;
-            $this->$varName = $var;
+            $this->$varName = $value;
         }
+        $this->updateOrCreate();
     }
 
-
-    public function updateOrCreate(){
-        $data = [
-            'id' => $this->id,
-            'title' => $this->title,
-            'owner' => $this->owner,
-            'description' => $this->description,
-            'content' => $this->content,
-            'votes' => $this->votes,
-            'illustration' => $this->illustration,
-            'addcontent' => $this->addcontent
-        ];
-        $model = new EventModel();
-        $model->updateOrCreate($data);
-    }
 
     public function getId()
     {

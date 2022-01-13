@@ -9,6 +9,8 @@ final class Constants
 
     const REPERTOIRE_VUES        = '/views/';
 
+    const REPERTOIRE_OBJECTS     = '/app/Objects/';
+
     const REPERTOIRE_MODELE      = '/models/';
 
     const REPERTOIRE_NOYAU       = '/app/';
@@ -24,6 +26,10 @@ final class Constants
 
     public static function repertoireNoyau() {
         return self::repertoireRacine() . self::REPERTOIRE_NOYAU;
+    }
+
+    public static function repertoireObjects() {
+        return self::repertoireRacine() . self::REPERTOIRE_OBJECTS;
     }
 
     public static function repertoireExceptions() {

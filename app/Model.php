@@ -85,7 +85,6 @@ abstract class Model{
         }
         $sql = substr($sql, 0, -1); //On retire la derniere virgule
         $sql .= ')';
-        echo $sql;
         $query= $this->_connexion->prepare($sql);
         $query->execute();
     }

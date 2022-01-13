@@ -1,29 +1,17 @@
 <?php
-
-class AdditionnalContent{
-
+class Comment extends ObjectBase{
     private $id;
-    private $point;
+    private $author;
     private $description;
     private $event;
 
     public function __construct($data)
     {
-        foreach($data as $key=>$var){
+        foreach($data as $key=>$value){
             $varName = $key;
-            $this->$varName = $var;
+            $this->$varName = $value;
         }
-    }
-
-    public function updateOrCreate(){
-        $data = [
-            'id' => $this->id,
-            'point' => $this->point,
-            'description' => $this->description,
-            'event' => $this->event,
-        ];
-        $model = new AdditionnalContentModel();
-        $model->updateOrCreate($data);
+        $this->updateOrCreate();
     }
 
     public function getId()
@@ -31,14 +19,14 @@ class AdditionnalContent{
         return $this->id;
     }
 
-    public function getPoint()
+    public function getAuthor()
     {
-        return $this->point;
+        return $this->author;
     }
 
-    public function setPoint($point)
+    public function setAuthor($author)
     {
-        $this->point = $point;
+        $this->author = $author;
         $this->updateOrCreate();
     }
 

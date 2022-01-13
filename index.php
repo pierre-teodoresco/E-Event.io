@@ -24,12 +24,14 @@ catch (ControleurException $O_exception)
 
 
 $data = [
-    'id'=>26,
-    'author'=>'Jako',
-    'description'=>'desc',
-    'event'=>'Zevent'
-    ];
+    'id' => 55,
+    'point' => '36',
+    'description' => 'desc',
+    'event' => 'Zeventtt'
+];
 
-$com = new Comment($data);
-$com->updateOrCreate();
+$comm = new AdditionnalContent($data);
+
+
+
 

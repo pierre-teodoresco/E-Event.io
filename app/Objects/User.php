@@ -1,5 +1,5 @@
 <?php
-class User{
+class User extends ObjectBase{
 
     private $id;
     private $role;
@@ -16,31 +16,12 @@ class User{
 
     public function __construct($data)
     {
-        foreach($data as $key=>$var){
+        foreach($data as $key=>$value){
             $varName = $key;
-            $this->$varName = $var;
+            $this->$varName = $value;
         }
+        $this->updateOrCreate();
     }
-
-    public function updateOrCreate(){
-        $data = [
-            'id' => $this->id,
-            'role' => $this->role,
-            'username' => $this->username,
-            'password' => $this->password,
-            'email' => $this->email,
-            'image_profile' => $this->image_profile,
-            'point' => $this->point,
-            'event' => $this->event,
-            'nom' => $this->nom,
-            'prenom' => $this->prenom,
-            'sexe' => $this->sexe,
-            'naissance' => $this->naissance
-        ];
-        $model = new UserModel();
-        $model->updateOrCreate($data);
-    }
-
 
     public function getId()
     {
