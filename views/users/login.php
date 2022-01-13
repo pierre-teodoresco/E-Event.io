@@ -13,8 +13,8 @@
     <label for="username" class="labelConnexion">Votre nom d'utilisateur</label>
 
     <div class="divIdPass">
-        <?php echo $data['usernameError']; ?>
-        <input type="text" name="username" id="username" placeholder="Pseudo" class="idPass" value="<?php echo $data['username']; ?>">
+        <?php echo $data['emailError']; ?>
+        <input type="text" name="username" id="username" placeholder="Pseudo" class="idPass" value="<?php echo $data['email']; ?>">
     </div>
 
     <label for="password" class="labelConnexion" id="labelPass">Votre mot de passe :</label>

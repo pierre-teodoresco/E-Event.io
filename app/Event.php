@@ -20,14 +20,14 @@ class Event{
 
     public function updateAll(){
         $data = [
-            'id' => $this-> $id,
-            'title' => $this-> $title,
-            'owner' => $this-> $owner,
-            'description' => $this-> $description,
-            'content' => $this-> $content,
-            'votes' => $this-> $votes,
-            'illustration' => $this-> $illustration,
-            'addcontent' => $this-> $addcontent
+            'id' => $this->id,
+            'title' => $this->title,
+            'owner' => $this->owner,
+            'description' => $this->description,
+            'content' => $this->content,
+            'votes' => $this->votes,
+            'illustration' => $this->illustration,
+            'addcontent' => $this->addcontent
         ];
         $model = new EventModel();
         $model->updateAll($data);

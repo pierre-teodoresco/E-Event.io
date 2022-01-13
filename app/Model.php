@@ -2,7 +2,7 @@
 abstract class Model{
     // Informations de la base de données
     private $host = "localhost";
-    private $db_name = "app";
+    private $db_name = "phpproject";
     private $username = "root";
     private $password = "";
 
@@ -31,7 +31,8 @@ abstract class Model{
         $sql = 'SELECT * FROM '.$this->table.' WHERE id='.$id ;
         $query = $this->_connexion->prepare($sql);
         $query->execute();
-        return $query->fetch();
+        $data = $query->fetch();
+        return new (ucfirst($this->className))($data);
     }
 
     public function getAll(){

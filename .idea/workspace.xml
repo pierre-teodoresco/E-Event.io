@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="MVC mis à jour">
-      <change afterPath="$PROJECT_DIR$/app/Event.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/EventController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/AdditionnalContentModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/CommentModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/EventModel.php" afterDir="false" />
+    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="MVC mis à jour, Update">
+      <change afterPath="$PROJECT_DIR$/app/AdditionnalContent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Event.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/UsersController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/main/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/main/index.php" afterDir="false" />
     </list>
     <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +54,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -92,7 +87,9 @@
       <workItem from="1642017200108" duration="756000" />
       <workItem from="1642088675254" duration="3265000" />
       <workItem from="1642092272435" duration="4197000" />
-      <workItem from="1642097108331" duration="1034000" />
+      <workItem from="1642097108331" duration="1436000" />
+      <workItem from="1642099482193" duration="160000" />
+      <workItem from="1642099823348" duration="1640000" />
     </task>
     <task id="LOCAL-00001" summary="acceuil.php">
       <created>1638880538590</created>
@@ -157,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642017357683</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="MVC mis à jour, Update">
+      <created>1642098306402</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1642098306402</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +200,7 @@
     <MESSAGE value="index.php &amp; css clean" />
     <MESSAGE value="MVC encore en construction" />
     <MESSAGE value="MVC mis à jour" />
-    <option name="LAST_COMMIT_MESSAGE" value="MVC mis à jour" />
+    <MESSAGE value="MVC mis à jour, Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="MVC mis à jour, Update" />
   </component>
 </project>

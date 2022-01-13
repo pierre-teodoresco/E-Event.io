@@ -21,7 +21,3 @@ catch (ControleurException $O_exception)
 {
     echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
 }
-
-$eventModel = new EventModel();
-
-$eventModel->getAll();
