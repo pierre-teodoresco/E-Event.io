@@ -11,6 +11,8 @@ abstract class Model{
 
     // Propriétés permettant de personnaliser les requêtes
     public $table;
+    public $className;
+
 
     public function getConnection(){
         // On supprime la connexion précédente
@@ -26,16 +28,39 @@ abstract class Model{
     }
 
     public function getOne($id){
-        $sql = 'SELECT * FROM '.$this->table.' WHERE id='.$id . ' ORDER BY id DESC';
+        $sql = 'SELECT * FROM '.$this->table.' WHERE id='.$id ;
         $query = $this->_connexion->prepare($sql);
         $query->execute();
         return $query->fetch();
     }
 
     public function getAll(){
-        $sql = "SELECT * FROM ".$this->table;
+        $objects = [];
+        $sql = 'SELECT * FROM '.$this->table . ' ORDER BY id DESC';
         $query = $this->_connexion->prepare($sql);
         $query->execute();
-        return $query->fetchAll();
+        while($data = $query->fetch(PDO::FETCH_ASSOC)){
+            $objects[] = new (ucfirst($this->className))($data);
+        }
+        return $objects;
     }
+
+    public function updateOne($attributeName, $value, $id){
+        $sql = 'UPDATE ' .$this->table . ' SET '.$attributeName.'='.'\''.$value.'\' WHERE id='.$id;
+        $query= $this->_connexion->prepare($sql);
+        $query->execute([$attributeName, $id]);
+    }
+
+    public function updateAll($data){
+        $sql = 'UPDATE '.$this->table.' SET ';
+        foreach($data as $val) {
+            $sql .= array_search($val, $data) . '= :' . array_search($val, $data) . ',';
+        }
+        $sql = substr($sql, 0, -1); //On retire la derniere virgule
+        $sql .= ' WHERE id=:id';
+        $query= $this->_connexion->prepare($sql);
+        $query->execute($data);
+    }
+
+
 }

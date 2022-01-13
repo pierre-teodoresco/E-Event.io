@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li id="LoginPage">
-                <a href="?controller=users&action=login">
+                <a href="?controller=user&action=login">
                     <img class="loginImage"><i class="fa fa-info-circle" aria-hidden="true"></i> Login
                 </a>
             </li>
