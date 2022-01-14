@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="link login.php">
+    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="Delete + Amélioration du ObjectBase">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Objects/ObjectBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Objects/ObjectBase.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="" />
@@ -27,14 +27,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -50,6 +42,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -59,8 +52,17 @@
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\XAMP\htdocs\views\main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\XAMP\htdocs" />
+      <recent name="D:\XAMP\htdocs\views\users" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -73,9 +75,22 @@
       <workItem from="1638862192686" duration="5776000" />
       <workItem from="1639378875772" duration="2657000" />
       <workItem from="1639381673207" duration="9276000" />
-      <workItem from="1641891443328" duration="7912000" />
-      <workItem from="1641988892467" duration="632000" />
-      <workItem from="1642002981812" duration="1439000" />
+      <workItem from="1641807293061" duration="6535000" />
+      <workItem from="1641890537463" duration="8774000" />
+      <workItem from="1641989671912" duration="16279000" />
+      <workItem from="1642006389939" duration="1986000" />
+      <workItem from="1642009054331" duration="803000" />
+      <workItem from="1642017200108" duration="756000" />
+      <workItem from="1642088675254" duration="3265000" />
+      <workItem from="1642092272435" duration="4197000" />
+      <workItem from="1642097108331" duration="1436000" />
+      <workItem from="1642099482193" duration="160000" />
+      <workItem from="1642099823348" duration="7159000" />
+      <workItem from="1642109159800" duration="5954000" />
+      <workItem from="1642115857406" duration="811000" />
+      <workItem from="1642150977232" duration="6825000" />
+      <workItem from="1642163347837" duration="921000" />
+      <workItem from="1642172236172" duration="1478000" />
     </task>
     <task id="LOCAL-00001" summary="acceuil.php">
       <created>1638880538590</created>
@@ -126,21 +141,77 @@
       <option name="project" value="LOCAL" />
       <updated>1639389064473</updated>
     </task>
-    <task id="LOCAL-00008" summary="css index inspired by twitter">
-      <created>1641899705048</created>
+    <task id="LOCAL-00008" summary="MVC encore en construction">
+      <created>1642005314713</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1641899705048</updated>
+      <updated>1642005314713</updated>
     </task>
-    <task id="LOCAL-00009" summary="link login.php">
-      <created>1642003197987</created>
+    <task id="LOCAL-00009" summary="MVC mis à jour">
+      <created>1642017357683</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1642003197988</updated>
+      <updated>1642017357683</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="MVC mis à jour, Update">
+      <created>1642098306402</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1642098306402</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Objets ajoutés. &#10;Updates améliorés&#10;getOne amélioré">
+      <created>1642101591753</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1642101591753</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Ajout de controlleurs">
+      <created>1642101754262</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1642101754262</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Create fonctionnel">
+      <created>1642104351152</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1642104351152</updated>
+    </task>
+    <task id="LOCAL-00014" summary="CreateOrUpdate générique&#10;Il est insane !">
+      <created>1642113126757</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1642113126757</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Classe abstraite ObjectBase">
+      <created>1642114385992</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1642114385992</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Classe abstraite ObjectBase">
+      <created>1642115133264</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1642115133264</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Delete + Amélioration du ObjectBase">
+      <created>1642157321817</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1642157321817</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +222,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="mathys" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -165,8 +248,15 @@
     <MESSAGE value="css register" />
     <MESSAGE value="maj todo" />
     <MESSAGE value="index.php &amp; css clean" />
-    <MESSAGE value="css index inspired by twitter" />
-    <MESSAGE value="link login.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="link login.php" />
+    <MESSAGE value="MVC encore en construction" />
+    <MESSAGE value="MVC mis à jour" />
+    <MESSAGE value="MVC mis à jour, Update" />
+    <MESSAGE value="Objets ajoutés. &#10;Updates améliorés&#10;getOne amélioré" />
+    <MESSAGE value="Ajout de controlleurs" />
+    <MESSAGE value="Create fonctionnel" />
+    <MESSAGE value="CreateOrUpdate générique&#10;Il est insane !" />
+    <MESSAGE value="Classe abstraite ObjectBase" />
+    <MESSAGE value="Delete + Amélioration du ObjectBase" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete + Amélioration du ObjectBase" />
   </component>
 </project>
