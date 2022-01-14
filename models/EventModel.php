@@ -11,4 +11,13 @@ class EventModel extends Model
         // Nous ouvrons la connexion à la base de données
         $this->getConnection();
     }
+
+
+    public function getAllEvent(){
+        $stmt = "SELECT evenement.id,title,description,votes,username,image_profile 
+                FROM evenement INNER JOIN account ON owner = account.id 
+                ORDER BY evenement.id DESC";
+        return $this->_connexion->query($stmt);
+
+    }
 }

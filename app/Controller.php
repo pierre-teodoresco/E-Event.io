@@ -6,15 +6,13 @@ class Controller{
     private $action;
     private $postParams;
 
-
-
     public function __construct ($controllerName, $action, $postParams)
     {
 
         if($controllerName == null || trim($controllerName) == '' || $controllerName == 'Controller') {
             // Définir au préalable une classe "Controller" par défaut,
             // afin de faire fonctionner correctement le reste du code
-            $controllerName = 'DefaultController';
+            $controllerName = 'EventController';
         }
 
         if(!class_exists($controllerName)) {

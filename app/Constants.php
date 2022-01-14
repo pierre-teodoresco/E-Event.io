@@ -6,10 +6,8 @@
 final class Constants
 {
     // Les constantes relatives aux chemins
-
     const REPERTOIRE_VUES        = '/views/';
 
-    const REPERTOIRE_OBJECTS     = '/app/Objects/';
 
     const REPERTOIRE_MODELE      = '/models/';
 
@@ -19,17 +17,12 @@ final class Constants
 
     const REPERTOIRE_CONTROLEURS = '/controllers/';
 
-
     public static function repertoireRacine() {
         return realpath(__DIR__ . '/../');
     }
 
     public static function repertoireNoyau() {
         return self::repertoireRacine() . self::REPERTOIRE_NOYAU;
-    }
-
-    public static function repertoireObjects() {
-        return self::repertoireRacine() . self::REPERTOIRE_OBJECTS;
     }
 
     public static function repertoireExceptions() {
@@ -47,6 +40,5 @@ final class Constants
     public static function repertoireControleurs() {
         return self::repertoireRacine() . self::REPERTOIRE_CONTROLEURS;
     }
-
 
 }

@@ -8,13 +8,8 @@
     <title>E-Event.io!</title>
 </head>
 <body>
-<header>
-    <h1>E-Event.io!</h1>
-</header>
     <?php echo $content ?>
-<footer>
-    <p>Pied de page provisoire</p>
-</footer>
+
 </body>
 
 </html>
