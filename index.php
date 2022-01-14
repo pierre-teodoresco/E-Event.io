@@ -23,15 +23,9 @@ catch (ControleurException $O_exception)
 }
 
 
-$data = [
-    'id' => 4,
-    'point' => '36',
-    'description' => 'epsilon2',
-    'event' => 'Zeventtt'
-];
-
-$comm = new AdditionnalContent($data);
-
-
-
-
+$event = new Event(2);
+$event->setDescription('Evenement incr');
+echo $event->getDescription();
+$event->destroy();
+$event->setDescription('Evenement incr Malgré le destroy');
+echo $event->getDescription();

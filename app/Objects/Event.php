@@ -10,8 +10,6 @@ class Event extends ObjectBase{
     private $illustration;
     private $addcontent;
 
-
-
     public function getId()
     {
         return $this->id;
@@ -20,7 +18,7 @@ class Event extends ObjectBase{
     public function setId($id)
     {
         $this->id = $id;
-        $this->updateAttribute('id', $id);
+        $this->updateOrCreate();
     }
 
     public function getTitle()

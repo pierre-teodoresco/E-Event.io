@@ -102,4 +102,10 @@ abstract class Model{
         $query->execute();
     }
 
+    public function deleteOne($id){
+        $sql = 'DELETE FROM '.$this->table.' WHERE id='.$id;
+        $query= $this->_connexion->prepare($sql);
+        $query->execute();
+    }
+
 }

@@ -22,7 +22,7 @@ class User extends ObjectBase{
     public function setId($id)
     {
         $this->id = $id;
-        $this->updateAttribute('id', $id);
+        $this->updateOrCreate();
     }
 
     public function getRole()
