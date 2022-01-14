@@ -53,34 +53,7 @@ $role = $_SESSION['role'];
         </ul>
     </navbar>
     <div class="feed">
-        <?php
-        $db_username = 'phpproject';
-        $db_password = 'qyfzuf-0vepna-zynkUj';
-        $db_name = 'phpproject';
-        $db_host = 'localhost';
-        $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
-        or die('could not connect to database');
-
-        $stmt = $db->prepare("SELECT evenement.id,title,description,votes,username,image_profile FROM evenement INNER JOIN account ON owner = account.id ORDER BY evenement.id DESC");
-        $stmt->execute();
-
-        foreach ($stmt->get_result() as $row)
-        {
-            echo "<div class=\"container\">";
-            echo "<h3> $row[title]</h3>";
-            echo "<h4> <img src='img/$row[image_profile]' width='100' alt=''> Autheur : <span> $row[username]</span></h4>";
-            echo "<p> $row[description]</p>";
-            echo "<div class=\"right\">";
-
-            echo "<div class=\"article-footer\">";
-            echo "<a href=\"\" class=\"button sucess\">";
-            echo  ($row[votes]) <= 1 ? "$row[votes] Vote" : "$row[votes] Votes";
-            echo "</a>";
-            echo "<a href=\"\" class=\"button\">Voir l'evenement</a>";
-            echo "</div>";
-            echo "</div>";
-            echo"</div>";
-        }
+        <?php echo $data['allEvent'];
         ?>
 
     </div>
