@@ -26,29 +26,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="index.php &amp; css clean">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eevent/Routeur.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/404.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/AutoLoad.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/Constants.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/Model.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/View.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/controllers/DefaultController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/controllers/Routeur.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/controllers/UsersController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/models/UserModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/verif.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/main/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/template.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/users/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/users/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/article.php" beforeDir="false" afterPath="$PROJECT_DIR$/eevent/article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/eevent/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/eevent/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/js/eevent.js" beforeDir="false" afterPath="$PROJECT_DIR$/eevent/js/eevent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/eevent/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/eevent/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/resetpwd.php" beforeDir="false" afterPath="$PROJECT_DIR$/eevent/resetpwd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/sendmail.func.php" beforeDir="false" afterPath="$PROJECT_DIR$/eevent/sendmail.func.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/todo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eevent/verif.php" beforeDir="false" afterPath="$PROJECT_DIR$/eevent/verif.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/testmail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,18 +105,19 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/eevent" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/app" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/eevent" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/eevent/img" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mvc/app" />
+      <recent name="$PROJECT_DIR$/eevent" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -138,7 +136,7 @@
       <workItem from="1641993295970" duration="1969000" />
       <workItem from="1642004537658" duration="10965000" />
       <workItem from="1642018615453" duration="15297000" />
-      <workItem from="1642081283842" duration="1088000" />
+      <workItem from="1642081283842" duration="14151000" />
     </task>
     <task id="LOCAL-00001" summary="acceuil.php">
       <created>1638880538590</created>
@@ -189,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639389064473</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="index.php &amp; css clean">
+      <created>1642086760996</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1642086760996</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,10 +239,11 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="451" y="256" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900/-80.-900.1600.900@0.0.1440.900" timestamp="1642081302344" />
-    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1642072966959">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="458" y="220" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1642097719053">
+      <screen x="0" y="25" width="1440" height="875" />
     </state>
     <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1642072966959" />
+    <state x="458" y="220" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1440.875@0.25.1440.875" timestamp="1642097719053" />
     <state x="482" y="-521" width="475" height="284" key="ComposerInitDialogKey" timestamp="1641888927355">
       <screen x="-80" y="-875" width="1600" height="875" />
     </state>
@@ -258,11 +264,23 @@
       <screen x="-80" y="-875" width="1600" height="875" />
     </state>
     <state width="1398" height="228" key="GridCell.Tab.0.right/0.25.1440.875/-80.-875.1600.875@-80.-875.1600.875" timestamp="1641894827107" />
+    <state x="471" y="180" key="NewPhpClassDialog" timestamp="1642087314419">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="471" y="180" key="NewPhpClassDialog/0.0.1440.900/-80.-900.1600.900@0.0.1440.900" timestamp="1642087314419" />
     <state x="559" y="375" key="NewPhpFileDialog" timestamp="1642016595456">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="559" y="375" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1642016595456" />
     <state x="541" y="-510" key="NewPhpFileDialog/0.25.1440.875/-80.-875.1600.875@-80.-875.1600.875" timestamp="1641889438920" />
     <state x="559" y="390" key="NewPhpFileDialog/0.25.1440.875/-80.-875.1600.875@0.25.1440.875" timestamp="1642006154124" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1642086771021">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-80.-875.1600.875@0.0.1440.900" timestamp="1642086771021" />
+    <state x="545" y="256" key="refactoring.ChangeSignatureDialog" timestamp="1642090992972">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="545" y="256" key="refactoring.ChangeSignatureDialog/0.25.1440.875@0.25.1440.875" timestamp="1642090992972" />
   </component>
 </project>
