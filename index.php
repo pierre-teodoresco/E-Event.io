@@ -21,11 +21,3 @@ catch (ControleurException $O_exception)
 {
     echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
 }
-
-
-$event = new Event(2);
-$event->setDescription('Evenement incr');
-echo $event->getDescription();
-$event->destroy();
-$event->setDescription('Evenement incr Malgré le destroy');
-echo $event->getDescription();

@@ -34,9 +34,10 @@ abstract class ObjectBase{
         foreach($constructData as $key=> $value){
             $method = 'set'.ucfirst($key);
             if(method_exists($this, $method)){
-                $this->$method($value);
                 $this->data[$key] = $value;
+                $this->$method($value);
             }
+
         }
     }
 
@@ -48,6 +49,7 @@ abstract class ObjectBase{
 
     public function updateOrCreate(){
         foreach ($this->data as $key => $value) {
+            echo $key.' = '.$value.'<br>';
             $method = 'get'.ucfirst($key);
             $this->data[$key] = $this->$method();
         }
