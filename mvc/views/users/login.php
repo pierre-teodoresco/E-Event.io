@@ -18,6 +18,6 @@
     </div>
 
     <input type="submit" id='submit' value='LOGIN' class="buttonConnexion">
-    <a href="?controller=users&action=register" class="buttonLogin">Créer un compte</a>
+    <a href="?controller=user&action=register" class="buttonLogin">Créer un compte</a>
 </form>
 </body>

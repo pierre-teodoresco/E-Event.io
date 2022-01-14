@@ -10,7 +10,6 @@ $id = $_SESSION['id'];
 $role = $_SESSION['role'];
 const CONTROLLER_PARAMETER = 'controller';
 const ACTION_PARAMETER = 'action';
-
 try
 {
     $A_postParams = isset($_POST) ? $_POST : null;

@@ -11,6 +11,6 @@
     </div>
     <br>
     <input type="submit"  id='submit' name="action" value='REGISTER' class="buttonConnexion">
-    <a href="?controller=users&action=login" class="buttonLogin">Déjà un compte ?</a>
+    <a href="?controller=user&action=login" class="buttonLogin">Déjà un compte ?</a>
 </form>
 </body>

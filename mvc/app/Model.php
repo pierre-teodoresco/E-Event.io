@@ -27,24 +27,6 @@ abstract class Model{
         }
     }
 
-    public function getOne($id){
-        $sql = 'SELECT * FROM '.$this->table.' WHERE id='.$id ;
-        $query = $this->_connexion->prepare($sql);
-        $query->execute();
-        $data = $query->fetch();
-        return new (ucfirst($this->className))($data);
-    }
-
-    public function getAll(){
-        $objects = [];
-        $sql = 'SELECT * FROM '.$this->table . ' ORDER BY id DESC';
-        $query = $this->_connexion->prepare($sql);
-        $query->execute();
-        while($data = $query->fetch(PDO::FETCH_ASSOC)){
-            $objects[] = new (ucfirst($this->className))($data);
-        }
-        return $objects;
-    }
 
     public function updateOrCreate($data){
         $sql = 'SELECT COUNT(*) FROM '.$this->table.' WHERE id = \''.$data['id'].'\'';

@@ -51,51 +51,6 @@ $role = $_SESSION['role'];
                 </a>
             </li>
         </ul>
-        <div class="asideDiv">
-            <div class="texte">
-                <div class="titreTop">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
-                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z"/>
-                    </svg>
-                    <p> Top 5 </p>
-                </div>
-                <ul class="sidebarTop">
-                    <?php
-                    $classement = ['Premier', 'Deuxième', 'Trosième', 'Quatrième', 'Cinquième'];
-
-
-                    $db_username = 'phpproject';
-                    $db_password = 'qyfzuf-0vepna-zynkUj';
-                    $db_name = 'phpproject';
-                    $db_host = 'localhost';
-                    $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
-                    or die('could not connect to database');
-
-                    $stmt = $db->prepare("SELECT id,title,votes FROM evenement ORDER BY votes DESC limit 5");
-                    $stmt->execute();
-                    $i= 0;
-                    foreach ($stmt->get_result() as $row)
-                    {
-                        echo "<li>";
-                        echo "<a href=\"$row[id]\">";
-                        echo "$classement[$i]";
-                        echo "</a>";
-                        echo "<p>$row[votes] - $row[title]</p>";
-                        echo "</li>";
-                        $i = $i+1;
-                    }
-                    ?>
-                </ul>
-            </div>
-        </div>
-        <div class="co">
-            <a href="#">Conditions d’utilisation</a>
-            <a href="#">Politique de Confidentialité</a>
-            <a href="#">Politique relative aux cookies</a>
-            <a href="#">Accessibilité</a>
-            <a href="#">Informations sur les publicités</a>
-            <p>© 2022 E-Event.io!</p>
-        </div>
     </navbar>
     <div class="feed">
         <?php
