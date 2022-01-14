@@ -10,12 +10,10 @@ final class EventController
     }
 
     public function index(){
-        echo "fdp";
         $index_data = [
             'allEvent' => ''
         ];
         $index_data['allEvent'] = $this->model->getAllEvent();
-        echo "ta darone";
         View::montrer('main/index', $index_data);
     }
 }

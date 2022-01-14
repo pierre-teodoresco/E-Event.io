@@ -26,26 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="index.php &amp; css clean">
-      <change afterPath="$PROJECT_DIR$/eevent/Routeur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/404.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/app/AutoLoad.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/app/Constants.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/app/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/app/Model.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/app/View.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/controllers/DefaultController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/controllers/Routeur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/controllers/UsersController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/models/UserModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/verif.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/views/main/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/views/template.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/views/users/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/views/users/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/EventController.php" afterDir="false" />
     </list>
     <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,6 +119,7 @@
       <workItem from="1642004537658" duration="10965000" />
       <workItem from="1642018615453" duration="15297000" />
       <workItem from="1642081283842" duration="14151000" />
+      <workItem from="1642177732201" duration="395000" />
     </task>
     <task id="LOCAL-00001" summary="acceuil.php">
       <created>1638880538590</created>
