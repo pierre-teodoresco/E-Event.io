@@ -80,13 +80,12 @@ final class UserController{
             $this->model->checkRegister($registerData['email'], $password, $options, $registerData['rank']);
             $this->sendEmailPassword($registerData['email'], $password);
             $registerData['accountCreate'] = '<p style=\'color:green\'>Felicitation, regarder votre email pour avoir vos idenntifications de connexions. (Regarder dans vos spam)/p>';
-            View::montrer('users/register', $registerData);
-        }else {
-            View::montrer('users/register', $registerData);
         }
+        View::montrer('users/register', $registerData);
     }
 
     public function admin(){
+
         if(isset($_SESSION['role'])){
             $role = $_SESSION['role'];
             if($role !=4){
@@ -94,9 +93,10 @@ final class UserController{
             }
         }
         else{
-            //header('Location: ?');
+            header('Location: ?');
         }
-
+        $campagneModel = new CampagneModel();
+        $eventModel = new EventModel();
         $admin_data = [
             'headEvent' => '',
             'tableCampagne' => '',
@@ -104,14 +104,13 @@ final class UserController{
             'userCount' => '',
             'eventCount' => ''
         ];
-        $eventOnlineCount = $this->model->countOnlineEvents();
+        $eventOnlineCount = $eventModel->countOnlineEvents();
         if ($eventOnlineCount == 0) {
             $admin_data['headEvent'] = "<p>Aucun evenement n'est en cours</p><p>Vous pouvez créer un evenement en cliquant sur lien</p>";
         } else {
             $admin_data['headEvent'] = "<p>Un evenement est en cours</p>";
         }
-
-        $campagnes = $this->model->tableCampagne();
+        $campagnes = $campagneModel->getAll();
         $dataCampagnes= "";
         foreach ($campagnes as $campagne){
             $dataCampagnes .= "<tr><td>$campagne[id]</td><td>$campagne[name]</td><td>$campagne[datedeb]</td><td>$campagne[datefin]</td><td>$campagne[points]</td></tr>";
@@ -131,8 +130,8 @@ final class UserController{
                        <td>$user[point]</td></tr>";
         }
         $admin_data['tableUsers'] = $dataValues;
-        $admin_data['userCount'] = $this->model->userCount();
-        $admin_data['eventCount'] = $this->model->eventCount();
+        $admin_data['userCount'] = $this->model->getCount();
+        $admin_data['eventCount'] = $eventModel->getCount();
         View::montrer('users/admin', $admin_data);
     }
 

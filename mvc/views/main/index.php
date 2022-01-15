@@ -14,7 +14,7 @@ $role = $_SESSION['role'];
                     </svg>Accueil
                 </a>
             </li>
-            <?php if ($role != 1) {?>
+            <?php if ($role == 2 || $role == 4) {?>
             <li>
                 <a id="myBtn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">

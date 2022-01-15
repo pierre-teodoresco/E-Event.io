@@ -23,3 +23,8 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+function countText(val){
+    let text = document.getElementById("commentairesec");
+    document.getElementById('characters').innerText = text.length;
+}

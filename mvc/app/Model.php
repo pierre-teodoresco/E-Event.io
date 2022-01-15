@@ -9,7 +9,6 @@ abstract class Model{
 
     // Propriétés permettant de personnaliser les requêtes
     public $table;
-    public $className;
 
 
     public function getConnection(){
@@ -91,4 +90,9 @@ abstract class Model{
         $query->execute();
     }
 
+    public function getCount(){
+        $stmt = $this->_connexion->prepare("SELECT COUNT(*) FROM ".$this->table);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
 }

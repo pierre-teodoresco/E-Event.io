@@ -6,7 +6,6 @@ class EventModel extends Model
     {
         // Nous définissons la table par défaut de ce modèle
         $this->table = 'evenement';
-        $this->className = 'event';
 
         // Nous ouvrons la connexion à la base de données
         $this->getConnection();
@@ -35,64 +34,40 @@ class EventModel extends Model
         return "non";
     }
 
-    public function getPoint($id){
-        $stmt = "SELECT point FROM account WHERE id = $id";
-        $stmt = $this->_connexion->query($stmt);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row[point];
-    }
-
-
-    public function userExist($username){
-        $sql = "SELECT COUNT(*) FROM account WHERE username = '".$username."'";
-        $query = $this->_connexion->prepare($sql);
-        $query->execute();
-        $count = $query->fetchColumn();
-        if($count == 0 )return false;
-        else return true;
-    }
-
-    public function checkUsername($user, $password, $options, $id){
-        $hash = password_hash($password, PASSWORD_BCRYPT, $options);
-        $stmt = $this->_connexion->prepare("UPDATE account SET username = '".$user."', password = '".$hash."' WHERE id = '".$id."'");
-        $stmt->execute();
-    }
 
     public function getEvent($id){
         if(is_int(intval($id))) {
-
-            $stmt = "SELECT evenement.id,title,description,content,votes,username,image_profile,owner FROM evenement INNER JOIN account ON owner = account.id WHERE evenement.id = $id";
+            $stmt = "SELECT evenement.id,title,description,content,votes,username,image_profile,owner 
+                    FROM evenement INNER JOIN account ON owner = account.id WHERE evenement.id = $id";
             $stmt = $this->_connexion->query($stmt);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $value= "";
-            $value .= "<div class=\"container\">
-            <h3> $row[title]</h3>
-            <h4> <img src='img/$row[image_profile]' width='100' alt=''> Autheur : <span> $row[username]</span></h4>
-            <p> $row[description]</p>
-            <p> $row[content]</p>
-            <h3>Contenu supplémentaire</h3>
-            <table>
-            <thead>
-            <tr>
-            <th>Points</th>
-            <th>Description</th>
-            </tr>
-</thead><tbody>";
-            $stmt2 = "SELECT point,description FROM `addcontent` WHERE addcontent.event = $id";
-            $result2 = $this->_connexion->query($stmt2);
-            foreach ($result2 as $row2){
-                $value .= "
-                <tr>
-                 <td> $row2[point]</td>
-                 <td> $row2[description]</td>
-                </tr>
-                ";
-            }
-            $value .= "</tbody></table></div>";
-            return $value;
-        }else{
-            return "non";
+            return $row;
         }
-        throw new Exception('L\'article choisie est introuvable.');
+        else{
+            throw new Exception("id d'évènement invalide ou évènement introuvable");
+        }
+    }
+
+    public function getAdditionnalContentOfEvent($id){
+        $stmt2 = "SELECT point,description FROM `addcontent` WHERE addcontent.event = $id";
+        return $this->_connexion->query($stmt2);
+    }
+
+    public function countOnlineEvents(){
+        $date = date('Y-m-d');
+        $stmt = $this->_connexion->prepare("SELECT * FROM `campagne` WHERE ('" . $date . "' >= datedeb AND '" . $date . "' <= datefin)");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    public function addPoint($id, $point, $comment, $eventid){
+        $stmt = $this->_connexion->prepare("UPDATE account SET point = point - '".$point."' WHERE id = '".$id."'");
+        $stmt->execute();
+        $stmt3 = $this->_connexion->prepare("UPDATE evenement SET votes = votes + '".$point."' WHERE id = '".$eventid."'");
+        $stmt3->execute();
+        if($comment != ""){
+            $stmt2 = $this->_connexion->prepare("INSERT INTO comment(author, description, event) VALUES ('".$id."', '".$comment."', '".$eventid."')");
+            $stmt2->execute();
+        }
     }
 }

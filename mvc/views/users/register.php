@@ -1,14 +1,12 @@
-<form action="#" method="POST" class="formConnexion">
-    <h1>E-EVENT.IO!
-        <i class="bi bi-person-circle"></i>
-    </h1>
+<div class="auth">
 
-    <label for="email" class="labelConnexion">E-mail</label>
-
-    <div class="divIdPass">
-        <?php echo $data['emailError']; ?>
-        <input type="email" name="email" placeholder="mon.email@mail.fr" id="email" class="idPass">
+    <div class="left">
+        <h3 class="title">E Event.io !</h3>
+        <p>Entité de soutien lors de l'organisation d'évenement, notament pour les étudiants d'Aix-Marseille Université</p>
     </div>
+    <form method="post" id="login" class="right">
+        <?php echo $data['emailError']; ?>
+        <input type="text" name="email" id="email" placeholder="Adresse mail" value="<?php echo $data['email'];?>">
 
         <?php echo $data['rankError'];?>
         <label id="donateurRole">
@@ -18,8 +16,10 @@
         <label id="organisateurRole">
             <input type="radio" name="role" value="2" class="role">Organisateur
         </label>
-    <br>
-    <input type="submit"  id='submit' name="action" value='REGISTER' class="buttonConnexion">
-    <a href="?controller=user&action=login" class="buttonLogin">Déjà un compte ?</a>
-</form>
+
+        <a href="javascript:;" onclick="document.getElementById('login').submit();" class="button">S'enregistrer</a>
+        <a href="?controller=user&action=login" class="button sucess">Déjà un compte ?</a>
+
+    </form>
+</div>
 </body>

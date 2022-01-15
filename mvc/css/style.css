@@ -209,28 +209,51 @@ navbar{
   cursor: pointer;
 }
 .auth{
-  width: 500px;
-  background-color: #dddddd;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  display: flex;
+  margin-top: 15%;
+  margin-left: 5%;
+
+  margin-right: 5%;
 }
-.auth .title{
-  font-weight: normal;
+.auth .left{
+  width: 130%;
+  margin-right: 15%;
+}
+.auth .left .title{
+  font-weight: bold;
+  color: #3f6ad8;
+  font-size: 50px;
+}
+.auth .left p{
+  font-size: 28px;
+}
+.auth .right{
+  display: flex;
+  width: 1000px;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 4%;
+  padding-bottom: 3%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 10px;
+}
+input[type=text], input[type=password]{
   width: 100%;
-  margin-left: auto;
+  padding:12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.center{
   margin-right: auto;
-}
-.auth form{
-  display: flex;
-  flex-direction: column;
-}
-.cyan {
-  color: rgb(61,183,228);
-}
-.column{
-  display: flex;
-  flex-direction: column;
+  margin-top: 10%;
+  margin-left: auto;
+  text-decoration: none;
 }
 
+.right a{
+  margin-top: 10px;
+}

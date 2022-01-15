@@ -41,9 +41,42 @@ $role = $_SESSION['role'];
 
         <div class="container">
             <h3 class="title">Commentaire</h3>
+            <?php if($role['role'] == 1){?>
+            <div class="right">
+                <a id="myBtn" class="button">Donner des points</a>
+            </div>
+            <?php } ?>
             <?php echo $data['comment'];?>
         </div>
     </div>
 
 </div>
 
+<div id="myModal" class="modal">
+
+    <form method="post" name="comment">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Donner des points à l'évenement</div>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <label for="article-title">Nombre de points </label>
+                <input type="number" name="givepoint" required="required" min="1" value="1" max="<?php echo $data['point'];?>">
+                <label for="article-desc">Laisser un commentaire (facultatif)</label>
+                <textarea name="commentairesec" maxlength="240" id="commentairesec" rows="10" oninput="countText(this)"></textarea>
+                <div class="right">
+                    <span id="characters"></span>/240
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <div class="right">
+                    <input type="submit" name="action" value="ValiderCom">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="js/eevent.js"></script>
