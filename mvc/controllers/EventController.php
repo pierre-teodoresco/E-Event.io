@@ -13,7 +13,8 @@ final class EventController
         $index_data = [
             'allEvent' => '',
             'event' => '',
-            'comment' => ''
+            'comment' => '',
+            'modal' => ''
         ];
 
         if(isset($_GET['id'])){
@@ -39,8 +40,18 @@ final class EventController
             </div>
             ";
             }
+            if($_SESSION[username] == "" && $_SESSION[id] != ""){
+                echo("client connecté mais sans account");
+
+                $modal .= "<script> var modal = document.getElementById(\"myModal\");
+                    modal.style.display = \"block\";
+                </script>";
+            }else{
+                echo "non connecté";
+            }
         }
         $index_data['allEvent'] = $value;
+        $index_data['modal'] = $modal;
         View::montrer('main/index', $index_data);
     }
 }

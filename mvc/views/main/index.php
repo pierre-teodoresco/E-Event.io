@@ -49,21 +49,23 @@ $role = $_SESSION['role'];
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">Création d'article</div>
-                <span class="close">&times;</span>
+                <div class="modal-title">Première connexion</div>
             </div>
             <div class="modal-body">
-                <label for="article-title">Nom de l'article</label>
+                <label for="article-title">Votre pseudo</label>
                 <input name="article-title" type="text" id="article-title">
 
-                <label for="article-desc">Descrition (200 caractères)</label>
-                <textarea name="article-desc" id="article-desc" rows="10"></textarea>
+                <label for="account-password">Votre nouveau mot de passes</label>
+                <input name="article-title" type="password" id="account-password">
 
-                <label for="article-content">Contenu </label>
-                <textarea name="article-content" id="article-content" rows="25"></textarea>
+                <label for="account-passwordc">Confirmation</label>
+                <input name="article-title" type="password" id="account-passwordc">
+
             </div>
             <div class="modal-footer">
-                <input type="submit" name="action" value="newArticle">
+                <div class="right">
+                <a href="" class="button">Valider mes informations</a>
+                </div>
             </div>
         </div>
     </form>
@@ -71,3 +73,4 @@ $role = $_SESSION['role'];
 
 <script src="js/eevent.js"></script>
 
+<?php echo $data['modal'];

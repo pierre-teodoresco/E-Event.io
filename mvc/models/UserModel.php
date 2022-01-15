@@ -11,13 +11,13 @@ class UserModel extends Model{
     }
 
     public function checkLogin($email, $password){
-        $stmt = $this->_connexion->prepare("SELECT password,id,role FROM ".$this->table." WHERE email = '".$email."'");
+        $stmt = $this->_connexion->prepare("SELECT username,password,id,role FROM ".$this->table." WHERE email = '".$email."'");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         if (password_verify($password, $result->password)) {
             //Penser a enable le session start
             session_start();
-            $_SESSION['username'] = $email;
+            $_SESSION['username'] = $result->username;
             $_SESSION['id'] = $result->id;
             $_SESSION['role'] = $result->role;
             //Redirigier l'user a la page index
