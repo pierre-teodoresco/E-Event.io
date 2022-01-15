@@ -21,15 +21,15 @@ class UserModel extends Model{
             $_SESSION['id'] = $result->id;
             $_SESSION['role'] = $result->role;
             //Redirigier l'user a la page index
-            header('Location: index.php');
+            header('Location: ?controller=event&action=index');
             return true;
         }
         return false;
     }
 
-    public function checkRegister($email, $password, $options){
+    public function checkRegister($email, $password, $options, $rank){
         $hash = password_hash($password, PASSWORD_BCRYPT, $options);
-        $stmt = $this->_connexion->prepare("INSERT INTO `account`(`email`, `role`, `password`) VALUES ('".$email."', '0', '".$hash."') ");
+        $stmt = $this->_connexion->prepare("INSERT INTO `account`(`email`, `role`, `password`) VALUES ('".$email."', '".$rank."', '".$hash."') ");
         $stmt->execute();
 
     }

@@ -43,15 +43,12 @@ final class EventController
                         <a href=\"?controller=event&action=index&id=$event[id]\" class=\"button\">Voir l'evenement</a>
                     </div>
                 </div>
-            </div>
-            ";
+            </div>";
             }
             $index_data['allEvent'] = $value;
-            $index_data['point'] = $this->model->getPoint($_SESSION['id']);
+            if($_SESSION['id']) $index_data['point'] = $this->model->getPoint($_SESSION['id']);
             if($_SESSION[username] == "" && $_SESSION[id] != ""){
-                echo("client connecté mais sans account");
-
-                $modal = "<script> var modal = document.getElementById(\"myModal\");
+                $modal = "<script> var modal = document.getElementById(\"changepassword\");
                     modal.style.display = \"block\";
                 </script>";
 

@@ -14,6 +14,16 @@ $role = $_SESSION['role'];
                     </svg>Accueil
                 </a>
             </li>
+            <?php if ($role != 1) {?>
+            <li>
+                <a id="myBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
+                        <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                    </svg>Créer un article
+                </a>
+            </li>
+            <?php }?>
             <li>
                 <a href="<?php echo($username != "") ?"?controller=user&action=edit" : "?controller=user&action=login" ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
@@ -33,11 +43,19 @@ $role = $_SESSION['role'];
                     Pannel Admin
                 </a>
             </li>
-                <?php echo "Bonjour $_SESSION[id]"?>
             <?php } if($username != ""){?>
             <li>
                 <p>Points : <?php echo $data['point']; ?></p>
             </li>
+                <li>
+                    <a href="views/users/logout.php">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
+                            <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                        Se deconnecter
+                    </a>
+                </li>
             <?php }?>
         </ul>
     </navbar>
@@ -48,9 +66,9 @@ $role = $_SESSION['role'];
     </div>
 
 </div>
-<div id="myModal" class="modal">
+<div id="changepassword" class="modal">
 
-    <form method="post">
+    <form method="post" id="force">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
@@ -71,14 +89,38 @@ $role = $_SESSION['role'];
             </div>
             <div class="modal-footer">
                 <div class="right">
-                <a href="" class="button">Valider mes informations</a>
-                    <input type="submit" id='submit' value='LOGIN' class="buttonConnexion">
+                <a href="javascript:;" onclick="document.getElementById('force').submit();" class="button">Valider mes informations</a>
                 </div>
             </div>
         </div>
     </form>
 </div>
 
+<div id="myModal" class="modal">
+
+    <form method="post" >
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Création d'article</div>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <label for="article-title">Nom de l'article</label>
+                <input name="article-title" type="text" id="article-title">
+
+                <label for="article-desc">Descrition (200 caractères)</label>
+                <textarea name="article-desc" id="article-desc" rows="10"></textarea>
+
+                <label for="article-content">Contenu </label>
+                <textarea name="article-content" id="article-content" rows="25"></textarea>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" name="action" value="newArticle">
+            </div>
+        </div>
+    </form>
+</div>
 <script src="js/eevent.js"></script>
 
 <?php echo $data['modal'];
