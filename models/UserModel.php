@@ -5,30 +5,32 @@ class UserModel extends Model{
     {
         // Nous définissons la table par défaut de ce modèle
         $this->table = 'account';
-        $this->className = 'user';
         // Nous ouvrons la connexion à la base de données
         $this->getConnection();
     }
 
     public function checkLogin($email, $password){
-        $stmt = $this->_connexion->prepare("SELECT password,id,role FROM ".$this->table." WHERE email = '".$email."'");
+        $stmt = $this->_connexion->prepare("SELECT username,password,id,role FROM ".$this->table." WHERE email = '".$email."'");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         if (password_verify($password, $result->password)) {
             //Penser a enable le session start
-            $_SESSION['username'] = $email;
+            if(!isset($_SESSION)){
+                session_start();
+            }
+            $_SESSION['username'] = $result->username;
             $_SESSION['id'] = $result->id;
             $_SESSION['role'] = $result->role;
             //Redirigier l'user a la page index
-            header('Location: index.php');
+            header('Location: ?controller=event&action=index');
             return true;
         }
         return false;
     }
 
-    public function checkRegister($email, $password, $options){
+    public function checkRegister($email, $password, $options, $rank){
         $hash = password_hash($password, PASSWORD_BCRYPT, $options);
-        $stmt = $this->_connexion->prepare("INSERT INTO `account`(`email`, `role`, `password`) VALUES ('".$email."', '0', '".$hash."') ");
+        $stmt = $this->_connexion->prepare("INSERT INTO `account`(`email`, `role`, `password`) VALUES ('".$email."', '".$rank."', '".$hash."') ");
         $stmt->execute();
 
     }
@@ -43,28 +45,27 @@ class UserModel extends Model{
         else return true;
     }
 
-    public function countOnlineEvents(){
-        $date = date('Y-m-d');
-        $stmt = $this->_connexion->prepare("SELECT * FROM `campagne` WHERE ('" . $date . "' >= datedeb AND '" . $date . "' <= datefin)");
-        $stmt->execute();
-        return $stmt->fetchColumn();
+    public function getPoint($id){
+        $stmt = "SELECT point FROM account WHERE id = $id";
+        $stmt = $this->_connexion->query($stmt);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row[point];
     }
 
-    public function tableCampagne(){
-        $stmt = "SELECT * FROM campagne";
-        return $this->_connexion->query($stmt);
+
+    public function userExist($username){
+        $sql = "SELECT COUNT(*) FROM account WHERE username = '".$username."'";
+        $query = $this->_connexion->prepare($sql);
+        $query->execute();
+        $count = $query->fetchColumn();
+        if($count == 0 )return false;
+        else return true;
     }
 
-    public function userCount(){
-        $stmt = $this->_connexion->prepare("SELECT COUNT(*) FROM account");
+    public function checkUsername($user, $password, $options, $id){
+        $hash = password_hash($password, PASSWORD_BCRYPT, $options);
+        $stmt = $this->_connexion->prepare("UPDATE account SET username = '".$user."', password = '".$hash."' WHERE id = '".$id."'");
         $stmt->execute();
-        return $stmt->fetchColumn();
-    }
-
-    public function eventCount(){
-        $stmt = $this->_connexion->prepare("SELECT COUNT(*) FROM evenement");
-        $stmt->execute();
-        return $stmt->fetchColumn();
     }
 
 

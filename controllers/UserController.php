@@ -15,7 +15,7 @@ final class UserController{
             'password' => '',
             'emailError' => '',
             'passwordError' => '',
-            ];
+        ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $login_data['email'] = $_POST['email'];
@@ -51,14 +51,22 @@ final class UserController{
 
         $registerData = [
             'email' => '',
+            'rank' => '',
             'emailError' => '',
+            'rankError' => '',
             'accountCreate' => ''
         ];
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $registerData['email'] = $_POST['email'];
+            $registerData['rank'] = $_POST['role'];
 
             if (empty($registerData['email'])) {
                 $registerData['emailError'] = '<p style=\'color:red\'>Renseignez une adresse mail</p>';
+                View::montrer('users/register', $registerData);
+                return;
+            }
+            if (empty($registerData['rank'])) {
+                $registerData['rankError'] = '<p style=\'color:red\'>Veuillez selectionner un role</p>';
                 View::montrer('users/register', $registerData);
                 return;
             }
@@ -69,16 +77,16 @@ final class UserController{
             }
             $options = ['cost' => 11,];
             $password = $this->randomPassword();
-            $this->model->checkRegister($registerData['email'], $password, $options);
+            $this->model->checkRegister($registerData['email'], $password, $options, $registerData['rank']);
             $this->sendEmailPassword($registerData['email'], $password);
             $registerData['accountCreate'] = '<p style=\'color:green\'>Felicitation, regarder votre email pour avoir vos idenntifications de connexions. (Regarder dans vos spam)/p>';
-            View::montrer('users/register', $registerData);
-        }else {
-            View::montrer('users/register', $registerData);
         }
+        View::montrer('users/register', $registerData);
     }
 
     public function admin(){
+        $campagneModel = new CampagneModel();
+        $eventModel = new EventModel();
         if(isset($_SESSION['role'])){
             $role = $_SESSION['role'];
             if($role !=4){
@@ -86,7 +94,7 @@ final class UserController{
             }
         }
         else{
-            //header('Location: ?');
+            header('Location: ?');
         }
 
         $admin_data = [
@@ -96,14 +104,13 @@ final class UserController{
             'userCount' => '',
             'eventCount' => ''
         ];
-        $eventOnlineCount = $this->model->countOnlineEvents();
+        $eventOnlineCount = $eventModel->countOnlineEvents();
         if ($eventOnlineCount == 0) {
             $admin_data['headEvent'] = "<p>Aucun evenement n'est en cours</p><p>Vous pouvez créer un evenement en cliquant sur lien</p>";
         } else {
             $admin_data['headEvent'] = "<p>Un evenement est en cours</p>";
         }
-
-        $campagnes = $this->model->tableCampagne();
+        $campagnes = $campagneModel->getAll();
         $dataCampagnes= "";
         foreach ($campagnes as $campagne){
             $dataCampagnes .= "<tr><td>$campagne[id]</td><td>$campagne[name]</td><td>$campagne[datedeb]</td><td>$campagne[datefin]</td><td>$campagne[points]</td></tr>";
@@ -114,17 +121,17 @@ final class UserController{
         $dataValues= "";
         foreach ($users as $user){
             $dataValues .= "<tr><td>".$user['id']."</td><td><div class=\"select-rank\"><select name=\"rank\" id=\"rank-select\">";
-            $dataValues .= ($user['role'] == 0) ? "<option value=\"0\" selected='selected'>Donateurs</option>" : "<option value=\"0\" >Donateurs</option>";
-            $dataValues .= ($user['role'] == 1) ? "<option value=\"1\" selected='selected'>Organisateur</option>" : "<option value=\"1\" >Organisateur</option>";
-            $dataValues .= ($user['role'] == 2) ? "<option value=\"2\" selected='selected'>Jury</option>" : "<option value=\"2\" >Jury</option>";
+            $dataValues .= ($user['role'] == 1) ? "<option value=\"0\" selected='selected'>Donateurs</option>" : "<option value=\"0\" >Donateurs</option>";
+            $dataValues .= ($user['role'] == 2) ? "<option value=\"1\" selected='selected'>Organisateur</option>" : "<option value=\"1\" >Organisateur</option>";
+            $dataValues .= ($user['role'] == 3) ? "<option value=\"2\" selected='selected'>Jury</option>" : "<option value=\"2\" >Jury</option>";
             $dataValues .= ($user['role'] == 4) ? "<option value=\"4\" selected='selected'>Administrateur</option>" : "<option value=\"4\" >Administrateur</option>";
             $dataValues .= "</select></div>
                     </td><td>$user[username]</td><td>$user[email]</td>
                        <td>$user[point]</td></tr>";
         }
         $admin_data['tableUsers'] = $dataValues;
-        $admin_data['userCount'] = $this->model->userCount();
-        $admin_data['eventCount'] = $this->model->eventCount();
+        $admin_data['userCount'] = $this->model->getCount();
+        $admin_data['eventCount'] = $eventModel->getCount();
         View::montrer('users/admin', $admin_data);
     }
 

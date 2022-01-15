@@ -12,8 +12,6 @@ abstract class Model{
 
     // Propriétés permettant de personnaliser les requêtes
     public $table;
-    public $className;
-
 
     public function getConnection(){
         // On supprime la connexion précédente
@@ -92,6 +90,12 @@ abstract class Model{
         $sql = 'DELETE FROM '.$this->table.' WHERE id='.$id;
         $query= $this->_connexion->prepare($sql);
         $query->execute();
+    }
+
+    public function getCount(){
+        $stmt = $this->_connexion->prepare("SELECT COUNT(*) FROM ".$this->table);
+        $stmt->execute();
+        return $stmt->fetchColumn();
     }
 
 }
