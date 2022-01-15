@@ -85,8 +85,7 @@ final class UserController{
     }
 
     public function admin(){
-        $campagneModel = new CampagneModel();
-        $eventModel = new EventModel();
+
         if(isset($_SESSION['role'])){
             $role = $_SESSION['role'];
             if($role !=4){
@@ -96,7 +95,8 @@ final class UserController{
         else{
             header('Location: ?');
         }
-
+        $campagneModel = new CampagneModel();
+        $eventModel = new EventModel();
         $admin_data = [
             'headEvent' => '',
             'tableCampagne' => '',
