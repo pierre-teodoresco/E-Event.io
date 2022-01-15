@@ -16,6 +16,7 @@ class UserModel extends Model{
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         if (password_verify($password, $result->password)) {
             //Penser a enable le session start
+            session_start();
             $_SESSION['username'] = $email;
             $_SESSION['id'] = $result->id;
             $_SESSION['role'] = $result->role;

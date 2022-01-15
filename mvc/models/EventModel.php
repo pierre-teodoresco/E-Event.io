@@ -38,23 +38,34 @@ class EventModel extends Model
     public function getEvent($id){
         if(is_int(intval($id))) {
 
-            $stmt = "SELECT evenement.id,title,description,content,votes,username,image_profile FROM evenement INNER JOIN account ON owner = account.id WHERE evenement.id = $id";
+            $stmt = "SELECT evenement.id,title,description,content,votes,username,image_profile,owner FROM evenement INNER JOIN account ON owner = account.id WHERE evenement.id = $id";
             $stmt = $this->_connexion->query($stmt);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $value= "";
             $value .= "<div class=\"container\">
-         <h3> $row[title]</h3>
-         <h4> <img src='img/$row[image_profile]' width='100' alt=''> Autheur : <span> $row[username]</span></h4>
-         <p> $row[description]</p>
-         <p> $row[content]</p>
-         <div class=\"right\">
-         <div class=\"article-footer\">
-         <a href=\"\" class=\"button sucess\">12 Votes
-        </a>
-         <a href=\"\" class=\"button\">Voir l'evenement</a>
-         </div>
-         </div>
-        </div>";
+            <h3> $row[title]</h3>
+            <h4> <img src='img/$row[image_profile]' width='100' alt=''> Autheur : <span> $row[username]</span></h4>
+            <p> $row[description]</p>
+            <p> $row[content]</p>
+            <h3>Contenu supplémentaire</h3>
+            <table>
+            <thead>
+            <tr>
+            <th>Points</th>
+            <th>Description</th>
+            </tr>
+</thead><tbody>";
+            $stmt2 = "SELECT point,description FROM `addcontent` WHERE addcontent.event = $id";
+            $result2 = $this->_connexion->query($stmt2);
+            foreach ($result2 as $row2){
+                $value .= "
+                <tr>
+                 <td> $row2[point]</td>
+                 <td> $row2[description]</td>
+                </tr>
+                ";
+            }
+            $value .= "</tbody></table></div>";
             return $value;
         }else{
             return "non";

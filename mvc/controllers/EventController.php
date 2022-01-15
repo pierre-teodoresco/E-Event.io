@@ -32,8 +32,8 @@ final class EventController
                 <p> $event[description]</p>
                 <div class=\"right\">
                     <div class=\"article-footer\">
-                        <a href=\"\" class=\"button sucess\">12 Votes</a>
-                        <a href=\"\" class=\"button\">Voir l'evenement</a>
+                        <a href=\"\" class=\"button sucess\">$event[votes] Votes</a>
+                        <a href=\"?controller=event&action=index&id=$event[id]\" class=\"button\">Voir l'evenement</a>
                     </div>
                 </div>
             </div>

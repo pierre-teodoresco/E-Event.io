@@ -21,6 +21,7 @@ body{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   height: auto;
 }
+
 .container h3{
   font-size: 32px;
   color: #495057;
@@ -69,6 +70,13 @@ table{
   display: flex;
   justify-content: space-around;
 }
+.row-2{
+  display: flex;
+}
+.row-2 p:first-child {
+  width: 200px;
+}
+
 @media (max-width: 950px) {
   .row-3{
     flex-direction: column;
@@ -221,3 +229,8 @@ navbar{
 .cyan {
   color: rgb(61,183,228);
 }
+.column{
+  display: flex;
+  flex-direction: column;
+}
+
