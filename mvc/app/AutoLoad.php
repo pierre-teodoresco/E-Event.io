@@ -10,11 +10,6 @@ final class AutoLoad
         self::_charger($S_fichier);
     }
 
-    public static function chargerClassesObjects ($S_nomDeClasse)
-    {
-        $S_fichier = Constants::repertoireObjects() . "$S_nomDeClasse.php";
-        self::_charger($S_fichier);
-    }
 
     public static function chargerClassesException ($S_nomDeClasse)
     {
@@ -55,7 +50,6 @@ final class AutoLoad
 
 // J'empile tout ce beau monde comme j'ai toujours appris à le faire...
 spl_autoload_register('AutoLoad::chargerClassesNoyau');
-spl_autoload_register('AutoLoad::chargerClassesObjects');
 spl_autoload_register('AutoLoad::chargerClassesException');
 spl_autoload_register('AutoLoad::chargerClassesModele');
 spl_autoload_register('AutoLoad::chargerClassesVue');

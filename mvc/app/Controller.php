@@ -12,7 +12,7 @@ class Controller{
         if($controllerName == null || trim($controllerName) == '' || $controllerName == 'Controller') {
             // Définir au préalable une classe "Controller" par défaut,
             // afin de faire fonctionner correctement le reste du code
-            $controllerName = 'DefaultController';
+            $controllerName = 'EventController';
         }
 
         if(!class_exists($controllerName)) {

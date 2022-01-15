@@ -5,9 +5,6 @@ require 'app/AutoLoad.php';
 if(!isset($_SESSION)){
     session_start();
 }
-$username = $_SESSION['username'];
-$id = $_SESSION['id'];
-$role = $_SESSION['role'];
 const CONTROLLER_PARAMETER = 'controller';
 const ACTION_PARAMETER = 'action';
 try

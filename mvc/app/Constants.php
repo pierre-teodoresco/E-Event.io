@@ -2,13 +2,11 @@
 
 // Rappel : nous sommes dans le répertoire Core, voilà pourquoi dans realpath je "remonte d'un cran" pour faire référence
 // à la VRAIE racine de mon application
-
 final class Constants
 {
     // Les constantes relatives aux chemins
     const REPERTOIRE_VUES        = '/views/';
 
-    const REPERTOIRE_OBJECTS     = '/app/Objects/';
 
     const REPERTOIRE_MODELE      = '/models/';
 
@@ -24,10 +22,6 @@ final class Constants
 
     public static function repertoireNoyau() {
         return self::repertoireRacine() . self::REPERTOIRE_NOYAU;
-    }
-
-    public static function repertoireObjects() {
-        return self::repertoireRacine() . self::REPERTOIRE_OBJECTS;
     }
 
     public static function repertoireExceptions() {
