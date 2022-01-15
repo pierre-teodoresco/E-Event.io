@@ -14,9 +14,15 @@ final class EventController
             'allEvent' => '',
             'event' => '',
             'comment' => '',
-            'modal' => ''
+            'modal' => '',
+            'point' => '',
+            'username' => '',
+            'password' => '',
+            'passwordc' => '',
+            'usernameError' => '',
+            'passwordError' => '',
+            'passwordcError' => ''
         ];
-
         if(isset($_GET['id'])){
             $index_data['event'] = $this->model->getEvent($_GET['id']);
             $index_data['comment'] = $this->model->getComment($_GET['id']);
@@ -43,15 +49,57 @@ final class EventController
             if($_SESSION[username] == "" && $_SESSION[id] != ""){
                 echo("client connecté mais sans account");
 
-                $modal .= "<script> var modal = document.getElementById(\"myModal\");
+                $modal = "<script> var modal = document.getElementById(\"myModal\");
                     modal.style.display = \"block\";
                 </script>";
+
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    $index_data['username'] = $_POST['username'];
+                    $index_data['password'] = $_POST['password'];
+                    $index_data['passwordc'] = $_POST['passwordc'];
+                    if (empty($index_data['username'])) {
+                        $index_data['usernameError'] = '<p style=\'color:red\'>Merci de renseignez un pseudo</p>';
+                        $index_data['modal'] = $modal;
+                        View::montrer('main/index', $index_data);
+                        return;
+                    }
+                    if (empty($index_data['password'])) {
+                        $index_data['passwordError'] = '<p style=\'color:red\'>Merci de renseignez un mot de passe</p>';
+                        $index_data['modal'] = $modal;
+                        View::montrer('main/index', $index_data);
+                        return;
+                    }
+                    if (empty($index_data['passwordc'])) {
+                        $index_data['passwordcError'] = '<p style=\'color:red\'>Merci de renseignez la confirmation</p>';
+                        $index_data['modal'] = $modal;
+                        View::montrer('main/index', $index_data);
+                        return;
+                    }
+                    if ($this->model->userExist($index_data['username'])) {
+                        $index_data['passwordcError'] = '<p style=\'color:red\'>Pseudo déjà utilisé</p>';
+                        $index_data['modal'] = $modal;
+                        View::montrer('main/index', $index_data);
+                        return;
+                    }
+                    if ($index_data['passwordc'] != $index_data['password']) {
+                        $index_data['passwordcError'] = '<p style=\'color:red\'>Les mots de passes ne correspondent pas</p>';
+                        $index_data['modal'] = $modal;
+                        View::montrer('main/index', $index_data);
+                        return;
+                    }
+                    $options = ['cost' => 11,];
+                    $this->model->checkUsername($index_data['username'], $index_data['password'], $options, $_SESSION[id]);
+                    $_SESSION['username'] = $index_data['username'];
+                    View::montrer('main/index', $index_data);
+                    return;
+                }
             }else{
                 echo "non connecté";
             }
         }
         $index_data['allEvent'] = $value;
         $index_data['modal'] = $modal;
+        $index_data['point'] = $this->model->getPoint($_SESSION['id']);
         View::montrer('main/index', $index_data);
     }
 }

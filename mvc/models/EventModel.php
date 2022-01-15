@@ -35,6 +35,30 @@ class EventModel extends Model
         return "non";
     }
 
+    public function getPoint($id){
+        $stmt = "SELECT point FROM account WHERE id = $id";
+        $stmt = $this->_connexion->query($stmt);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row[point];
+    }
+
+
+    public function userExist($username){
+        $sql = "SELECT COUNT(*) FROM account WHERE username = '".$username."'";
+        $query = $this->_connexion->prepare($sql);
+        $query->execute();
+        $count = $query->fetchColumn();
+        if($count == 0 )return false;
+        else return true;
+    }
+
+    public function checkUsername($user, $password, $options, $id){
+        $hash = password_hash($password, PASSWORD_BCRYPT, $options);
+        $stmt = $this->_connexion->prepare("UPDATE account SET username = $user, password = $hash WHERE id = $id");
+        $stmt->execute();
+
+    }
+
     public function getEvent($id){
         if(is_int(intval($id))) {
 

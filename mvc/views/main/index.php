@@ -33,6 +33,11 @@ $role = $_SESSION['role'];
                     Pannel Admin
                 </a>
             </li>
+
+            <?php } if($username != ""){?>
+            <li>
+                <p>Points : <?php echo $data['point']; ?></p>
+            </li>
             <?php }?>
         </ul>
     </navbar>
@@ -45,26 +50,29 @@ $role = $_SESSION['role'];
 </div>
 <div id="myModal" class="modal">
 
-    <form action="verif.php" method="post">
+    <form method="post">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title">Première connexion</div>
             </div>
             <div class="modal-body">
-                <label for="article-title">Votre pseudo</label>
-                <input name="article-title" type="text" id="article-title">
+                <?php echo $data['usernameError'];?>
+                <label for="username">Votre pseudo</label>
+                <input name="username" type="text" id="username" value="<?php echo $data['username']?>">
 
-                <label for="account-password">Votre nouveau mot de passes</label>
-                <input name="article-title" type="password" id="account-password">
+                <?php echo $data['passwordError'];?>
+                <label for="password">Votre nouveau mot de passes</label>
+                <input name="password" type="password" id="password" >
 
-                <label for="account-passwordc">Confirmation</label>
-                <input name="article-title" type="password" id="account-passwordc">
-
+                <?php echo $data['passwordcError'];?>
+                <label for="passwordc">Confirmation</label>
+                <input name="passwordc" type="password" id="passwordc" >
             </div>
             <div class="modal-footer">
                 <div class="right">
                 <a href="" class="button">Valider mes informations</a>
+                    <input type="submit" id='submit' value='LOGIN' class="buttonConnexion">
                 </div>
             </div>
         </div>
