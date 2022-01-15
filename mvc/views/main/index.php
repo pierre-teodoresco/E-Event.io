@@ -33,7 +33,7 @@ $role = $_SESSION['role'];
                     Pannel Admin
                 </a>
             </li>
-
+                <?php echo "Bonjour $_SESSION[id]"?>
             <?php } if($username != ""){?>
             <li>
                 <p>Points : <?php echo $data['point']; ?></p>

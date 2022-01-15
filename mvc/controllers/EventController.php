@@ -46,6 +46,8 @@ final class EventController
             </div>
             ";
             }
+            $index_data['allEvent'] = $value;
+            $index_data['point'] = $this->model->getPoint($_SESSION['id']);
             if($_SESSION[username] == "" && $_SESSION[id] != ""){
                 echo("client connecté mais sans account");
 
@@ -93,13 +95,9 @@ final class EventController
                     View::montrer('main/index', $index_data);
                     return;
                 }
-            }else{
-                echo "non connecté";
             }
         }
-        $index_data['allEvent'] = $value;
         $index_data['modal'] = $modal;
-        $index_data['point'] = $this->model->getPoint($_SESSION['id']);
         View::montrer('main/index', $index_data);
     }
 }

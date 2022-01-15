@@ -54,9 +54,8 @@ class EventModel extends Model
 
     public function checkUsername($user, $password, $options, $id){
         $hash = password_hash($password, PASSWORD_BCRYPT, $options);
-        $stmt = $this->_connexion->prepare("UPDATE account SET username = $user, password = $hash WHERE id = $id");
+        $stmt = $this->_connexion->prepare("UPDATE account SET username = '".$user."', password = '".$hash."' WHERE id = '".$id."'");
         $stmt->execute();
-
     }
 
     public function getEvent($id){
