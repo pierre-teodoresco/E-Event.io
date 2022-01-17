@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="Delete + Amélioration du ObjectBase">
+    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="Update">
+      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/eevent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/event/event.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/event/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/user/admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/user/edit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/user/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/user/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Objects/ObjectBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Objects/ObjectBase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.php" beforeDir="false" afterPath="$PROJECT_DIR$/404.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/AutoLoad.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AutoLoad.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Constants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/ControleurException.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/ControleurException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AdditionnalContentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AdditionnalContentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/AdditionnalContentModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/AdditionnalContentModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/CampagneModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CampagneModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/CommentModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CommentModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/EventModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/EventModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/UserModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/events/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/users/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/jury.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/users/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/users/logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/users/register.php" beforeDir="false" />
     </list>
     <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +57,15 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -91,6 +131,7 @@
       <workItem from="1642150977232" duration="6825000" />
       <workItem from="1642163347837" duration="921000" />
       <workItem from="1642172236172" duration="1478000" />
+      <workItem from="1642446791709" duration="4201000" />
     </task>
     <task id="LOCAL-00001" summary="acceuil.php">
       <created>1638880538590</created>
@@ -211,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642157321817</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Update">
+      <created>1642177895832</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1642177895832</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +305,7 @@
     <MESSAGE value="CreateOrUpdate générique&#10;Il est insane !" />
     <MESSAGE value="Classe abstraite ObjectBase" />
     <MESSAGE value="Delete + Amélioration du ObjectBase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete + Amélioration du ObjectBase" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>

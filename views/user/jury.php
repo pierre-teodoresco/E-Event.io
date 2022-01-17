@@ -2,7 +2,7 @@
     <div class="pannel">
 
         <div class="container">
-            <h3 class="title">Information : </h3>
+            <h3 class="title">Informations : </h3>
             <div class="row-3">
                 <div class="stat">
                     <div class="icon">
@@ -11,7 +11,7 @@
                     </svg>
                     </div>
                     <div class="info">
-                        <p>Etudiants inscrit</p>
+                        <p>Nombre d'évènements</p>
                         <p class="content"><?php echo $data['userCount'];?></p>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         </svg>
                     </div>
                     <div class="info">
-                        <p>Evenement </p>
+                        <p>Points donnés</p>
                         <p class="content"><?php echo $data['eventCount'];?></p>
                     </div>
                 </div>
@@ -36,57 +36,39 @@
                     </svg>
                     </div>
                     <div class="info">
-                        <p>Points distribué</p>
-                        <p class="content">54</p>
+                        <p>Points moyens</p>
+                        <p class="content"><?php echo $data['moyenneCount'];?></p>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="container">
-            <h3 class="title">Campagne : </h3>
-            <?php echo $data['headEvent']; ?>
-            <div class="right">
-            <a href="" class="button">Créer une campagne</a>
-            </div>
-            <h3>Listes des evenements</h3>
+
+            <h3>Selectionner des evenements</h3>
+
+            <form method="post" id="usertable">
             <table>
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom</th>
-                    <th>Date début</th>
-                    <th>Date fin</th>
-                    <th>Points par donateur</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <?php echo $data['tableCampagne'];?>
-                </tbody>
-            </table>
-        </div>
-        <div class="container">
-
-            <h3>Gestions des utilisateurs</h3>
-
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Roles</th>
-                    <th>Pseudo</th>
-                    <th>E-mail</th>
+                    <th>Titre</th>
                     <th>Points</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php echo $data['tableUsers'];?>
+                <?php //echo $data['tableUsers'];?>
                 </tbody>
                 <div class="right">
-                    <a href="" class="button">Sauvegarder les modifs</a>
+                    <input id="action" name="action" type="hidden" value="usertable">
+                    <a a href="javascript:;" onclick="document.getElementById('usertable').submit();"  class="button">Sauvegarder les modifs</a>
                 </div>
             </table>
+            </form>
         </div>
 
     </div>
 </div>
 
+
+<script src="js/eevent.js"></script>

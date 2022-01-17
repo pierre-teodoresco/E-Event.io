@@ -3,15 +3,13 @@ abstract class Model{
     // Informations de la base de données
     private $host = "localhost";
     private $db_name = "phpproject";
-    private $username = "root";
-    private $password = "";
+    private $username = "phpproject";
+    private $password = "qyfzuf-0vepna-zynkUj";
     private $port = '3306';
-
-    // Propriété qui contiendra l'instance de la connexion
-    protected $_connexion;
 
     // Propriétés permettant de personnaliser les requêtes
     public $table;
+
 
     public function getConnection(){
         // On supprime la connexion précédente
@@ -21,6 +19,7 @@ abstract class Model{
         try{
             $this->_connexion = new PDO("mysql:host=" . $this->host .';port=' . $this->port. ";dbname=" . $this->db_name, $this->username, $this->password);
             $this->_connexion->exec("set names utf8");
+            $this->_connexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Anti injection SQL
         }catch(PDOException $exception){
             echo "Erreur de connexion : " . $exception->getMessage();
         }
@@ -34,7 +33,7 @@ abstract class Model{
     }
 
     public function getAll(){
-        $sql = 'SELECT * FROM '.$this->table . ' ORDER BY id DESC';
+        $sql = 'SELECT * FROM '.$this->table . ' ORDER BY id ASC';
         $query = $this->_connexion->prepare($sql);
         $query->execute();
         return $query->fetchAll();
@@ -97,5 +96,7 @@ abstract class Model{
         $stmt->execute();
         return $stmt->fetchColumn();
     }
+
+
 
 }

@@ -10,7 +10,7 @@ class UserModel extends Model{
     }
 
     public function checkLogin($email, $password){
-        $stmt = $this->_connexion->prepare("SELECT username,password,id,role FROM ".$this->table." WHERE email = '".$email."'");
+        $stmt = $this->_connexion->prepare("SELECT name,password,id,role FROM ".$this->table." WHERE email = '".$email."'");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         if (password_verify($password, $result->password)) {
@@ -28,6 +28,18 @@ class UserModel extends Model{
         return false;
     }
 
+
+    public function checkPassword($id, $password){
+        $stmt = $this->_connexion->prepare("SELECT password FROM ".$this->table." WHERE id = '".$id."'");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        if (password_verify($password, $result->password)) {
+            //Penser a enable le session start
+            return true;
+        }
+        return false;
+    }
+
     public function checkRegister($email, $password, $options, $rank){
         $hash = password_hash($password, PASSWORD_BCRYPT, $options);
         $stmt = $this->_connexion->prepare("INSERT INTO `account`(`email`, `role`, `password`) VALUES ('".$email."', '".$rank."', '".$hash."') ");
@@ -35,6 +47,11 @@ class UserModel extends Model{
 
     }
 
+    public function registerCampagne($name, $datedeb, $datefin, $point){
+        $stmt = $this->_connexion->prepare("INSERT INTO `campagne`(`name`, `datedeb`, `datefin`, `points`) VALUES ('".$name."', '".$datedeb."', '".$datefin."', '".$point."') ");
+        $stmt->execute();
+
+    }
 
     public function emailExists($email){
         $sql = "SELECT COUNT(*) FROM ".$this->table." WHERE email = '".$email."'";
@@ -53,6 +70,18 @@ class UserModel extends Model{
     }
 
 
+
+    public function getAttribute($var, $id){
+        $stmt = "SELECT $var FROM account WHERE id = $id";
+        $stmt = $this->_connexion->query($stmt);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row[$var];
+    }
+
+
+
+
+
     public function userExist($username){
         $sql = "SELECT COUNT(*) FROM account WHERE username = '".$username."'";
         $query = $this->_connexion->prepare($sql);
@@ -67,6 +96,15 @@ class UserModel extends Model{
         $stmt = $this->_connexion->prepare("UPDATE account SET username = '".$user."', password = '".$hash."' WHERE id = '".$id."'");
         $stmt->execute();
     }
+    public function changeImage($id, $img){
+        $stmt = $this->_connexion->prepare("UPDATE account SET image_profile = '".$img."' WHERE id = '".$id."'");
+        $stmt->execute();
+    }
+    public function updateVar($id, $var,$img){
+        $stmt = $this->_connexion->prepare("UPDATE account SET $var = '".$img."' WHERE id = '".$id."'");
+        $stmt->execute();
+    }
+
 
 
 }

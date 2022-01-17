@@ -2,12 +2,10 @@
 
 // Rappel : nous sommes dans le répertoire Core, voilà pourquoi dans realpath je "remonte d'un cran" pour faire référence
 // à la VRAIE racine de mon application
-
 final class Constants
 {
     // Les constantes relatives aux chemins
     const REPERTOIRE_VUES        = '/views/';
-
 
     const REPERTOIRE_MODELE      = '/models/';
 
