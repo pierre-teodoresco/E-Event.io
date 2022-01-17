@@ -312,6 +312,45 @@ final class UserController{
     }
 
 
+
+    public function jury(){
+
+        if(isset($_SESSION['role'])){
+            $role = $_SESSION['role'];
+            if($role !=3){
+                header('Location: ?');
+            }
+        }
+        else{
+            header('Location: ?');
+        }
+        $campagneModel = new CampagneModel();
+        $eventModel = new EventModel();
+        $jury_data = [
+            'tableUsers' => '',
+            'userCount' => '',
+            'eventCount' => '',
+            'moyenneCount' => ''
+
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST' ){
+
+        }
+
+
+        /*$events = $eventModel->getAllEvent();
+        $dataValues= "";
+        foreach ($events as $event){
+            $dataValues .= "<tr><td>$event[id]</td><td>$event[title]</td><td>$event[votes]</td></tr>";
+        }*/
+        //$admin_data['tableUsers'] = $dataValues;
+        $jury_data['userCount'] = $eventModel->getCount();
+        $jury_data['eventCount'] = $eventModel->getVotes();
+        $jury_data['moyenneCount'] = $eventModel->getMoy();
+        View::montrer('users/jury', $jury_data);
+    }
+
     public function sendEmailPassword($to, $pass){
         $subject = 'E-Event - Confirmation de création de compte';
         $message = '

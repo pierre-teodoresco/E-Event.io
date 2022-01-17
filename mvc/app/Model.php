@@ -95,4 +95,16 @@ abstract class Model{
         $stmt->execute();
         return $stmt->fetchColumn();
     }
+    public function getVotes(){
+        $stmt = $this->_connexion->prepare("SELECT SUM(votes) FROM ".$this->table);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+    public function getMoy(){
+        $stmt = $this->_connexion->prepare("SELECT AVG(votes) FROM ".$this->table);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+
 }
