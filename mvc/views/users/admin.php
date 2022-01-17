@@ -53,9 +53,6 @@ if($role !=4){
         <div class="container">
             <h3 class="title">Campagne : </h3>
             <?php echo $data['headEvent']; ?>
-            <div class="right">
-            <a href="" class="button">Créer une campagne</a>
-            </div>
             <h3>Listes des evenements</h3>
             <table>
                 <thead>
@@ -76,6 +73,7 @@ if($role !=4){
 
             <h3>Gestions des utilisateurs</h3>
 
+            <form method="post" id="usertable">
             <table>
                 <thead>
                 <tr>
@@ -90,11 +88,48 @@ if($role !=4){
                 <?php echo $data['tableUsers'];?>
                 </tbody>
                 <div class="right">
-                    <a href="" class="button">Sauvegarder les modifs</a>
+                    <input id="action" name="action" type="hidden" value="usertable">
+                    <a a href="javascript:;" onclick="document.getElementById('usertable').submit();"  class="button">Sauvegarder les modifs</a>
                 </div>
             </table>
+            </form>
         </div>
 
     </div>
 </div>
 
+<div id="myModal" class="modal">
+
+    <form method="post" id="formcamp">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Création d'une nouvelle campgne</div>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <?php echo $data['errorCampagneName']?>
+                <label for="campagne-title">Nom</label>
+                <input name="campagne-title" type="text" id="campagne-title" value="<?php echo $data['campagneName'];?>">
+
+                <?php echo $data['errorCampagneDatedeb']?>
+                <label for="campagne-start">Date de debut</label>
+                <input type="date" name="campagne-start" id="campagne-start"value="<?php echo $data['campagneDatedeb'];?>" >
+                <?php echo $data['errorCampagneDatefin']?>
+                <label for="campagne-end">Date de fin</label>
+                <input type="date" name="campagne-end" id="campagne-end" value="<?php echo $data['campagneDatefin'];?>">
+
+                <?php echo $data['errorCampagneUser']?>
+                <label for="default-point">Point par utilisateur</label>
+                <input type="number" min="0" name="default-point" id="default-point" value="<?php echo $data['campagneUser'];?>">
+
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" onclick="document.getElementById('formcamp').submit();" class="button">Valider mes informations</a>
+            </div>
+        </div>
+    </form>
+    <?php echo $data['script'];?>
+</div>
+
+<script src="js/eevent.js"></script>

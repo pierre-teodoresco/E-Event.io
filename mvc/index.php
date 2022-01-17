@@ -1,7 +1,7 @@
 <?php
 // Ce fichier est le point d'entrée de votre application
 require 'app/AutoLoad.php';
-
+error_reporting(E_ALL);
 if(!isset($_SESSION)){
     session_start();
 }

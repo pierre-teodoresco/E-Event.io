@@ -70,4 +70,5 @@ class EventModel extends Model
             $stmt2->execute();
         }
     }
+
 }

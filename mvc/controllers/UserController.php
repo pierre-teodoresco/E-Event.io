@@ -47,6 +47,119 @@ final class UserController{
         }
     }
 
+    /**
+     * @return Fonction lors de la modification des information utilisateurs,
+     */
+    public function edit(){
+        /**
+         * Tableau qui récupère chaque parametre envoyé en POST et défini les des message d'erreur avec "error"+<var>
+         */
+        $edit_data = [
+            'email' => '',
+            'oldpassword' => '',
+            'password' => '',
+            'passwordc' => '',
+            'prenom' => '',
+            'nom' => '',
+            'avatar' => '',
+            'img' => '',
+            'errorOldpassword' => '',
+            'errorPassword' => '',
+            'errorPasswordc' => ''
+        ];
+
+
+        /**
+         * Charger les valeur des input en recuperant les informations dans la BDD;
+         */
+
+        /**
+         * Recuprer les informations lorsque le joueur clique sur le bouton "valider mes informations"
+         */
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $edit_data['oldpassword'] = $_POST['oldpassword'];
+            $edit_data['password'] = $_POST['password'];
+            $edit_data['passwordc'] = $_POST['passwordc'];
+            $edit_data['prenom'] = $_POST['prenom'];
+            $edit_data['nom'] = $_POST['nom'];
+
+            /**
+             * On detecte si l'utilisateur veut changer son mot de passes uniquement lorsque le input "oldpassword" n'est plus = "";
+             */
+            if ($edit_data['oldpassword'] != "") {
+
+                // On verifie que le input password n'est pas vide.
+                if (empty($edit_data['password'])) {
+                    $edit_data['errorPassword'] = '<p style=\'color:red\'>Veuillez definir un mot de passe</p>';
+                    View::montrer('users/edit', $edit_data);
+                    return;
+                }
+
+                // On verifie que la confirmation n'est pas vide. avec le passwordc
+                if (empty($edit_data['passwordc'])) {
+                    $edit_data['errorPasswordc'] = '<p style=\'color:red\'>Veuillez definir mot de passe </p>';
+                    View::montrer('users/edit', $edit_data);
+                    return;
+                }
+
+                // On verifie que le nouveau mot de passe et la confirmation sont bien egal.
+                if ($edit_data['password'] != $edit_data['passwordc']) {
+                    $edit_data['errorPassword'] = '<p style=\'color:red\'>Les mots de passes ne correspondent pas</p>';
+                    View::montrer('users/edit', $edit_data);
+                    return;
+                }
+
+                // On varifie que le nouveau mot de passe n'est pas egal à l'ancien mot de passes.
+                if ($edit_data['password'] == $edit_data['oldpassword']) {
+                    $edit_data['errorOldpassword'] = '<p style=\'color:red\'>Vous ne pouvez pas definir le meme mot de passe</p>';
+                    View::montrer('users/edit', $edit_data);
+                    return;
+                }
+
+                // On verfie à l'aide de la BDD que c'est le bon mot de passe dans l'input "oldpassword" qu'il a renseigné.
+                if (!$this->model->checkPassword($_SESSION['id'], $edit_data['oldpassword'])) {
+                    $edit_data['errorOldpassword'] = '<p style=\'color:red\'>Votre mot de passe est invalide</p>';
+                    View::montrer('users/edit', $edit_data);
+                    return;
+                }
+
+                //Une fois toutes les vérifications nous pouvons donc changer le mot de passes utilisateurs.
+                $edit_data['errorOldpassword'] = '<p style=\'color:green\'>Mot de passes changé</p>';
+                $options = ['cost' => 11,];
+                $this->model->checkUsername($_SESSION['username'], $edit_data['password'], $options, $_SESSION['id']);
+            }
+
+            if (!empty($_FILES['avatar']['name'])) {
+                $filename = $_FILES["avatar"]["name"];
+                $tempname = $_FILES["avatar"]["tmp_name"];
+                $folder = "img/" . $filename;
+
+                if (move_uploaded_file($tempname, $folder)) {
+                    $this->model->changeImage($_SESSION['id'], $filename);
+
+                    $edit_data['img'] = $this->model->getAttribute('image_profile', $_SESSION['id']);
+                    View::montrer('users/edit', $edit_data);
+                } else {
+                    echo "Failed to upload image";
+                }
+            }
+            if($edit_data['prenom'] != ""){
+                $edit_data['prenom'] = $this->model->updateVar($_SESSION[id], 'prenom', $edit_data['prenom']);
+            }
+            if($edit_data['nom'] != ""){
+                $edit_data['nom'] = $this->model->updateVar($_SESSION[id], 'nom', $edit_data['nom']);
+            }
+
+        }
+        $edit_data['email'] = $this->model->getAttribute('email',$_SESSION['id']);
+        $edit_data['prenom'] = $this->model->getAttribute('prenom',$_SESSION['id']);
+        $edit_data['nom'] = $this->model->getAttribute('nom',$_SESSION['id']);
+        $edit_data['img'] = $this->model->getAttribute('image_profile',$_SESSION['id']);
+        View::montrer('users/edit', $edit_data);
+
+    }
+
     public function register(){
 
         $registerData = [
@@ -102,13 +215,76 @@ final class UserController{
             'tableCampagne' => '',
             'tableUsers' => '',
             'userCount' => '',
-            'eventCount' => ''
+            'eventCount' => '',
+            'campagneName' => '',
+            'campagneDatedeb' => '',
+            'campagneDatefin' => '',
+            'campagneUser' => '',
+            'errorCampagneName' => '',
+            'errorCampagneDatedeb' => '',
+            'errorCampagneDatefin' => '',
+            'errorCampagneUser' => '',
+            'script' => ''
         ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST' ){
+            if($_POST['action'] == "usertable"){
+
+                $users = $this->model->getAll();
+
+                for ($i = 0; $i< count($users); $i++){
+                    $this->model->updateOne('role', $_POST['rank-select'][$i],$users[$i]['id']);
+                }
+            }else {
+                $admin_data['campagneName'] = $_POST['campagne-title'];
+                $admin_data['campagneDatedeb'] = $_POST['campagne-start'];
+                $admin_data['campagneDatefin'] = $_POST['campagne-end'];
+                $admin_data['campagneUser'] = $_POST['default-point'];
+                $admin_data['script'] = "<script>document.getElementById(\"myModal\").style.display = \"block\";</script>";
+                if (empty($admin_data['campagneName'])) {
+                    $admin_data['errorCampagneName'] = '<p style=\'color:red\'>Renseignez un nom de campagne</p>';
+                    View::montrer('users/admin', $admin_data);
+                    return;
+                }
+                if (empty($admin_data['campagneDatedeb'])) {
+                    $admin_data['errorCampagneDatedeb'] = '<p style=\'color:red\'>Renseignez une date de debut</p>';
+                    View::montrer('users/admin', $admin_data);
+                    return;
+                }
+                if (empty($admin_data['campagneDatefin'])) {
+                    $admin_data['errorCampagneDatefin'] = '<p style=\'color:red\'>Renseignez une date de fin</p>';
+                    View::montrer('users/admin', $admin_data);
+                    return;
+                }
+                if (empty($admin_data['campagneUser'])) {
+                    $admin_data['errorCampagneUser'] = '<p style=\'color:red\'>Renseignez un nombre de point par joueur</p>';
+                    View::montrer('users/admin', $admin_data);
+                    return;
+                }
+                if ($admin_data['campagneDatefin'] <= $admin_data['campagneDatedeb']) {
+                    $admin_data['errorCampagneDatefin'] = '<p style=\'color:red\'>Renseignez date fin superieur a date debut</p>';
+                    View::montrer('users/admin', $admin_data);
+                    return;
+                }
+                $this->model->registerCampagne($admin_data['campagneName'], $admin_data['campagneDatedeb'], $admin_data['campagneDatefin'], $admin_data['campagneUser']);
+                $admin_data['script'] = "";
+                header('Location: ?controller=user&action=admin');
+
+            }
+        }
         $eventOnlineCount = $eventModel->countOnlineEvents();
         if ($eventOnlineCount == 0) {
-            $admin_data['headEvent'] = "<p>Aucun evenement n'est en cours</p><p>Vous pouvez créer un evenement en cliquant sur lien</p>";
+            $admin_data['headEvent'] = "<p>Aucun evenement n'est en cours</p><p>Vous pouvez créer un evenement en cliquant sur lien</p>
+            <div class=\"right\">
+            <a id=\"myBtn\" class=\"button\">Créer une campagne</a>
+            </div>";
         } else {
-            $admin_data['headEvent'] = "<p>Un evenement est en cours</p>";
+            $admin_data['headEvent'] = "<p>Un evenement est en cours</p>
+             <form method=\"post\" id=\"closeCamp\">
+            <div class=\"right\">
+            <a href=\"javascript:;\"  class=\"button danger\">Arreter la campagne</a></form>
+            
+            </div>";
         }
         $campagnes = $campagneModel->getAll();
         $dataCampagnes= "";
@@ -120,11 +296,11 @@ final class UserController{
         $users = $this->model->getAll();
         $dataValues= "";
         foreach ($users as $user){
-            $dataValues .= "<tr><td>".$user['id']."</td><td><div class=\"select-rank\"><select name=\"rank\" id=\"rank-select\">";
-            $dataValues .= ($user['role'] == 1) ? "<option value=\"0\" selected='selected'>Donateurs</option>" : "<option value=\"0\" >Donateurs</option>";
-            $dataValues .= ($user['role'] == 2) ? "<option value=\"1\" selected='selected'>Organisateur</option>" : "<option value=\"1\" >Organisateur</option>";
-            $dataValues .= ($user['role'] == 3) ? "<option value=\"2\" selected='selected'>Jury</option>" : "<option value=\"2\" >Jury</option>";
-            $dataValues .= ($user['role'] == 4) ? "<option value=\"4\" selected='selected'>Administrateur</option>" : "<option value=\"4\" >Administrateur</option>";
+            $dataValues .= "<tr><td>".$user['id']."</td><td><div class=\"select-rank\">  <select name=\"rank-select[]\" id=\"rank-select\">";
+            $dataValues .= ($user['role'] === 1) ? "<option value=\"1\" selected=\"selected\">Donateurs</option>" : "<option value=\"1\" >Donateurs</option>";
+            $dataValues .= ($user['role'] == 2) ? "<option value=\"2\" selected=\"selected\">Organisateur</option>" : "<option value=\"2\" >Organisateur</option>";
+            $dataValues .= ($user['role'] == 3) ? "<option value=\"3\" selected=\"selected\">Jury</option>" : "<option value=\"3\" >Jury</option>";
+            $dataValues .= ($user['role'] == 4) ? "<option value=\"4\" selected=\"selected\">Administrateur</option>" : "<option value=\"4\" >Administrateur</option>";
             $dataValues .= "</select></div>
                     </td><td>$user[username]</td><td>$user[email]</td>
                        <td>$user[point]</td></tr>";
