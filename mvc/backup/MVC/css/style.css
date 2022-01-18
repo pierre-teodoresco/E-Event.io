@@ -1,0 +1,386 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #eef1f3;
+  font-family: AppleSystemUIFont, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.pannel {
+  margin-left: 20%;
+  margin-right: 5%;
+}
+.container {
+  background-color: white;
+  margin-top: 5%;
+  border-radius: 1em;
+  padding: 1% 2% 2% 2%;
+  height: auto;
+}
+
+img {
+  clip-path: circle();
+}
+
+.container h3 {
+  font-size: 32px;
+  color: #495057;
+  border-bottom: 1px solid darkgrey;
+  text-transform: capitalize;
+}
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+tr:nth-child(even) {
+  background-color: #dee2e6;
+}
+tr:hover {
+  background-color: #ddd;
+}
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #adb5bd;
+  color: white;
+}
+.button {
+  background-color: #3f6ad8; /* Blue */
+  border: none;
+  border-radius: 1em;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  border-radius: 1em;
+  margin-left: 5px;
+}
+
+.row-3 {
+  display: flex;
+  justify-content: space-around;
+}
+.row-2 {
+  display: flex;
+}
+.row-2 p:first-child {
+  width: 200px;
+}
+
+@media (max-width: 950px) {
+  .row-3 {
+    flex-direction: column;
+  }
+  .row-3 .stat {
+    padding-left: 35%;
+    margin-top: 5%;
+  }
+}
+.stat {
+  display: flex;
+}
+.stat .info {
+  margin-left: 10px;
+  margin-top: -30px;
+  line-height: 2px;
+}
+.info .content {
+  font-size: 40px;
+  font-weight: bold;
+}
+.stat .icon {
+  width: 60px;
+  height: 60px;
+  background-color: rgb(247, 185, 36);
+  border-radius: 50% !important;
+}
+
+.stat:first-child .icon {
+  background-color: rgb(217, 37, 80);
+}
+.stat:last-child .icon {
+  background-color: rgb(58, 196, 125);
+}
+
+.icon svg {
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  margin: 15px 0px 0px 15px;
+}
+
+.eventcontainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+nav {
+  position: fixed;
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+nav .navbar-extern {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 1em;
+  margin: 10% 10% 0% 10%;
+}
+
+nav .navbar {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 1em;
+  margin: 10% 10% 0% 10%;
+}
+
+.navbar-extern a {
+  width: 100%;
+  color: black;
+  text-decoration: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+}
+
+nav .statement {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+nav .statement:hover {
+  background-color: #eef1f3;
+  color: #3f6ad8;
+}
+
+.navbar-title {
+  margin-left: 16%;
+}
+
+nav .icon {
+  margin: 6% 0% 0% 7%;
+  width: 10%;
+}
+
+.feed {
+  left: 25%;
+  width: 50%;
+  margin-left: 25%;
+}
+
+aside {
+  margin-left: 75%;
+  width: 25%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+.top3 {
+  background-color: white;
+  border-radius: 1em;
+  margin: 10% 10% 0% 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.top3 h2 {
+  border-bottom: 0.01em solid rgba(0, 0, 0, 0.3);
+  padding: 3% 25% 8% 25%;
+}
+
+.point {
+  background-color: #28a745;
+  border-radius: 1em;
+  margin: 10% 10% 0% 10%;
+}
+
+.point h2 {
+  color: white;
+  padding-left: 10%;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.warning {
+  background-color: #ffc107 !important;
+}
+.danger {
+  background-color: #dc3545 !important;
+}
+.sucess {
+  background-color: #28a745 !important;
+}
+.secondary {
+  background-color: #6c757d !important;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 1em;
+}
+.modal-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #022a57;
+  padding-bottom: 0.7%;
+}
+.modal-header {
+  border-bottom: 1px solid #3b3b3d;
+  display: flex;
+  justify-content: space-between;
+}
+/* The Close Button */
+.close {
+  align-self: end;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 0% 0% 0.7% 2%;
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+.modal-body input[type="text"] {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5% 0% 5% 0%;
+}
+
+#organisateurRole {
+  padding-left: 5%;
+}
+
+.role {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 2px solid black;
+  border: 3px solid white;
+  width: 16px;
+  height: 16px;
+}
+
+.role:checked {
+  background: black;
+}
+
+.modal-footer {
+  border-top: 1px solid #3b3b3d;
+  padding-left: 10%;
+  display: flex;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.auth {
+  display: flex;
+  margin-top: 15%;
+  margin-left: 5%;
+
+  margin-right: 5%;
+}
+.auth .left {
+  width: 130%;
+  margin-right: 15%;
+}
+.auth .left .title {
+  font-weight: bold;
+  color: #3f6ad8;
+  font-size: 50px;
+}
+.auth .left p {
+  font-size: 28px;
+}
+.auth .right {
+  display: flex;
+  width: 1000px;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 4%;
+  padding-bottom: 3%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.center {
+  margin-right: auto;
+  margin-top: 10%;
+  margin-left: auto;
+  text-decoration: none;
+}
+
+.right a {
+  margin-top: 10px;
+}
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
