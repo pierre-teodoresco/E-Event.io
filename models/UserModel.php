@@ -10,7 +10,7 @@ class UserModel extends Model{
     }
 
     public function checkLogin($email, $password){
-        $stmt = $this->_connexion->prepare("SELECT name,password,id,role FROM ".$this->table." WHERE email = '".$email."'");
+        $stmt = $this->_connexion->prepare("SELECT username,password,id,role FROM ".$this->table." WHERE email = '".$email."'");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         if (password_verify($password, $result->password)) {
@@ -47,12 +47,6 @@ class UserModel extends Model{
 
     }
 
-    public function registerCampagne($name, $datedeb, $datefin, $point){
-        $stmt = $this->_connexion->prepare("INSERT INTO `campagne`(`name`, `datedeb`, `datefin`, `points`) VALUES ('".$name."', '".$datedeb."', '".$datefin."', '".$point."') ");
-        $stmt->execute();
-
-    }
-
     public function emailExists($email){
         $sql = "SELECT COUNT(*) FROM ".$this->table." WHERE email = '".$email."'";
         $query = $this->_connexion->prepare($sql);
@@ -69,18 +63,12 @@ class UserModel extends Model{
         return $row[point];
     }
 
-
-
-    public function getAttribute($var, $id){
-        $stmt = "SELECT $var FROM account WHERE id = $id";
-        $stmt = $this->_connexion->query($stmt);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row[$var];
+    public function resetpwd($email, $password,$options){
+        $hash = password_hash($password, PASSWORD_BCRYPT, $options);
+        $sql = "UPDATE account SET password = '".$password."' WHERE email = '".$email."'";
+        $query = $this->_connexion->prepare($sql);
+        $query->execute();
     }
-
-
-
-
 
     public function userExist($username){
         $sql = "SELECT COUNT(*) FROM account WHERE username = '".$username."'";

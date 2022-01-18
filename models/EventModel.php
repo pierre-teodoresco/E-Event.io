@@ -12,21 +12,18 @@ class EventModel extends Model
     }
 
     public function getAllEvent(){
-        $stmt = "SELECT evenement.id,title,description,votes,username,image_profile 
+        $stmt = "SELECT evenement.id,title,description,votes,username,image_profile,jury
                 FROM evenement INNER JOIN account ON owner = account.id 
                 ORDER BY evenement.id DESC";
 
         return $this->_connexion->query($stmt);
     }
 
-    public function getCommentByEventId($id){
-        if(is_int(intval($id))) {
-            $stmt = "SELECT author,description,username FROM `comment` INNER JOIN account ON author = account.id WHERE comment.event = $id";
-            return $this->_connexion->query($stmt);
-        }
-        throw new Exception("id de commentaire invalide");
+    public function getTop(){
+        $stmt = "SELECT title FROM evenement ORDER BY evenement.votes DESC LIMIT 3";
+        $stmt = $this->_connexion->query($stmt);
+        return $stmt->fetchAll();
     }
-
 
     public function getEvent($id){
         if(is_int(intval($id))) {
@@ -41,28 +38,13 @@ class EventModel extends Model
         }
     }
 
-    public function getAdditionnalContentOfEvent($id){
-        $stmt = "SELECT point,description FROM `addcontent` WHERE addcontent.event = $id";
-        return $this->_connexion->query($stmt);
-    }
-
-    public function countOnlineEvents(){
-        $date = date('Y-m-d');
-        $stmt = $this->_connexion->prepare("SELECT * FROM `campagne` WHERE ('" . $date . "' >= datedeb AND '" . $date . "' <= datefin)");
+    public function addPoint($accountId, $point, $eventId){
+        $stmt = $this->_connexion->prepare("UPDATE account SET point = point - '".$point."' WHERE id = '".$accountId."'");
         $stmt->execute();
-        return $stmt->fetchColumn();
-    }
-
-    public function addPoint($id, $point, $comment, $eventid){
-        $stmt = $this->_connexion->prepare("UPDATE account SET point = point - '".$point."' WHERE id = '".$id."'");
-        $stmt->execute();
-        $stmt3 = $this->_connexion->prepare("UPDATE evenement SET votes = votes + '".$point."' WHERE id = '".$eventid."'");
+        $stmt3 = $this->_connexion->prepare("UPDATE evenement SET votes = votes + '".$point."' WHERE id = '".$eventId."'");
         $stmt3->execute();
-        if($comment != ""){
-            $stmt2 = $this->_connexion->prepare("INSERT INTO comment(author, description, event) VALUES ('".$id."', '".$comment."', '".$eventid."')");
-            $stmt2->execute();
-        }
     }
+
 
     public function getVotes(){
         $stmt = $this->_connexion->prepare("SELECT SUM(votes) FROM ".$this->table);
@@ -75,5 +57,6 @@ class EventModel extends Model
         $stmt->execute();
         return $stmt->fetchColumn();
     }
+
 
 }

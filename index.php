@@ -15,7 +15,7 @@ try
     $O_controleur = new Controller($controllerName, $action, $A_postParams);
     $O_controleur->executer();
 }
-catch (ControleurException $O_exception)
+catch (ExceptionController $O_exception)
 {
     echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
 }

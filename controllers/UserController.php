@@ -9,38 +9,44 @@ final class UserController{
     }
 
     public function login(){
-
         $login_data = [
             'email' => '',
             'password' => '',
             'emailError' => '',
-            'passwordError' => '',
+            'passwordError' => ''
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+
             $login_data['email'] = $_POST['email'];
             $login_data['password'] = $_POST['password'];
+
 
             if (empty($login_data['email'])) {
                 $login_data['emailError'] = '<p style=\'color:red\'>Renseignez une adresse mail</p>';
                 View::montrer('user/login', $login_data);
                 return;
             }
+
             if (empty($login_data['password'])) {
                 $login_data['passwordError'] = '<p style=\'color:red\'>Renseignez un mot de passe</p>';
                 View::montrer('user/login', $login_data);
                 return;
             }
+
             if(!$this->model->emailExists($login_data['email'])){
                 $login_data['emailError'] = '<p style=\'color:red\'>Cet email n\'existe pas</p>';
                 View::montrer('user/login', $login_data);
                 return;
             }
+
             if(!$this->model->checkLogin($login_data['email'], $login_data['password'])){
                 $login_data['passwordError'] = '<p style=\'color:red\'>Mot de passe invalide</p>';
                 View::montrer('user/login', $login_data);
                 return;
             }
+
         }
         else{
             View::montrer('user/login', $login_data);
@@ -131,24 +137,26 @@ final class UserController{
             }
 
             if (!empty($_FILES['avatar']['name'])) {
-                $filename = $_FILES["avatar"]["name"];
                 $tempname = $_FILES["avatar"]["tmp_name"];
-                $folder = "img/" . $filename;
+                $temp = explode(".", $_FILES["avatar"]["name"]);
+                $newfilename = $_SESSION['id'] . '.' . end($temp);
 
+                $folder = "img/" . $newfilename;
                 if (move_uploaded_file($tempname, $folder)) {
-                    $this->model->changeImage($_SESSION['id'], $filename);
+                    $this->model->changeImage($_SESSION['id'], $newfilename);
 
                     $edit_data['img'] = $this->model->getAttribute('image_profile', $_SESSION['id']);
                     View::montrer('user/edit', $edit_data);
+                    return;
                 } else {
                     echo "Failed to upload image";
                 }
             }
             if($edit_data['prenom'] != ""){
-                $edit_data['prenom'] = $this->model->updateVar($_SESSION[id], 'prenom', $edit_data['prenom']);
+                $edit_data['prenom'] = $this->model->updateVar($_SESSION['id'], 'prenom', $edit_data['prenom']);
             }
             if($edit_data['nom'] != ""){
-                $edit_data['nom'] = $this->model->updateVar($_SESSION[id], 'nom', $edit_data['nom']);
+                $edit_data['nom'] = $this->model->updateVar($_SESSION['id'], 'nom', $edit_data['nom']);
             }
 
         }
@@ -226,11 +234,14 @@ final class UserController{
             'errorCampagneDatedeb' => '',
             'errorCampagneDatefin' => '',
             'errorCampagneUser' => '',
-            'script' => ''
+            'script' => '',
+            'avatar' => ''
             //'username' => $username,
             //'id' => $id
         ];
 
+
+        if($_SESSION['id']) $admin_data['avatar'] = $this->model->getAttribute('image_profile',$_SESSION['id']);
         if($_SERVER['REQUEST_METHOD'] == 'POST' ){
             if($_POST['action'] == "usertable"){
 
@@ -270,14 +281,20 @@ final class UserController{
                     View::montrer('user/admin', $admin_data);
                     return;
                 }
-                $this->model->registerCampagne($admin_data['campagneName'], $admin_data['campagneDatedeb'], $admin_data['campagneDatefin'], $admin_data['campagneUser']);
+
+                $newCampagne = [
+                    'name'=> $admin_data['campagneName'],
+                    'datedeb'=> $admin_data['campagneDatedeb'],
+                    'datefin'=> $admin_data['campagneDatefin'],
+                    'points' => $admin_data['campagneUser']
+                ];
+                $campagneModel->createOne($newCampagne);
                 $admin_data['script'] = "";
                 header('Location: ?controller=user&action=admin');
 
             }
         }
-        $eventOnlineCount = $eventModel->countOnlineEvents();
-        if ($eventOnlineCount == 0) {
+        if (!$campagneModel->isInCampagne()) {
             $admin_data['headEvent'] = "<p>Aucun évènement n'est en cours</p><p>Vous pouvez créer un évènement en cliquant sur lien</p>
             <div class=\"right\">
             <a id=\"myBtn\" class=\"button\">Créer une campagne</a>
@@ -290,6 +307,7 @@ final class UserController{
             
             </div>";
         }
+
         $campagnes = $campagneModel->getAll();
         $dataCampagnes= "";
         foreach ($campagnes as $campagne){
@@ -343,12 +361,12 @@ final class UserController{
         }
 
 
-        /*$event = $eventModel->getAllEvent();
+        $event = $eventModel->getAllEvent();
         $dataValues= "";
         foreach ($event as $event){
             $dataValues .= "<tr><td>$event[id]</td><td>$event[title]</td><td>$event[votes]</td></tr>";
-        }*/
-        //$admin_data['tableUsers'] = $dataValues;
+        }
+        $admin_data['tableUsers'] = $dataValues;
         $jury_data['userCount'] = $eventModel->getCount();
         $jury_data['eventCount'] = $eventModel->getVotes();
         $jury_data['moyenneCount'] = $eventModel->getMoyVotes();
@@ -391,6 +409,35 @@ final class UserController{
         mail($to, $subject, $message, implode("\r\n", $headers));
     }
 
+    public function forgot(){
+        $forgot_data = [
+            'email' => '',
+            'errorEmail' => ''
+            ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $forgot_data['email'] = $_POST['email'];
+
+            if(empty($forgot_data['email'])){
+                $forgot_data['emailError'] = '<p style=\'color:red\'>Veuillez rentrer une adresse mail</p>';
+                View::montrer('user/forgot', $forgot_data);
+                return;
+            }
+            if(!$this->model->emailExists($forgot_data['email'])){
+                $forgot_data['emailError'] = '<p style=\'color:red\'>Cette adresse mail n\'existe pas</p>';
+                View::montrer('user/forgot', $forgot_data);
+                return;
+            }
+
+            $options = ['cost' => 11,];
+            $password = $this->randomPassword();
+            $this->model->resetpwd($forgot_data['email'],$password,$options);
+            $password =
+            $this->resetPwd($forgot_data['email'],$password);
+            header('Location: ?controller=user&action=login');
+        }
+        View::montrer('user/forgot', $forgot_data);
+    }
 
     public function resetPwd($to, $pass){
         $subject = 'E-Event - Changement mot de passe';
@@ -444,6 +491,6 @@ final class UserController{
         if(isset($_SESSION)) {
             session_destroy();
         }
-        header('Location: ?');
+        header('Location: ?controller=user&action=login');
     }
 }

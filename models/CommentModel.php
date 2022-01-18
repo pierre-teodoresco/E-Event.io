@@ -10,4 +10,12 @@ class CommentModel extends Model
         // Nous ouvrons la connexion à la base de données
         $this->getConnection();
     }
+
+    public function getCommentByEventId($id){
+        if(is_int(intval($id))) {
+            $stmt = "SELECT author,description,username FROM `comment` INNER JOIN account ON author = account.id WHERE comment.event = $id";
+            return $this->_connexion->query($stmt);
+        }
+        throw new Exception("id de commentaire invalide");
+    }
 }

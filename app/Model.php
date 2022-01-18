@@ -97,6 +97,12 @@ abstract class Model{
         return $stmt->fetchColumn();
     }
 
+    public function getAttribute($var, $id){
+        $stmt = "SELECT $var FROM ".$this->table." WHERE id = $id";
+        $stmt = $this->_connexion->query($stmt);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row[$var];
+    }
 
 
 }

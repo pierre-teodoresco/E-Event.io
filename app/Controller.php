@@ -47,7 +47,7 @@ class Controller{
         $B_called = call_user_func_array(array($this->controller, $this->action), array());
 
         if (false === $B_called) {
-            throw new ControleurException("L'action " . $this->_A_urlDecortique['action'] .
+            throw new ExceptionController("L'action " . $this->_A_urlDecortique['action'] .
                 " du controlleur " . $this->_A_urlDecortique['controleur'] . " a rencontré une erreur.");
         }
     }

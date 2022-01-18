@@ -1,11 +1,11 @@
     <div class="eventcontainer">
         <nav>
-            <?php if($data['username'] != ""){ ?>
+            <?php if($username != ""){ ?>
                 <div class="navbar-extern">
-                    <a href="" >
+                    <a  >
                         <div class="statement">
                             <img src="img/<?php echo $data['avatar'];?>" alt="" width="32", height="32" class="icon">
-                            <h3 class="navbar-title">Bonjour, <?php echo $data['username']; ?></h3>
+                            <h3 class="navbar-title">Bonjour, <?php echo $username; ?></h3>
                         </div>
                     </a>
                 </div>
@@ -17,10 +17,10 @@
                             <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                             <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
                         </svg>
-                        <h3 class="navbar-title">Acceuil</h3>
+                        <h3 class="navbar-title">Accueil</h3>
                     </div>
                 </a>
-                <?php if($data['role'] == 2 || $data['role'] == 4) {?>
+                <?php if(($role == 2 || $role == 4) && $data['isCampagne'] == '1' ){?>
                     <a id="myBtn">
                         <div class="statement">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
@@ -31,7 +31,7 @@
                         </div>
                     </a>
                 <?php }?>
-                <?php if($data['role'] == 4){ ?>
+                <?php if($role == 4){ ?>
                     <a href="?controller=user&action=admin">
                         <div class="statement">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
@@ -43,7 +43,7 @@
                     </a>
 
                 <?php }?>
-                <?php if($data['role'] == 3){ ?>
+                <?php if($role == 3){ ?>
                     <a href="?controller=user&action=jury">
                         <div class="statement">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 15 15">
@@ -56,14 +56,26 @@
 
                 <?php }?>
             </div>
-            <div class="navbar-extern">
-                <a href="<?php echo($data['username'] != "") ?"?controller=user&action=logout" : "?controller=user&action=login" ?>">
+            <div class="navbar">
+                <?php if($username != ""){?>
+
+                    <a href="?controller=user&action=edit">
+                        <div class="statement">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>
+                            <h3 class="navbar-title">Modifier mon profil</h3>
+                        </div>
+                    </a>
+                <?php }?>
+                <a href="<?php echo($username != "") ?"?controller=user&action=logout" : "?controller=user&action=login" ?>">
                     <div class="statement">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="icon" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                             <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                         </svg>
-                        <h3 class="navbar-title"><?php echo($data['username'] != "") ?"Se deconnecter" : "Se connecter" ?></h3>
+                        <h3 class="navbar-title"><?php echo($username != "") ?"Se deconnecter" : "Se connecter" ?></h3>
                     </div>
                 </a>
             </div>
@@ -76,19 +88,13 @@
         <aside>
             <div class="top3">
                 <h2>TOP 3</h2>
-                <div>
-                    <h3>Premier</h3>
-                </div>
-                <div>
-                    <h3>Deuxième</h3>
-                </div>
-                <div>
-                    <h3>Troisième</h3>
-                </div>
+                <?php echo $data['top'];?>
             </div>
+            <?php  if($role == 1 && $data['isCampagne'] == '1'){?>
             <div class="point">
                 <h2>Points : <?php echo $data['point']; ?></h2>
             </div>
+            <?php }?>
         </aside>
     </div>
 <?php if($data['username'] == "" && $data['role'] != "") {?>
@@ -122,28 +128,31 @@
         </form>
     </div>
 <?php }?>
-<?php if($data['role'] == 2 || $data['role'] == 4){ ?>
+<?php if(($data['role'] == 2 || $data['role'] == 4)&& $data['isCampagne'] == '1'){ ?>
     <div id="myModal" class="modal">
 
-        <form method="post" >
+        <form method="post" id="createEvent">
             <!-- Modal content -->
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="modal-title">Création d'article</div>
+                    <div class="modal-title">Création d'evenement</div>
                     <span class="close">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <label for="article-title">Nom de l'article</label>
-                    <input name="article-title" type="text" id="article-title">
+                    <?php echo $data['errorevent-title']?>
+                    <label for="event-title">Creation d'evenement</label>
+                    <input name="event-title" type="text" id="event-title">
 
-                    <label for="article-desc">Descrition (200 caractères)</label>
-                    <textarea name="article-desc" id="article-desc" rows="10"></textarea>
+                    <?php echo $data['errorevent-desc']?>
+                    <label for="event-desc">Descrition (200 caractères)</label>
+                    <textarea name="event-desc" id="event-desc" maxlength="200"></textarea>
 
-                    <label for="article-content">Contenu </label>
-                    <textarea name="article-content" id="article-content" rows="25"></textarea>
+                    <?php echo $data['errorevent-content']?>
+                    <label for="event-content">Contenu </label>
+                    <textarea name="event-content" id="event-content" rows="25"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" name="action" value="newArticle">
+                    <a a href="javascript:;" onclick="document.getElementById('createEvent').submit();"  class="button">Creer mon evenement</a>
                 </div>
             </div>
         </form>
