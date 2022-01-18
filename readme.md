@@ -7,6 +7,7 @@ Le projet consiste à la création d'un site internent comprenant l'utilisation 
 
 * DELTERNE Félix,
 * DESHORS Théo,
+* GAROUI Mathys,
 * MARCHAND Kyrian,
 * TEODORESCO Pierre,
 

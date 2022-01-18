@@ -1,71 +1,22 @@
 <?php
-?>
-<!DOCTYPE html>
-<html lang="fr">
+// Ce fichier est le point d'entrée de votre application
+require 'app/AutoLoad.php';
+error_reporting(E_ALL);
+if(!isset($_SESSION)){
+    session_start();
+}
+const CONTROLLER_PARAMETER = 'controller';
+const ACTION_PARAMETER = 'action';
+try
+{
+    $A_postParams = isset($_POST) ? $_POST : null;
+    $controllerName = isset($_GET[CONTROLLER_PARAMETER]) ? ucfirst(strtolower($_GET[CONTROLLER_PARAMETER])) . 'Controller' : null;
+    $action = isset($_GET[ACTION_PARAMETER]) ? $_GET[ACTION_PARAMETER] : null;
+    $O_controleur = new Controller($controllerName, $action, $A_postParams);
+    $O_controleur->executer();
+}
+catch (ControleurException $O_exception)
+{
+    echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link id="pagestyle" rel="stylesheet" type="text/css" href="css/style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Event.io!</title>
-</head>
-
-<body>
-<header>
-    <h1>E-Event.io!</h1>
-</header>
-<div class="wrapper">
-    <div class="sidebar-container">
-        <ul class="sidebar-navigation">
-            <li id="premier">
-                <a href="#">
-                    <i class="fa fa-home" aria-hidden="true"></i> Statut
-                </a>
-            </li>
-            <li id="deuxieme">
-                <a href="#">
-                    <i class="fa fa-tachometer" aria-hidden="true"></i> Dernier donateur :
-                </a>
-            </li>
-            <li id="troisieme">
-                <a href="#">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                </a>
-            </li>
-            <li id="quatrieme">
-                <a href="#">
-                    <i class="fa fa-cog" aria-hidden="true"></i> Dernier organisateur :
-                </a>
-            </li>
-            <li id="cinquieme">
-                <a href="#">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                </a>
-            </li>
-            <li id="sixième">
-                <a href="#">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i> Top 5
-                </a>
-            </li>
-            <li id="septième">
-                <a href="#">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                </a>
-            </li>
-            <li id="LoginPage">
-                <a href="#">
-                    <img class="loginImage"><i class="fa fa-info-circle" aria-hidden="true"></i> Login
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="feed">
-        <form action="" class="article">
-
-        </form>
-    </div>
-</div>
-</body>
-
-</html>
