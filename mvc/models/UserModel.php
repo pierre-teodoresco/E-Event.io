@@ -10,7 +10,7 @@ class UserModel extends Model{
     }
 
     public function checkLogin($email, $password){
-        $stmt = $this->_connexion->prepare("SELECT username,password,id,role FROM ".$this->table." WHERE email = '".$email."'");
+        $stmt = $this->_connexion->prepare("SELECT name,password,id,role FROM ".$this->table." WHERE email = '".$email."'");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         if (password_verify($password, $result->password)) {
@@ -104,5 +104,7 @@ class UserModel extends Model{
         $stmt = $this->_connexion->prepare("UPDATE account SET $var = '".$img."' WHERE id = '".$id."'");
         $stmt->execute();
     }
+
+
 
 }

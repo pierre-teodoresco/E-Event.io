@@ -19,6 +19,7 @@ abstract class Model{
         try{
             $this->_connexion = new PDO("mysql:host=" . $this->host .';port=' . $this->port. ";dbname=" . $this->db_name, $this->username, $this->password);
             $this->_connexion->exec("set names utf8");
+            $this->_connexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Anti injection SQL
         }catch(PDOException $exception){
             echo "Erreur de connexion : " . $exception->getMessage();
         }
@@ -95,16 +96,7 @@ abstract class Model{
         $stmt->execute();
         return $stmt->fetchColumn();
     }
-    public function getVotes(){
-        $stmt = $this->_connexion->prepare("SELECT SUM(votes) FROM ".$this->table);
-        $stmt->execute();
-        return $stmt->fetchColumn();
-    }
-    public function getMoy(){
-        $stmt = $this->_connexion->prepare("SELECT AVG(votes) FROM ".$this->table);
-        $stmt->execute();
-        return $stmt->fetchColumn();
-    }
+
 
 
 }

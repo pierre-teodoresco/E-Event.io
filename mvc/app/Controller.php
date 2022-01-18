@@ -48,7 +48,7 @@ class Controller{
 
         if (false === $B_called) {
             throw new ControleurException("L'action " . $this->_A_urlDecortique['action'] .
-                " du contrôleur " . $this->_A_urlDecortique['controleur'] . " a rencontré une erreur.");
+                " du controlleur " . $this->_A_urlDecortique['controleur'] . " a rencontré une erreur.");
         }
     }
 }

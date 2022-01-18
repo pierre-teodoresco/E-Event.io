@@ -7,7 +7,6 @@ final class Constants
     // Les constantes relatives aux chemins
     const REPERTOIRE_VUES        = '/views/';
 
-
     const REPERTOIRE_MODELE      = '/models/';
 
     const REPERTOIRE_NOYAU       = '/app/';

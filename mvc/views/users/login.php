@@ -1,7 +1,7 @@
 <div class="auth">
 
     <div class="left">
-        <h3 class="title">E Event.io !</h3>
+        <h3 class="title">E-Event.io !</h3>
         <p>Entité de soutien lors de l'organisation d'évenement, notament pour les étudiants d'Aix-Marseille Université</p>
     </div>
     <form method="post" id="login" class="right">

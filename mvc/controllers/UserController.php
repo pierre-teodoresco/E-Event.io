@@ -23,27 +23,27 @@ final class UserController{
 
             if (empty($login_data['email'])) {
                 $login_data['emailError'] = '<p style=\'color:red\'>Renseignez une adresse mail</p>';
-                View::montrer('users/login', $login_data);
+                View::montrer('user/login', $login_data);
                 return;
             }
             if (empty($login_data['password'])) {
-                $login_data['passwordError'] = '<p style=\'color:red\'>Renseignez un nom mot de passe</p>';
-                View::montrer('users/login', $login_data);
+                $login_data['passwordError'] = '<p style=\'color:red\'>Renseignez un mot de passe</p>';
+                View::montrer('user/login', $login_data);
                 return;
             }
             if(!$this->model->emailExists($login_data['email'])){
-                $login_data['emailError'] = '<p style=\'color:red\'>Cette email n\'existe pas</p>';
-                View::montrer('users/login', $login_data);
+                $login_data['emailError'] = '<p style=\'color:red\'>Cet email n\'existe pas</p>';
+                View::montrer('user/login', $login_data);
                 return;
             }
             if(!$this->model->checkLogin($login_data['email'], $login_data['password'])){
                 $login_data['passwordError'] = '<p style=\'color:red\'>Mot de passe invalide</p>';
-                View::montrer('users/login', $login_data);
+                View::montrer('user/login', $login_data);
                 return;
             }
         }
         else{
-            View::montrer('users/login', $login_data);
+            View::montrer('user/login', $login_data);
         }
     }
 
@@ -91,41 +91,41 @@ final class UserController{
 
                 // On verifie que le input password n'est pas vide.
                 if (empty($edit_data['password'])) {
-                    $edit_data['errorPassword'] = '<p style=\'color:red\'>Veuillez definir un mot de passe</p>';
-                    View::montrer('users/edit', $edit_data);
+                    $edit_data['errorPassword'] = '<p style=\'color:red\'>Veuillez définir un mot de passe</p>';
+                    View::montrer('user/edit', $edit_data);
                     return;
                 }
 
                 // On verifie que la confirmation n'est pas vide. avec le passwordc
                 if (empty($edit_data['passwordc'])) {
-                    $edit_data['errorPasswordc'] = '<p style=\'color:red\'>Veuillez definir mot de passe </p>';
-                    View::montrer('users/edit', $edit_data);
+                    $edit_data['errorPasswordc'] = '<p style=\'color:red\'>Veuillez définir un mot de passe </p>';
+                    View::montrer('user/edit', $edit_data);
                     return;
                 }
 
                 // On verifie que le nouveau mot de passe et la confirmation sont bien egal.
                 if ($edit_data['password'] != $edit_data['passwordc']) {
                     $edit_data['errorPassword'] = '<p style=\'color:red\'>Les mots de passes ne correspondent pas</p>';
-                    View::montrer('users/edit', $edit_data);
+                    View::montrer('user/edit', $edit_data);
                     return;
                 }
 
                 // On varifie que le nouveau mot de passe n'est pas egal à l'ancien mot de passes.
                 if ($edit_data['password'] == $edit_data['oldpassword']) {
-                    $edit_data['errorOldpassword'] = '<p style=\'color:red\'>Vous ne pouvez pas definir le meme mot de passe</p>';
-                    View::montrer('users/edit', $edit_data);
+                    $edit_data['errorOldpassword'] = '<p style=\'color:red\'>Vous ne pouvez pas définir le même mot de passe</p>';
+                    View::montrer('user/edit', $edit_data);
                     return;
                 }
 
                 // On verfie à l'aide de la BDD que c'est le bon mot de passe dans l'input "oldpassword" qu'il a renseigné.
                 if (!$this->model->checkPassword($_SESSION['id'], $edit_data['oldpassword'])) {
                     $edit_data['errorOldpassword'] = '<p style=\'color:red\'>Votre mot de passe est invalide</p>';
-                    View::montrer('users/edit', $edit_data);
+                    View::montrer('user/edit', $edit_data);
                     return;
                 }
 
                 //Une fois toutes les vérifications nous pouvons donc changer le mot de passes utilisateurs.
-                $edit_data['errorOldpassword'] = '<p style=\'color:green\'>Mot de passes changé</p>';
+                $edit_data['errorOldpassword'] = '<p style=\'color:green\'>Mot de passe modifié</p>';
                 $options = ['cost' => 11,];
                 $this->model->checkUsername($_SESSION['username'], $edit_data['password'], $options, $_SESSION['id']);
             }
@@ -139,7 +139,7 @@ final class UserController{
                     $this->model->changeImage($_SESSION['id'], $filename);
 
                     $edit_data['img'] = $this->model->getAttribute('image_profile', $_SESSION['id']);
-                    View::montrer('users/edit', $edit_data);
+                    View::montrer('user/edit', $edit_data);
                 } else {
                     echo "Failed to upload image";
                 }
@@ -156,7 +156,7 @@ final class UserController{
         $edit_data['prenom'] = $this->model->getAttribute('prenom',$_SESSION['id']);
         $edit_data['nom'] = $this->model->getAttribute('nom',$_SESSION['id']);
         $edit_data['img'] = $this->model->getAttribute('image_profile',$_SESSION['id']);
-        View::montrer('users/edit', $edit_data);
+        View::montrer('user/edit', $edit_data);
 
     }
 
@@ -175,26 +175,26 @@ final class UserController{
 
             if (empty($registerData['email'])) {
                 $registerData['emailError'] = '<p style=\'color:red\'>Renseignez une adresse mail</p>';
-                View::montrer('users/register', $registerData);
+                View::montrer('user/register', $registerData);
                 return;
             }
             if (empty($registerData['rank'])) {
                 $registerData['rankError'] = '<p style=\'color:red\'>Veuillez selectionner un role</p>';
-                View::montrer('users/register', $registerData);
+                View::montrer('user/register', $registerData);
                 return;
             }
             if($this->model->emailExists($registerData['email'])){
                 $registerData['emailError'] = '<p style=\'color:red\'>Cette adresse mail est déjà utilsée</p>';
-                View::montrer('users/register', $registerData);
+                View::montrer('user/register', $registerData);
                 return;
             }
             $options = ['cost' => 11,];
             $password = $this->randomPassword();
             $this->model->checkRegister($registerData['email'], $password, $options, $registerData['rank']);
             $this->sendEmailPassword($registerData['email'], $password);
-            $registerData['accountCreate'] = '<p style=\'color:green\'>Felicitation, regarder votre email pour avoir vos idenntifications de connexions. (Regarder dans vos spam)/p>';
+            $registerData['accountCreate'] = '<p style=\'color:green\'>Félicitations, regardez votre email pour avoir vos identifiants de connexion. (Pensez à vérifier vos spams)/p>';
         }
-        View::montrer('users/register', $registerData);
+        View::montrer('user/register', $registerData);
     }
 
     public function admin(){
@@ -208,6 +208,8 @@ final class UserController{
         else{
             header('Location: ?');
         }
+        //$username = $_SESSION['username'];
+        //$id = $_SESSION['id'];
         $campagneModel = new CampagneModel();
         $eventModel = new EventModel();
         $admin_data = [
@@ -225,6 +227,8 @@ final class UserController{
             'errorCampagneDatefin' => '',
             'errorCampagneUser' => '',
             'script' => ''
+            //'username' => $username,
+            //'id' => $id
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' ){
@@ -243,27 +247,27 @@ final class UserController{
                 $admin_data['script'] = "<script>document.getElementById(\"myModal\").style.display = \"block\";</script>";
                 if (empty($admin_data['campagneName'])) {
                     $admin_data['errorCampagneName'] = '<p style=\'color:red\'>Renseignez un nom de campagne</p>';
-                    View::montrer('users/admin', $admin_data);
+                    View::montrer('user/admin', $admin_data);
                     return;
                 }
                 if (empty($admin_data['campagneDatedeb'])) {
-                    $admin_data['errorCampagneDatedeb'] = '<p style=\'color:red\'>Renseignez une date de debut</p>';
-                    View::montrer('users/admin', $admin_data);
+                    $admin_data['errorCampagneDatedeb'] = '<p style=\'color:red\'>Renseignez une date de début</p>';
+                    View::montrer('user/admin', $admin_data);
                     return;
                 }
                 if (empty($admin_data['campagneDatefin'])) {
                     $admin_data['errorCampagneDatefin'] = '<p style=\'color:red\'>Renseignez une date de fin</p>';
-                    View::montrer('users/admin', $admin_data);
+                    View::montrer('user/admin', $admin_data);
                     return;
                 }
                 if (empty($admin_data['campagneUser'])) {
-                    $admin_data['errorCampagneUser'] = '<p style=\'color:red\'>Renseignez un nombre de point par joueur</p>';
-                    View::montrer('users/admin', $admin_data);
+                    $admin_data['errorCampagneUser'] = '<p style=\'color:red\'>Renseignez un nombre de points par joueur</p>';
+                    View::montrer('user/admin', $admin_data);
                     return;
                 }
                 if ($admin_data['campagneDatefin'] <= $admin_data['campagneDatedeb']) {
-                    $admin_data['errorCampagneDatefin'] = '<p style=\'color:red\'>Renseignez date fin superieur a date debut</p>';
-                    View::montrer('users/admin', $admin_data);
+                    $admin_data['errorCampagneDatefin'] = '<p style=\'color:red\'>Renseignez date fin superieure à la date debut</p>';
+                    View::montrer('user/admin', $admin_data);
                     return;
                 }
                 $this->model->registerCampagne($admin_data['campagneName'], $admin_data['campagneDatedeb'], $admin_data['campagneDatefin'], $admin_data['campagneUser']);
@@ -274,15 +278,15 @@ final class UserController{
         }
         $eventOnlineCount = $eventModel->countOnlineEvents();
         if ($eventOnlineCount == 0) {
-            $admin_data['headEvent'] = "<p>Aucun evenement n'est en cours</p><p>Vous pouvez créer un evenement en cliquant sur lien</p>
+            $admin_data['headEvent'] = "<p>Aucun évènement n'est en cours</p><p>Vous pouvez créer un évènement en cliquant sur lien</p>
             <div class=\"right\">
             <a id=\"myBtn\" class=\"button\">Créer une campagne</a>
             </div>";
         } else {
-            $admin_data['headEvent'] = "<p>Un evenement est en cours</p>
+            $admin_data['headEvent'] = "<p>Un évènement est en cours</p>
              <form method=\"post\" id=\"closeCamp\">
             <div class=\"right\">
-            <a href=\"javascript:;\"  class=\"button danger\">Arreter la campagne</a></form>
+            <a href=\"javascript:;\"  class=\"button danger\">Arrêter la campagne</a></form>
             
             </div>";
         }
@@ -308,7 +312,7 @@ final class UserController{
         $admin_data['tableUsers'] = $dataValues;
         $admin_data['userCount'] = $this->model->getCount();
         $admin_data['eventCount'] = $eventModel->getCount();
-        View::montrer('users/admin', $admin_data);
+        View::montrer('user/admin', $admin_data);
     }
 
 
@@ -339,16 +343,16 @@ final class UserController{
         }
 
 
-        /*$events = $eventModel->getAllEvent();
+        /*$event = $eventModel->getAllEvent();
         $dataValues= "";
-        foreach ($events as $event){
+        foreach ($event as $event){
             $dataValues .= "<tr><td>$event[id]</td><td>$event[title]</td><td>$event[votes]</td></tr>";
         }*/
         //$admin_data['tableUsers'] = $dataValues;
         $jury_data['userCount'] = $eventModel->getCount();
         $jury_data['eventCount'] = $eventModel->getVotes();
-        $jury_data['moyenneCount'] = $eventModel->getMoy();
-        View::montrer('users/jury', $jury_data);
+        $jury_data['moyenneCount'] = $eventModel->getMoyVotes();
+        View::montrer('user/jury', $jury_data);
     }
 
     public function sendEmailPassword($to, $pass){
@@ -364,7 +368,7 @@ final class UserController{
       <p>Voici votre mot de passe généré :</p>
       <h3>' .$pass.'</h3>
       <br>
-      <p>Information sécurité :</p>
+      <p>Information de sécurité :</p>
       <p>Nous vous recommandons de changer votre mot de passe une fois la première connexion effectué</p>
       <p>Ne donner jamais votre mot de passe</p>
       <p>Aucun membre du staff de e-event ne vous demandera votre mot de passe.</p>
@@ -374,7 +378,7 @@ final class UserController{
       <p>Equipe E-event.io! </p>
       <p>Message automatique, merci de ne pas répondre.</p>
       <br>
-      <p>Projet fictif, développé au cours du cursur universitaire.</p>
+      <p>Projet fictif, développé au cours du cursus universitaire.</p>
       </body>
      </html>
      ';
@@ -397,12 +401,12 @@ final class UserController{
       </head>
       <body>
       <h2>Changement de votre mot de passe</h2>
-      <p>Vous venez de réaliser la réinstialisation de votre mot de passe</p>
+      <p>Vous venez de réaliser la réinitialisation de votre mot de passe</p>
       <p>Voici votre nouveau mot de passe généré :</p>
       <h3>' .$pass.'</h3>
       <p>Durée du mot de passe 2h</p>
       <br>
-      <p>Information sécurité :</p>
+      <p>Information de sécurité :</p>
       <p>Nous vous recommandons de changer votre mot de passe une fois la première connexion effectué</p>
       <p>Ne donner jamais votre mot de passe</p>
       <p>Aucun membre du staff de e-event ne vous demandera votre mot de passe.</p>
@@ -412,7 +416,7 @@ final class UserController{
       <p>Equipe E-event.io! </p>
       <p>Message automatique, merci de ne pas répondre.</p>
       <br>
-      <p>Projet fictif, développé au cours du cursur universitaire.</p>
+      <p>Projet fictif, développé au cours du cursus universitaire.</p>
       </body>
      </html>
      ';
@@ -434,5 +438,12 @@ final class UserController{
             $pass[] = $alphabet[$n];
         }
         return implode($pass); //turn the array into a string
+    }
+
+    public function logout(){
+        if(isset($_SESSION)) {
+            session_destroy();
+        }
+        header('Location: ?');
     }
 }

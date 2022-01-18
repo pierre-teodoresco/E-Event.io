@@ -15,23 +15,16 @@ class EventModel extends Model
         $stmt = "SELECT evenement.id,title,description,votes,username,image_profile 
                 FROM evenement INNER JOIN account ON owner = account.id 
                 ORDER BY evenement.id DESC";
+
         return $this->_connexion->query($stmt);
     }
 
-    public function getComment($id){
+    public function getCommentByEventId($id){
         if(is_int(intval($id))) {
             $stmt = "SELECT author,description,username FROM `comment` INNER JOIN account ON author = account.id WHERE comment.event = $id";
-            $result = $this->_connexion->query($stmt);
-            $value= "";
-            foreach ($result as $row){
-                $value .= "<div class=\"container\">
-                 <h3> $row[username]</h3>
-                 <p> $row[description]</p>
-                </div>";
-            }
-            return $value;
+            return $this->_connexion->query($stmt);
         }
-        return "non";
+        throw new Exception("id de commentaire invalide");
     }
 
 
@@ -49,8 +42,8 @@ class EventModel extends Model
     }
 
     public function getAdditionnalContentOfEvent($id){
-        $stmt2 = "SELECT point,description FROM `addcontent` WHERE addcontent.event = $id";
-        return $this->_connexion->query($stmt2);
+        $stmt = "SELECT point,description FROM `addcontent` WHERE addcontent.event = $id";
+        return $this->_connexion->query($stmt);
     }
 
     public function countOnlineEvents(){
@@ -69,6 +62,18 @@ class EventModel extends Model
             $stmt2 = $this->_connexion->prepare("INSERT INTO comment(author, description, event) VALUES ('".$id."', '".$comment."', '".$eventid."')");
             $stmt2->execute();
         }
+    }
+
+    public function getVotes(){
+        $stmt = $this->_connexion->prepare("SELECT SUM(votes) FROM ".$this->table);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    public function getMoyVotes(){
+        $stmt = $this->_connexion->prepare("SELECT CAST(AVG(votes) AS DECIMAL(10,2)) FROM ".$this->table);
+        $stmt->execute();
+        return $stmt->fetchColumn();
     }
 
 }
