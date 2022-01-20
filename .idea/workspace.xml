@@ -19,13 +19,14 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:theo" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/theo" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="index.php &amp; css clean" />
+    <list default="true" id="b2245a28-20c8-4842-9b2b-d312caaa3fc8" name="Changes" comment="Déplacements des fichiers du projet à la racine" />
     <list id="1c1e9943-935e-4bec-80a0-1a1341574ff2" name="Changes by kyrianmarchand" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +54,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="pierre" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -90,13 +91,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/eevent/img" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mvc/app" />
       <recent name="$PROJECT_DIR$/eevent" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/eevent/img" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -177,7 +178,28 @@
       <option name="project" value="LOCAL" />
       <updated>1642086760996</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Suppression ancien fichiers">
+      <created>1642713116354</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1642713116354</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Suppresions dossier et fichiers inutiles">
+      <created>1642713171263</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1642713171263</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Déplacements des fichiers du projet à la racine">
+      <created>1642713251776</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1642713251776</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,13 +216,28 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="theo" />
+                        <option value="origin/theo" />
                       </list>
                     </value>
                   </entry>
                 </map>
               </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/theo" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
@@ -215,7 +252,10 @@
     <MESSAGE value="css register" />
     <MESSAGE value="maj todo" />
     <MESSAGE value="index.php &amp; css clean" />
-    <option name="LAST_COMMIT_MESSAGE" value="index.php &amp; css clean" />
+    <MESSAGE value="Suppression ancien fichiers" />
+    <MESSAGE value="Suppresions dossier et fichiers inutiles" />
+    <MESSAGE value="Déplacements des fichiers du projet à la racine" />
+    <option name="LAST_COMMIT_MESSAGE" value="Déplacements des fichiers du projet à la racine" />
   </component>
   <component name="WindowStateProjectService">
     <state x="451" y="256" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1642081302344">
@@ -257,10 +297,11 @@
     <state x="559" y="375" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1642016595456" />
     <state x="541" y="-510" key="NewPhpFileDialog/0.25.1440.875/-80.-875.1600.875@-80.-875.1600.875" timestamp="1641889438920" />
     <state x="559" y="390" key="NewPhpFileDialog/0.25.1440.875/-80.-875.1600.875@0.25.1440.875" timestamp="1642006154124" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1642086771021">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1642713267545">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-80.-875.1600.875@0.0.1440.900" timestamp="1642086771021" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1642713267545" />
     <state x="545" y="256" key="refactoring.ChangeSignatureDialog" timestamp="1642090992972">
       <screen x="0" y="25" width="1440" height="875" />
     </state>
